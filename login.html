@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — RiseIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d1a;--ink2:#3b3b5c;--ink3:#7070a0;
+  --indigo:#4f46e5;--indigo-dark:#3730a3;
+  --bg:#f6f5ff;--border:#e2e0f9;
+}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;display:flex;overflow:hidden}
+
+/* SPLIT LAYOUT */
+.login-left{
+  flex:0 0 480px;background:#fff;
+  display:flex;flex-direction:column;
+  padding:48px;min-height:100vh;
+  border-right:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.login-right{
+  flex:1;
+  background:linear-gradient(160deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:48px;position:relative;overflow:hidden;
+}
+@media(max-width:860px){
+  .login-right{display:none}
+  .login-left{flex:1;max-width:100%}
+}
+
+/* BLOBS */
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.3;pointer-events:none}
+.blob1{width:400px;height:400px;background:radial-gradient(circle,#818cf8,#4f46e5);top:-100px;right:-80px}
+.blob2{width:350px;height:350px;background:radial-gradient(circle,#a855f7,#7c3aed);bottom:-80px;left:-80px}
+
+/* LEFT CONTENT */
+.login-logo{display:flex;align-items:center;gap:10px;margin-bottom:48px;text-decoration:none}
+.logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#a855f7);display:grid;place-items:center;font-size:18px;font-weight:900;color:#fff}
+.logo-text{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.logo-text span{color:var(--indigo)}
+
+.login-content{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:380px}
+.login-heading{font-size:30px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
+.login-sub{font-size:15px;color:var(--ink3);margin-bottom:36px}
+
+/* TABS */
+.auth-tabs{display:flex;background:var(--bg);border-radius:10px;padding:4px;margin-bottom:32px;border:1px solid var(--border)}
+.auth-tab{flex:1;padding:10px;border:none;background:none;border-radius:7px;font-size:14px;font-weight:600;color:var(--ink3);cursor:pointer;font-family:inherit;transition:all .2s}
+.auth-tab.active{background:#fff;color:var(--indigo);box-shadow:0 2px 8px rgba(79,70,229,.15)}
+
+/* FORM */
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px}
+.form-input{
+  width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;
+  font-size:15px;font-family:inherit;color:var(--ink);background:#fff;
+  transition:all .2s;outline:none;
+}
+.form-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.12)}
+.form-input::placeholder{color:var(--ink3)}
+.form-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.form-label{margin-bottom:0}
+.forgot-link{font-size:13px;color:var(--indigo);text-decoration:none;font-weight:500}
+.forgot-link:hover{text-decoration:underline}
+
+/* GOOGLE BTN */
+.btn-google{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:13px;border:1.5px solid var(--border);border-radius:10px;
+  background:#fff;font-size:14px;font-weight:600;color:var(--ink);
+  cursor:pointer;font-family:inherit;transition:all .2s;margin-bottom:20px;
+}
+.btn-google:hover{border-color:rgba(79,70,229,.4);background:var(--bg);transform:translateY(-1px)}
+.google-icon{width:20px;height:20px;flex-shrink:0}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:12px;margin-bottom:20px;color:var(--ink3);font-size:13px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* SUBMIT */
+.btn-submit{
+  width:100%;padding:14px;border-radius:10px;border:none;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff;font-size:15px;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  box-shadow:0 4px 20px rgba(79,70,229,.35);
+  transition:all .25s;
+}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(79,70,229,.45)}
+
+.form-switch{text-align:center;margin-top:24px;font-size:14px;color:var(--ink3)}
+.form-switch a{color:var(--indigo);font-weight:600;text-decoration:none}
+.form-switch a:hover{text-decoration:underline}
+
+.login-footer{font-size:12px;color:var(--ink3);text-align:center;margin-top:32px}
+.login-footer a{color:var(--ink3);text-decoration:underline}
+
+/* RIGHT PANEL */
+.right-quote{
+  text-align:center;color:#fff;position:relative;z-index:1;max-width:420px;
+}
+.right-logo-mark{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.15);display:grid;place-items:center;font-size:26px;font-weight:900;color:#fff;margin:0 auto 24px;border:1px solid rgba(255,255,255,.2)}
+.right-quote h2{font-size:32px;font-weight:900;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.15}
+.right-quote p{font-size:16px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:36px}
+.right-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.rs{text-align:center}
+.rs-num{font-size:26px;font-weight:800;color:#fff}
+.rs-lbl{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px;font-weight:500}
+.right-testimonial{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;padding:24px;text-align:left;
+}
+.rt-stars{color:#f59e0b;font-size:14px;margin-bottom:10px}
+.rt-text{font-size:14px;color:rgba(255,255,255,.75);line-height:1.7;font-style:italic;margin-bottom:14px}
+.rt-author{display:flex;align-items:center;gap:10px}
+.rt-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#818cf8,#a855f7);display:grid;place-items:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.rt-name{font-size:13px;font-weight:700;color:#fff}
+.rt-score{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px}
+
+/* LOADING STATE */
+.btn-submit.loading{pointer-events:none;opacity:.7}
+.btn-submit.loading::after{content:' ↻';animation:spin .6s linear infinite;display:inline-block}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- LEFT: FORM PANEL -->
+<div class="login-left">
+  <a href="index.html" class="login-logo">
+    <div class="logo-mark">R</div>
+    <span class="logo-text">Rise<span>IQ</span></span>
+  </a>
+
+  <div class="login-content">
+    <h1 class="login-heading" id="form-heading">Welcome back</h1>
+    <p class="login-sub" id="form-sub">Sign in to continue your IELTS journey.</p>
+
+    <!-- TABS -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-signin" onclick="switchTab('signin')">Sign In</button>
+      <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Create Account</button>
+    </div>
+
+    <!-- GOOGLE -->
+    <button class="btn-google" onclick="googleAuth()">
+      <svg class="google-icon" viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+      </svg>
+      Continue with Google
+    </button>
+
+    <div class="divider">or</div>
+
+    <!-- SIGN IN FORM -->
+    <form id="form-signin" onsubmit="handleSubmit(event,'signin')">
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <div class="form-row" style="margin-bottom:7px">
+          <label class="form-label">Password</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <input type="password" class="form-input" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn-submit" id="btn-signin">Sign In →</button>
+    </form>
+
+    <!-- SIGN UP FORM -->
+    <form id="form-signup" style="display:none" onsubmit="handleSubmit(event,'signup')">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" placeholder="Create a strong password" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Target Band Score</label>
+        <select class="form-input">
+          <option value="">Select your target...</option>
+          <option>Band 6.0</option>
+          <option>Band 6.5</option>
+          <option>Band 7.0</option>
+          <option>Band 7.5</option>
+          <option>Band 8.0</option>
+          <option>Band 8.5+</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit" id="btn-signup">Create Account — It's Free →</button>
+    </form>
+
+    <div class="form-switch" id="form-switch">
+      Don't have an account? <a href="#" onclick="switchTab('signup');return false">Sign up free</a>
+    </div>
+
+  </div>
+
+  <div class="login-footer">
+    By signing in you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.<br>
+    © 2026 RiseIQ · riseiq.ca
+  </div>
+</div>
+
+<!-- RIGHT: BRAND PANEL -->
+<div class="login-right">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="right-quote">
+    <div class="right-logo-mark">R</div>
+    <h2>Rise Smarter.<br>Learn Faster.</h2>
+    <p>Join 12,000+ learners who are already on their way to Band 8 with RiseIQ's AI-powered platform.</p>
+    <div class="right-stats">
+      <div class="rs">
+        <div class="rs-num">+1.4</div>
+        <div class="rs-lbl">Avg Band Gain</div>
+      </div>
+      <div class="rs">
+        <div class="rs-num">60 days</div>
+        <div class="rs-lbl">Average Timeline</div>
+      </div>
+      <div class="rs">
+        <div class="rs-num">94%</div>
+        <div class="rs-lbl">Improvement Rate</div>
+      </div>
+    </div>
+    <div class="right-testimonial">
+      <div class="rt-stars">★★★★★</div>
+      <p class="rt-text">"I studied for 3 months with other apps and barely moved. Two months on RiseIQ and I hit Band 8. The AI feedback completely changed how I write."</p>
+      <div class="rt-author">
+        <div class="rt-av">N</div>
+        <div>
+          <div class="rt-name">Nguyen Thi Lan</div>
+          <div class="rt-score">Writing: 5.5 → 7.5 · Overall 6.0 → 8.0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tab) {
+  const isSignin = tab === 'signin';
+  document.getElementById('tab-signin').classList.toggle('active', isSignin);
+  document.getElementById('tab-signup').classList.toggle('active', !isSignin);
+  document.getElementById('form-signin').style.display = isSignin ? 'block' : 'none';
+  document.getElementById('form-signup').style.display = isSignin ? 'none' : 'block';
+  document.getElementById('form-heading').textContent = isSignin ? 'Welcome back' : 'Create your account';
+  document.getElementById('form-sub').textContent = isSignin
+    ? 'Sign in to continue your IELTS journey.'
+    : 'Free forever. No credit card required.';
+  document.getElementById('form-switch').innerHTML = isSignin
+    ? 'Don\'t have an account? <a href="#" onclick="switchTab(\'signup\');return false">Sign up free</a>'
+    : 'Already have an account? <a href="#" onclick="switchTab(\'signin\');return false">Sign in</a>';
+}
+
+function handleSubmit(e, type) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-' + type);
+  btn.classList.add('loading');
+  btn.textContent = 'Loading';
+  setTimeout(() => { window.location.href = 'dashboard.html'; }, 900);
+}
+
+function googleAuth() {
+  const btn = document.querySelector('.btn-google');
+  btn.textContent = 'Connecting...';
+  btn.style.pointerEvents = 'none';
+  setTimeout(() => { window.location.href = 'dashboard.html'; }, 900);
+}
+</script>
+</body>
+</html>

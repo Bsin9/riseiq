@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — RiseIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d1a;--ink2:#3b3b5c;--ink3:#7070a0;--ink4:#b0b0c8;
+  --indigo:#4f46e5;--indigo-light:#eef2ff;--indigo-mid:#818cf8;
+  --purple:#7c3aed;--purple-light:#f5f3ff;
+  --amber:#f59e0b;--amber-light:#fffbeb;
+  --green:#10b981;--green-light:#f0fdf4;
+  --rose:#f43f5e;--rose-light:#fff1f2;
+  --blue:#3b82f6;--blue-light:#eff6ff;
+  --bg:#f6f5ff;--card:#ffffff;--border:#e8e6f8;
+  --sidebar-w:260px;--topbar-h:64px;
+  --shadow-sm:0 2px 8px rgba(79,70,229,.08);
+  --shadow:0 4px 20px rgba(79,70,229,.10);
+  --shadow-lg:0 12px 40px rgba(79,70,229,.15);
+  --r:14px;
+}
+
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);overflow:hidden;height:100vh;display:flex}
+
+/* ─── SIDEBAR ─── */
+.sidebar{
+  width:var(--sidebar-w);height:100vh;
+  background:#fff;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;flex-shrink:0;
+  overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+  position:relative;z-index:20;
+}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+.sb-logo{
+  display:flex;align-items:center;gap:10px;padding:20px 20px 16px;
+  border-bottom:1px solid var(--border);text-decoration:none;flex-shrink:0;
+}
+.sb-logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#a855f7);display:grid;place-items:center;font-size:17px;font-weight:900;color:#fff}
+.sb-logo-text{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.sb-logo-text span{color:var(--indigo)}
+
+/* USER CARD */
+.sb-user{
+  margin:16px 14px;padding:14px;border-radius:12px;
+  background:var(--bg);border:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+}
+.sb-avatar{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#4f46e5,#a855f7);
+  display:grid;place-items:center;font-size:16px;font-weight:700;color:#fff;
+}
+.sb-user-name{font-size:14px;font-weight:700;color:var(--ink)}
+.sb-user-goal{font-size:12px;color:var(--indigo);font-weight:600;margin-top:2px}
+
+/* STREAK CHIP */
+.sb-streak{
+  margin:0 14px 12px;padding:10px 14px;border-radius:10px;
+  background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;
+  display:flex;align-items:center;gap:8px;
+}
+.sb-streak-fire{font-size:18px}
+.sb-streak-num{font-size:15px;font-weight:800;color:#92400e}
+.sb-streak-lbl{font-size:12px;color:#b45309;font-weight:500}
+
+/* NAV */
+.sb-section-label{
+  font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--ink4);padding:12px 20px 6px;
+}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;margin:1px 8px;border-radius:10px;
+  cursor:pointer;text-decoration:none;color:var(--ink2);
+  font-size:14px;font-weight:500;transition:all .18s;
+  border:none;background:none;width:calc(100% - 16px);text-align:left;font-family:inherit;
+}
+.nav-item:hover{background:var(--bg);color:var(--ink)}
+.nav-item.active{background:var(--indigo-light);color:var(--indigo);font-weight:600}
+.nav-item.active .nav-icon{filter:none}
+.nav-icon{font-size:17px;width:22px;text-align:center;flex-shrink:0}
+.nav-label{flex:1}
+.nav-badge{
+  font-size:11px;font-weight:700;padding:2px 7px;border-radius:50px;
+  background:var(--indigo);color:#fff;
+}
+.nav-badge-amber{background:var(--amber);color:#fff}
+.nav-badge-green{background:var(--green);color:#fff}
+/* Sub nav */
+.sub-nav{display:none;padding:0 0 4px 0}
+.sub-nav.open{display:block}
+.sub-item{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 16px 8px 48px;border-radius:8px;
+  margin:1px 8px;cursor:pointer;text-decoration:none;
+  color:var(--ink3);font-size:13px;font-weight:500;
+  transition:all .15s;border:none;background:none;width:calc(100% - 16px);font-family:inherit;text-align:left;
+}
+.sub-item:hover{background:var(--bg);color:var(--ink)}
+.sub-item.active{color:var(--indigo);font-weight:600}
+/* Arrow */
+.nav-arrow{font-size:11px;color:var(--ink4);transition:transform .2s}
+.nav-item.open .nav-arrow{transform:rotate(90deg)}
+
+/* SIDEBAR BOTTOM */
+.sb-bottom{margin-top:auto;padding:12px 14px 16px;border-top:1px solid var(--border)}
+.ai-widget{
+  background:linear-gradient(135deg,#f5f3ff,#ede9fe);
+  border:1px solid rgba(124,58,237,.2);
+  border-radius:12px;padding:14px;
+}
+.ai-widget-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ai-pulse{
+  width:9px;height:9px;border-radius:50%;background:var(--purple);
+  animation:pulse 2s infinite;flex-shrink:0;
+}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(124,58,237,.5)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(124,58,237,0)}}
+.ai-widget-title{font-size:13px;font-weight:700;color:var(--purple)}
+.ai-widget p{font-size:12px;color:var(--ink2);line-height:1.5;margin-bottom:10px}
+.ai-btn{
+  width:100%;padding:8px;border-radius:8px;border:none;
+  background:var(--purple);color:#fff;font-size:12px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:all .2s;
+}
+.ai-btn:hover{background:#6d28d9}
+
+/* ─── TOPBAR ─── */
+.topbar{
+  position:fixed;top:0;left:var(--sidebar-w);right:0;height:var(--topbar-h);
+  background:rgba(246,245,255,.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;z-index:10;
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.topbar-title{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.tb-search{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1.5px solid var(--border);border-radius:10px;
+  padding:8px 14px;width:220px;transition:all .2s;
+}
+.tb-search:focus-within{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.1)}
+.tb-search input{border:none;background:none;font-size:14px;font-family:inherit;color:var(--ink);outline:none;flex:1}
+.tb-search input::placeholder{color:var(--ink4)}
+.tb-icon-btn{
+  width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:#fff;border:1.5px solid var(--border);cursor:pointer;
+  font-size:16px;transition:all .18s;position:relative;
+}
+.tb-icon-btn:hover{border-color:rgba(79,70,229,.3);background:var(--indigo-light)}
+.tb-notif-dot{
+  position:absolute;top:6px;right:6px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--rose);border:2px solid var(--bg);
+}
+.tb-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,#4f46e5,#a855f7);
+  display:grid;place-items:center;font-size:15px;font-weight:700;color:#fff;
+  cursor:pointer;border:2px solid var(--border);
+}
+
+/* ─── MAIN CONTENT ─── */
+.main{
+  flex:1;overflow-y:auto;margin-top:var(--topbar-h);
+  padding:28px;
+}
+.main::-webkit-scrollbar{width:6px}
+.main::-webkit-scrollbar-track{background:transparent}
+.main::-webkit-scrollbar-thumb{background:var(--border);border-radius:6px}
+
+/* Pages */
+.page{display:none}
+.page.active{display:block}
+
+/* ─── HOME PAGE ─── */
+.welcome-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.welcome-text h2{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px}
+.welcome-text p{font-size:14px;color:var(--ink3)}
+.btn-plan{
+  padding:10px 22px;border-radius:10px;border:none;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;
+  box-shadow:0 3px 14px rgba(79,70,229,.3);transition:all .2s;
+}
+.btn-plan:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(79,70,229,.4)}
+
+/* BAND SCORE CARDS */
+.band-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+@media(max-width:900px){.band-cards{grid-template-columns:1fr 1fr}}
+.band-card{
+  background:#fff;border-radius:14px;padding:18px 20px;
+  border:1px solid var(--border);transition:all .2s;
+}
+.band-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.bc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.bc-label{font-size:12px;font-weight:600;color:var(--ink3)}
+.bc-icon{font-size:20px}
+.bc-score{font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:4px}
+.bc-score.c-indigo{color:var(--indigo)}
+.bc-score.c-purple{color:var(--purple)}
+.bc-score.c-amber{color:var(--amber)}
+.bc-score.c-green{color:var(--green)}
+.bc-change{font-size:12px;font-weight:600;color:var(--green);background:var(--green-light);border-radius:50px;padding:2px 8px;display:inline-block}
+.bc-change.neutral{color:var(--ink3);background:var(--bg)}
+
+/* GRID LAYOUT */
+.home-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:1100px){.home-grid{grid-template-columns:1fr}}
+.home-grid-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:1100px){.home-grid-bottom{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.home-grid-bottom{grid-template-columns:1fr}}
+
+/* CARD BASE */
+.card{background:#fff;border-radius:var(--r);border:1px solid var(--border);overflow:hidden}
+.card-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px}
+.card-title{font-size:15px;font-weight:700;letter-spacing:-.2px}
+.card-action{font-size:13px;color:var(--indigo);font-weight:600;cursor:pointer;border:none;background:none;font-family:inherit}
+.card-action:hover{text-decoration:underline}
+
+/* TODAY'S PLAN */
+.today-plan{border:none;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff;border-radius:var(--r);padding:24px}
+.tp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.tp-title{font-size:16px;font-weight:700}
+.tp-progress{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.65)}
+.tp-bar{width:80px;height:6px;background:rgba(255,255,255,.15);border-radius:4px}
+.tp-bar-fill{height:6px;border-radius:4px;background:linear-gradient(90deg,#818cf8,#a855f7)}
+.plan-tasks{display:flex;flex-direction:column;gap:10px}
+.plan-task{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:12px 14px;
+  display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s;
+}
+.plan-task:hover{background:rgba(255,255,255,.14)}
+.plan-task.done{opacity:.55}
+.pt-check{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.25);
+  display:grid;place-items:center;font-size:11px;color:#fff;
+}
+.pt-check.checked{background:var(--green);border-color:var(--green)}
+.pt-body{flex:1}
+.pt-title{font-size:13px;font-weight:600;color:#fff}
+.pt-meta{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
+.pt-tag{
+  font-size:10px;font-weight:700;padding:3px 8px;border-radius:50px;
+  text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;
+}
+.tag-l{background:rgba(79,70,229,.35);color:#c7d2fe}
+.tag-r{background:rgba(168,85,247,.35);color:#ddd6fe}
+.tag-w{background:rgba(245,158,11,.35);color:#fde68a}
+.tag-s{background:rgba(16,185,129,.35);color:#bbf7d0}
+.tag-m{background:rgba(244,63,94,.35);color:#fecdd3}
+
+/* PROGRESS CHART */
+.chart-wrap{padding:0 20px 20px;height:200px}
+
+/* QUICK ACTIONS */
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px}
+.qa-btn{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:14px 10px;border-radius:12px;border:1.5px solid var(--border);
+  background:var(--bg);cursor:pointer;transition:all .2s;font-family:inherit;
+}
+.qa-btn:hover{border-color:var(--indigo);background:var(--indigo-light);transform:translateY(-2px)}
+.qa-icon{font-size:24px}
+.qa-label{font-size:12px;font-weight:600;color:var(--ink2);text-align:center;line-height:1.3}
+
+/* UPCOMING CLASSES */
+.class-list{padding:0 20px 16px;display:flex;flex-direction:column;gap:10px}
+.class-item{
+  display:flex;align-items:center;gap:12px;
+  padding:12px;border-radius:10px;background:var(--bg);border:1px solid var(--border);
+  cursor:pointer;transition:all .18s;
+}
+.class-item:hover{border-color:rgba(79,70,229,.25);background:var(--indigo-light)}
+.class-time-block{
+  flex:0 0 52px;text-align:center;
+  background:var(--indigo-light);border-radius:8px;padding:6px 4px;
+}
+.ct-time{font-size:13px;font-weight:800;color:var(--indigo);line-height:1}
+.ct-ampm{font-size:10px;font-weight:600;color:var(--indigo-mid)}
+.class-body{flex:1}
+.class-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.class-tutor{font-size:11px;color:var(--ink3)}
+.class-join{
+  padding:6px 12px;border-radius:7px;border:none;
+  background:var(--indigo);color:#fff;font-size:11px;font-weight:600;
+  cursor:pointer;font-family:inherit;flex-shrink:0;
+}
+
+/* SKILL RINGS */
+.rings-wrap{display:flex;justify-content:space-around;padding:20px}
+.ring-item{text-align:center}
+.ring-svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--border);stroke-width:5}
+.ring-fill{fill:none;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .8s ease}
+.ring-fill-indigo{stroke:#4f46e5}
+.ring-fill-purple{stroke:#a855f7}
+.ring-fill-amber{stroke:#f59e0b}
+.ring-fill-green{stroke:#10b981}
+.ring-label{font-size:16px;font-weight:800;color:var(--ink);margin-top:6px}
+.ring-sublabel{font-size:11px;color:var(--ink3);font-weight:500}
+
+/* STREAK CALENDAR */
+.streak-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:0 20px 20px;
+}
+.streak-day{
+  aspect-ratio:1;border-radius:5px;background:var(--bg);
+  border:1px solid var(--border);display:grid;place-items:center;
+  font-size:10px;font-weight:600;color:var(--ink4);transition:all .2s;
+}
+.streak-day.done{background:var(--indigo-light);border-color:rgba(79,70,229,.2);color:var(--indigo)}
+.streak-day.today{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.streak-day-label{font-size:10px;text-align:center;color:var(--ink4);font-weight:600;padding-bottom:4px;grid-column:span 7;display:flex;justify-content:space-around;padding:0 0 6px}
+
+/* ── COURSE MATERIALS PAGE ── */
+.course-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.course-filters{display:flex;gap:8px;flex-wrap:wrap}
+.cf-btn{padding:8px 16px;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer;font-family:inherit;transition:all .2s}
+.cf-btn.active{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.cf-btn:hover:not(.active){border-color:var(--indigo);color:var(--indigo)}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.cg-card{
+  background:#fff;border-radius:14px;border:1px solid var(--border);
+  overflow:hidden;cursor:pointer;transition:all .22s;
+}
+.cg-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.cg-thumb{height:110px;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}
+.cg-thumb-blue{background:linear-gradient(135deg,#eff6ff,#bfdbfe)}
+.cg-thumb-purple{background:linear-gradient(135deg,#faf5ff,#ede9fe)}
+.cg-thumb-amber{background:linear-gradient(135deg,#fffbeb,#fde68a)}
+.cg-thumb-rose{background:linear-gradient(135deg,#fff1f2,#fecdd3)}
+.cg-thumb-green{background:linear-gradient(135deg,#f0fdf4,#bbf7d0)}
+.cg-lock{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.3);color:#fff;border-radius:50px;padding:3px 8px;font-size:11px;font-weight:600}
+.cg-body{padding:16px}
+.cg-skill{font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;margin-bottom:6px}
+.cg-skill-l{color:var(--indigo)}.cg-skill-r{color:var(--purple)}.cg-skill-w{color:#d97706}.cg-skill-s{color:var(--rose)}.cg-skill-v{color:var(--green)}
+.cg-title{font-size:15px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px}
+.cg-desc{font-size:12px;color:var(--ink3);line-height:1.55;margin-bottom:12px}
+.cg-footer{display:flex;justify-content:space-between;align-items:center}
+.cg-dur{font-size:12px;color:var(--ink3)}
+.btn-cg{font-size:12px;font-weight:700;color:var(--indigo);background:var(--indigo-light);border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-family:inherit;transition:all .18s}
+.btn-cg:hover{background:var(--indigo);color:#fff}
+
+/* ── MOCK TESTS PAGE ── */
+.mock-hero{
+  background:linear-gradient(135deg,#1e1b4b,#312e81);
+  border-radius:16px;padding:28px 32px;color:#fff;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;
+}
+.mock-hero h2{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
+.mock-hero p{font-size:14px;color:rgba(255,255,255,.65)}
+.btn-start-mock{
+  padding:12px 28px;border-radius:10px;background:#fff;color:var(--indigo-dark);
+  font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:inherit;
+  transition:all .2s;flex-shrink:0;
+}
+.btn-start-mock:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.mock-tabs{display:flex;gap:0;background:#fff;border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:24px}
+.mock-tab{flex:1;padding:10px;border:none;background:none;border-radius:9px;font-size:14px;font-weight:600;color:var(--ink3);cursor:pointer;font-family:inherit;transition:all .2s}
+.mock-tab.active{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;box-shadow:0 2px 10px rgba(79,70,229,.3)}
+.mock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.mock-card{
+  background:#fff;border-radius:14px;border:1px solid var(--border);
+  padding:20px;display:flex;flex-direction:column;gap:14px;
+  transition:all .2s;cursor:pointer;
+}
+.mock-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.mc-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.mc-num{font-size:13px;font-weight:700;color:var(--indigo);background:var(--indigo-light);border-radius:8px;padding:4px 10px;flex-shrink:0}
+.mc-lock-badge{font-size:12px;font-weight:700;color:var(--ink3);background:var(--bg);border-radius:8px;padding:4px 10px;border:1px solid var(--border)}
+.mc-title{font-size:16px;font-weight:700;letter-spacing:-.3px}
+.mc-desc{font-size:13px;color:var(--ink3);line-height:1.55}
+.mc-meta{display:flex;gap:12px;flex-wrap:wrap}
+.mc-chip{font-size:12px;font-weight:600;color:var(--ink3);background:var(--bg);border-radius:50px;padding:4px 10px;border:1px solid var(--border)}
+.mc-chip-indigo{color:var(--indigo);background:var(--indigo-light);border-color:rgba(79,70,229,.15)}
+.btn-mock{
+  padding:11px;border-radius:10px;border:none;width:100%;
+  font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  box-shadow:0 2px 10px rgba(79,70,229,.25);transition:all .2s;
+}
+.btn-mock:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(79,70,229,.35)}
+.btn-mock-locked{background:var(--bg);color:var(--ink3);box-shadow:none;border:1px solid var(--border)}
+.btn-mock-locked:hover{background:var(--indigo-light);color:var(--indigo);border-color:var(--indigo);transform:translateY(-1px)}
+
+/* ── PROGRESS PAGE ── */
+.progress-top-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+@media(max-width:900px){.progress-top-cards{grid-template-columns:1fr 1fr}}
+.ptc{background:#fff;border-radius:14px;border:1px solid var(--border);padding:18px;text-align:center}
+.ptc-emoji{font-size:28px;margin-bottom:8px}
+.ptc-num{font-size:30px;font-weight:900;letter-spacing:-1px;margin-bottom:4px}
+.ptc-label{font-size:12px;color:var(--ink3);font-weight:500}
+.progress-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:900px){.progress-charts{grid-template-columns:1fr}}
+.progress-chart-wrap{background:#fff;border-radius:14px;border:1px solid var(--border);padding:20px}
+.progress-chart-wrap h3{font-size:15px;font-weight:700;margin-bottom:16px;letter-spacing:-.2px}
+.skill-bars{display:flex;flex-direction:column;gap:14px}
+.skill-row{display:flex;align-items:center;gap:12px}
+.skill-name{font-size:13px;font-weight:600;width:80px;flex-shrink:0}
+.skill-track{flex:1;height:10px;background:var(--bg);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.skill-fill{height:100%;border-radius:10px;transition:width .6s ease}
+.skill-score{font-size:13px;font-weight:800;width:36px;text-align:right;flex-shrink:0}
+
+/* ── SHOP PAGE ── */
+.shop-banner{
+  background:linear-gradient(135deg,#f59e0b,#f97316);
+  border-radius:16px;padding:24px 28px;color:#fff;margin-bottom:24px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.shop-banner-icon{font-size:40px}
+.shop-banner h2{font-size:20px;font-weight:800;margin-bottom:4px;letter-spacing:-.3px}
+.shop-banner p{font-size:14px;color:rgba(255,255,255,.8)}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.shop-card{
+  background:#fff;border-radius:14px;border:1px solid var(--border);
+  overflow:hidden;transition:all .22s;cursor:pointer;
+}
+.shop-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.shop-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.shop-body{padding:16px}
+.shop-cat{font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.shop-title{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-.2px}
+.shop-desc{font-size:12px;color:var(--ink3);line-height:1.55;margin-bottom:14px}
+.shop-footer{display:flex;justify-content:space-between;align-items:center}
+.shop-price{font-size:20px;font-weight:900;color:var(--indigo);letter-spacing:-.5px}
+.shop-old{font-size:12px;color:var(--ink4);text-decoration:line-through;margin-bottom:2px}
+.btn-shop{padding:8px 18px;border-radius:8px;background:var(--indigo);color:#fff;border:none;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-shop:hover{background:var(--indigo-dark)}
+
+/* ── SETTINGS PAGE ── */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.settings-grid{grid-template-columns:1fr}}
+.settings-section{background:#fff;border-radius:14px;border:1px solid var(--border);padding:24px}
+.settings-section h3{font-size:15px;font-weight:700;margin-bottom:20px;letter-spacing:-.2px}
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.setting-row:last-child{border-bottom:none}
+.sr-label{font-size:14px;font-weight:500;color:var(--ink)}
+.sr-sub{font-size:12px;color:var(--ink3);margin-top:2px}
+.toggle{
+  width:44px;height:24px;border-radius:50px;border:none;cursor:pointer;
+  position:relative;transition:background .2s;flex-shrink:0;
+}
+.toggle.on{background:var(--indigo)}
+.toggle.off{background:var(--border)}
+.toggle::after{
+  content:'';position:absolute;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;
+  transition:left .2s;
+}
+.toggle.on::after{left:23px}
+.toggle.off::after{left:3px}
+.setting-select{padding:8px 12px;border-radius:8px;border:1.5px solid var(--border);font-size:14px;font-family:inherit;color:var(--ink);background:#fff;cursor:pointer}
+.setting-select:focus{outline:none;border-color:var(--indigo)}
+
+/* ── UPGRADE PAGE ── */
+.upgrade-hero{text-align:center;padding:40px 20px 32px}
+.upgrade-hero h2{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:12px}
+.upgrade-hero p{font-size:16px;color:var(--ink2);max-width:480px;margin:0 auto}
+.plan-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+@media(max-width:900px){.plan-cards{grid-template-columns:1fr}}
+.plan-card{
+  background:#fff;border-radius:16px;border:2px solid var(--border);
+  padding:28px;position:relative;transition:all .22s;
+}
+.plan-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.plan-card.featured{border-color:var(--indigo);background:linear-gradient(160deg,#faf9ff,#f5f3ff)}
+.plan-popular{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  font-size:11px;font-weight:700;padding:4px 14px;border-radius:50px;
+  letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;
+}
+.plan-name{font-size:14px;font-weight:700;color:var(--ink3);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.plan-price{font-size:40px;font-weight:900;letter-spacing:-2px;margin-bottom:4px}
+.plan-price span{font-size:16px;font-weight:500;color:var(--ink3);letter-spacing:0}
+.plan-period{font-size:13px;color:var(--ink3);margin-bottom:20px}
+.plan-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
+.plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--ink2)}
+.plan-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.plan-features li.missing{color:var(--ink4)}
+.plan-features li.missing::before{content:'×';color:var(--border)}
+.btn-plan-card{
+  width:100%;padding:12px;border-radius:10px;border:none;
+  font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;
+}
+.btn-plan-free{background:var(--bg);color:var(--ink);border:1.5px solid var(--border)}
+.btn-plan-free:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+.btn-plan-featured{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;box-shadow:0 3px 14px rgba(79,70,229,.3)}
+.btn-plan-featured:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(79,70,229,.4)}
+
+/* MODAL */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  display:none;align-items:center;justify-content:center;z-index:1000;
+  backdrop-filter:blur(4px);
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:#fff;border-radius:20px;padding:32px;max-width:420px;width:90%;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);animation:modalIn .2s ease;
+}
+@keyframes modalIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal h3{font-size:20px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px}
+.modal p{font-size:14px;color:var(--ink2);margin-bottom:24px;line-height:1.6}
+.modal-btns{display:flex;gap:10px}
+.btn-modal-close{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);background:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-modal-close:hover{border-color:var(--indigo);color:var(--indigo)}
+.btn-modal-upgrade{flex:2;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 3px 14px rgba(79,70,229,.3)}
+.btn-modal-upgrade:hover{transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <a href="index.html" class="sb-logo">
+    <div class="sb-logo-mark">R</div>
+    <span class="sb-logo-text">Rise<span>IQ</span></span>
+  </a>
+
+  <div class="sb-user">
+    <div class="sb-avatar">B</div>
+    <div>
+      <div class="sb-user-name">Balgeet S.</div>
+      <div class="sb-user-goal">Target: Band 8.0</div>
+    </div>
+  </div>
+
+  <div class="sb-streak">
+    <span class="sb-streak-fire">🔥</span>
+    <div>
+      <div class="sb-streak-num">7</div>
+      <div class="sb-streak-lbl">Day Streak</div>
+    </div>
+    <div style="margin-left:auto;font-size:11px;font-weight:600;color:#92400e">Keep it up!</div>
+  </div>
+
+  <div class="sb-section-label">Main</div>
+  <button class="nav-item active" onclick="navigate('home',this)"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></button>
+  <button class="nav-item" onclick="navigate('progress',this)"><span class="nav-icon">📊</span><span class="nav-label">My Progress</span></button>
+
+  <div class="sb-section-label">Learn</div>
+  <button class="nav-item" id="nav-course" onclick="toggleSub('sub-course','nav-course')"><span class="nav-icon">📚</span><span class="nav-label">Course Materials</span><span class="nav-arrow">›</span></button>
+  <div class="sub-nav" id="sub-course">
+    <button class="sub-item" onclick="navigate('course',this);setCourseSub('all')">All Lessons</button>
+    <button class="sub-item" onclick="navigate('course',this);setCourseSub('listening')">🎧 Listening</button>
+    <button class="sub-item" onclick="navigate('course',this);setCourseSub('reading')">📖 Reading</button>
+    <button class="sub-item" onclick="navigate('course',this);setCourseSub('writing')">✍️ Writing</button>
+    <button class="sub-item" onclick="navigate('course',this);setCourseSub('speaking')">🎤 Speaking</button>
+  </div>
+
+  <button class="nav-item" id="nav-mock" onclick="toggleSub('sub-mock','nav-mock')"><span class="nav-icon">🏆</span><span class="nav-label">Mock Tests</span><span class="nav-arrow">›</span></button>
+  <div class="sub-nav" id="sub-mock">
+    <button class="sub-item" onclick="navigate('mock',this);setMockTab('mini')">⚡ Mini Mocks</button>
+    <button class="sub-item" onclick="navigate('mock',this);setMockTab('full')">📋 Full Mocks</button>
+    <button class="sub-item" onclick="navigate('mock',this);setMockTab('section')">🎯 Section Tests</button>
+  </div>
+
+  <button class="nav-item" onclick="navigate('band',this)"><span class="nav-icon">🎯</span><span class="nav-label">Band Calculator</span></button>
+
+  <div class="sb-section-label">Account</div>
+  <button class="nav-item" onclick="navigate('shop',this)"><span class="nav-icon">🛍️</span><span class="nav-label">Shop</span><span class="nav-badge-amber nav-badge">Sale</span></button>
+  <button class="nav-item" onclick="navigate('upgrade',this)"><span class="nav-icon">⚡</span><span class="nav-label">Upgrade to Pro</span></button>
+  <button class="nav-item" onclick="navigate('settings',this)"><span class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
+
+  <div class="sb-bottom">
+    <div class="ai-widget">
+      <div class="ai-widget-top">
+        <div class="ai-pulse"></div>
+        <span class="ai-widget-title">RiseIQ AI Active</span>
+      </div>
+      <p>Your AI coach analysed 3 sessions. Writing Task 2 needs attention today.</p>
+      <button class="ai-btn" onclick="navigate('home',null)">View My Plan →</button>
+    </div>
+  </div>
+</aside>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-title" id="topbar-title">Dashboard</span>
+  </div>
+  <div class="topbar-right">
+    <div class="tb-search">
+      <span>🔍</span>
+      <input type="text" placeholder="Search lessons, mocks…">
+    </div>
+    <button class="tb-icon-btn" title="Notifications">
+      🔔
+      <span class="tb-notif-dot"></span>
+    </button>
+    <div class="tb-avatar" onclick="navigate('settings',null)">B</div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ══ HOME PAGE ══ -->
+<div class="page active" id="page-home">
+  <div class="welcome-row">
+    <div class="welcome-text">
+      <h2>Good morning, Balgeet 👋</h2>
+      <p>You have 3 tasks scheduled today. You're on a 7-day streak — keep it going!</p>
+    </div>
+    <button class="btn-plan" onclick="navigate('home',null)">▶ Resume Today's Plan</button>
+  </div>
+
+  <!-- BAND SCORE CARDS -->
+  <div class="band-cards">
+    <div class="band-card">
+      <div class="bc-header"><span class="bc-label">🎧 Listening</span></div>
+      <div class="bc-score c-indigo">7.5</div>
+      <div class="bc-change">+0.5 this month</div>
+    </div>
+    <div class="band-card">
+      <div class="bc-header"><span class="bc-label">📖 Reading</span></div>
+      <div class="bc-score c-purple">7.0</div>
+      <div class="bc-change">+0.5 this month</div>
+    </div>
+    <div class="band-card">
+      <div class="bc-header"><span class="bc-label">✍️ Writing</span></div>
+      <div class="bc-score c-amber">6.0</div>
+      <div class="bc-change neutral">No change</div>
+    </div>
+    <div class="band-card">
+      <div class="bc-header"><span class="bc-label">🎤 Speaking</span></div>
+      <div class="bc-score c-green">7.0</div>
+      <div class="bc-change">+0.5 this month</div>
+    </div>
+  </div>
+
+  <div class="home-grid">
+    <!-- TODAY'S PLAN -->
+    <div class="today-plan">
+      <div class="tp-header">
+        <span class="tp-title">🧠 Today's AI Study Plan</span>
+        <div class="tp-progress">
+          <span>1 / 3 done</span>
+          <div class="tp-bar"><div class="tp-bar-fill" style="width:33%"></div></div>
+        </div>
+      </div>
+      <div class="plan-tasks">
+        <div class="plan-task done" onclick="navigate('course',null)">
+          <div class="pt-check checked">✓</div>
+          <div class="pt-body">
+            <div class="pt-title">Listening: Section 3 Strategy</div>
+            <div class="pt-meta">Completed · 22 min</div>
+          </div>
+          <span class="pt-tag tag-l">L</span>
+        </div>
+        <div class="plan-task" onclick="navigate('course',null)">
+          <div class="pt-check"></div>
+          <div class="pt-body">
+            <div class="pt-title">Writing Task 2: Opinion Essay</div>
+            <div class="pt-meta">40 min · AI feedback included</div>
+          </div>
+          <span class="pt-tag tag-w">W</span>
+        </div>
+        <div class="plan-task" onclick="navigate('mock',null)">
+          <div class="pt-check"></div>
+          <div class="pt-body">
+            <div class="pt-title">Mini Mock: Reading Section 1–2</div>
+            <div class="pt-meta">25 min · Timed</div>
+          </div>
+          <span class="pt-tag tag-m">M</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Quick Practice</span>
+      </div>
+      <div class="quick-actions">
+        <button class="qa-btn" onclick="navigate('mock',null)">
+          <span class="qa-icon">⚡</span>
+          <span class="qa-label">Start Mini Mock</span>
+        </button>
+        <button class="qa-btn" onclick="navigate('course',null)">
+          <span class="qa-icon">✍️</span>
+          <span class="qa-label">Writing Practice</span>
+        </button>
+        <button class="qa-btn" onclick="navigate('band',null)">
+          <span class="qa-icon">🎯</span>
+          <span class="qa-label">Band Calculator</span>
+        </button>
+        <button class="qa-btn" onclick="showUpgradeModal()">
+          <span class="qa-icon">🎤</span>
+          <span class="qa-label">AI Speaking</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-grid-bottom">
+    <!-- SKILL RINGS -->
+    <div class="card">
+      <div class="card-header"><span class="card-title">Skill Mastery</span></div>
+      <div class="rings-wrap">
+        <div class="ring-item">
+          <svg width="64" height="64" class="ring-svg">
+            <circle class="ring-bg" cx="32" cy="32" r="26"/>
+            <circle class="ring-fill ring-fill-indigo" cx="32" cy="32" r="26" stroke-dasharray="163" stroke-dashoffset="49" id="ring-l"/>
+          </svg>
+          <div class="ring-label">75%</div>
+          <div class="ring-sublabel">Listening</div>
+        </div>
+        <div class="ring-item">
+          <svg width="64" height="64" class="ring-svg">
+            <circle class="ring-bg" cx="32" cy="32" r="26"/>
+            <circle class="ring-fill ring-fill-purple" cx="32" cy="32" r="26" stroke-dasharray="163" stroke-dashoffset="57" id="ring-r"/>
+          </svg>
+          <div class="ring-label">65%</div>
+          <div class="ring-sublabel">Reading</div>
+        </div>
+        <div class="ring-item">
+          <svg width="64" height="64" class="ring-svg">
+            <circle class="ring-bg" cx="32" cy="32" r="26"/>
+            <circle class="ring-fill ring-fill-amber" cx="32" cy="32" r="26" stroke-dasharray="163" stroke-dashoffset="98" id="ring-w"/>
+          </svg>
+          <div class="ring-label">40%</div>
+          <div class="ring-sublabel">Writing</div>
+        </div>
+        <div class="ring-item">
+          <svg width="64" height="64" class="ring-svg">
+            <circle class="ring-bg" cx="32" cy="32" r="26"/>
+            <circle class="ring-fill ring-fill-green" cx="32" cy="32" r="26" stroke-dasharray="163" stroke-dashoffset="65" id="ring-s"/>
+          </svg>
+          <div class="ring-label">60%</div>
+          <div class="ring-sublabel">Speaking</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPCOMING CLASSES -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Live Classes</span>
+        <button class="card-action" onclick="navigate('course',null)">See all</button>
+      </div>
+      <div class="class-list">
+        <div class="class-item">
+          <div class="class-time-block"><div class="ct-time">10:00</div><div class="ct-ampm">AM</div></div>
+          <div class="class-body">
+            <div class="class-name">Writing Task 2 Masterclass</div>
+            <div class="class-tutor">with Sarah Chen · 45 min</div>
+          </div>
+          <button class="class-join" onclick="showUpgradeModal()">Join</button>
+        </div>
+        <div class="class-item">
+          <div class="class-time-block"><div class="ct-time">2:00</div><div class="ct-ampm">PM</div></div>
+          <div class="class-body">
+            <div class="class-name">Speaking Part 2 Workshop</div>
+            <div class="class-tutor">with James Okafor · 60 min</div>
+          </div>
+          <button class="class-join" onclick="showUpgradeModal()">Join</button>
+        </div>
+        <div class="class-item">
+          <div class="class-time-block"><div class="ct-time">6:00</div><div class="ct-ampm">PM</div></div>
+          <div class="class-body">
+            <div class="class-name">Reading TFNG Deep Dive</div>
+            <div class="class-tutor">with Maya Patel · 50 min</div>
+          </div>
+          <button class="class-join" onclick="showUpgradeModal()">Join</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STREAK CALENDAR -->
+    <div class="card">
+      <div class="card-header"><span class="card-title">🔥 Activity — March</span></div>
+      <div class="streak-grid">
+        <div style="grid-column:span 7;display:flex;justify-content:space-around;padding-bottom:6px">
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">M</span>
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">T</span>
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">W</span>
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">T</span>
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">F</span>
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">S</span>
+          <span style="font-size:10px;color:var(--ink4);font-weight:600">S</span>
+        </div>
+        <div class="streak-day"></div><div class="streak-day"></div><div class="streak-day"></div><div class="streak-day"></div><div class="streak-day"></div><div class="streak-day done">1</div><div class="streak-day done">2</div>
+        <div class="streak-day done">3</div><div class="streak-day done">4</div><div class="streak-day done">5</div><div class="streak-day done">6</div><div class="streak-day done">7</div><div class="streak-day done">8</div><div class="streak-day today">9</div>
+        <div class="streak-day">10</div><div class="streak-day">11</div><div class="streak-day">12</div><div class="streak-day">13</div><div class="streak-day">14</div><div class="streak-day">15</div><div class="streak-day">16</div>
+        <div class="streak-day">17</div><div class="streak-day">18</div><div class="streak-day">19</div><div class="streak-day">20</div><div class="streak-day">21</div><div class="streak-day">22</div><div class="streak-day">23</div>
+        <div class="streak-day">24</div><div class="streak-day">25</div><div class="streak-day">26</div><div class="streak-day">27</div><div class="streak-day">28</div><div class="streak-day">29</div><div class="streak-day">30</div>
+        <div class="streak-day">31</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROGRESS PAGE ══ -->
+<div class="page" id="page-progress">
+  <div class="progress-top-cards">
+    <div class="ptc"><div class="ptc-emoji">⏱️</div><div class="ptc-num" style="color:var(--indigo)">42h</div><div class="ptc-label">Total Study Time</div></div>
+    <div class="ptc"><div class="ptc-emoji">📝</div><div class="ptc-num" style="color:var(--purple)">86</div><div class="ptc-label">Lessons Completed</div></div>
+    <div class="ptc"><div class="ptc-emoji">🏆</div><div class="ptc-num" style="color:var(--amber)">12</div><div class="ptc-label">Mock Tests Taken</div></div>
+    <div class="ptc"><div class="ptc-emoji">🔥</div><div class="ptc-num" style="color:var(--rose)">7</div><div class="ptc-label">Day Streak</div></div>
+  </div>
+  <div class="progress-charts">
+    <div class="progress-chart-wrap">
+      <h3>Band Score by Skill</h3>
+      <div class="skill-bars">
+        <div class="skill-row"><span class="skill-name">Listening</span><div class="skill-track"><div class="skill-fill" style="width:75%;background:linear-gradient(90deg,#4f46e5,#818cf8)"></div></div><span class="skill-score" style="color:var(--indigo)">7.5</span></div>
+        <div class="skill-row"><span class="skill-name">Reading</span><div class="skill-track"><div class="skill-fill" style="width:65%;background:linear-gradient(90deg,#7c3aed,#a855f7)"></div></div><span class="skill-score" style="color:var(--purple)">7.0</span></div>
+        <div class="skill-row"><span class="skill-name">Writing</span><div class="skill-track"><div class="skill-fill" style="width:50%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div><span class="skill-score" style="color:var(--amber)">6.0</span></div>
+        <div class="skill-row"><span class="skill-name">Speaking</span><div class="skill-track"><div class="skill-fill" style="width:65%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div><span class="skill-score" style="color:var(--green)">7.0</span></div>
+        <div class="skill-row"><span class="skill-name">Overall</span><div class="skill-track"><div class="skill-fill" style="width:68%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div><span class="skill-score" style="color:var(--blue)">6.9</span></div>
+      </div>
+    </div>
+    <div class="progress-chart-wrap">
+      <h3>Weekly Activity (hours)</h3>
+      <canvas id="weeklyChart" height="180"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><span class="card-title">Band Score History</span><button class="card-action" onclick="showUpgradeModal()">Export Report</button></div>
+    <div style="padding:20px"><canvas id="bandChart" height="120"></canvas></div>
+  </div>
+</div>
+
+<!-- ══ COURSE MATERIALS PAGE ══ -->
+<div class="page" id="page-course">
+  <div class="course-header">
+    <div class="course-filters" id="course-filters">
+      <button class="cf-btn active" onclick="filterCourse('all',this)">All</button>
+      <button class="cf-btn" onclick="filterCourse('listening',this)">🎧 Listening</button>
+      <button class="cf-btn" onclick="filterCourse('reading',this)">📖 Reading</button>
+      <button class="cf-btn" onclick="filterCourse('writing',this)">✍️ Writing</button>
+      <button class="cf-btn" onclick="filterCourse('speaking',this)">🎤 Speaking</button>
+    </div>
+  </div>
+  <div class="course-grid" id="course-grid"></div>
+</div>
+
+<!-- ══ MOCK TESTS PAGE ══ -->
+<div class="page" id="page-mock">
+  <div class="mock-hero">
+    <div>
+      <h2>Mock Test Centre</h2>
+      <p>Timed, scored, and reviewed. Just like the real IELTS exam.</p>
+    </div>
+    <button class="btn-start-mock" onclick="showUpgradeModal()">▶ Start Full Mock</button>
+  </div>
+  <div class="mock-tabs">
+    <button class="mock-tab active" id="mt-mini" onclick="setMockTab('mini')">⚡ Mini Mocks</button>
+    <button class="mock-tab" id="mt-full" onclick="setMockTab('full')">📋 Full Mocks</button>
+    <button class="mock-tab" id="mt-section" onclick="setMockTab('section')">🎯 Section Tests</button>
+  </div>
+  <div class="mock-grid" id="mock-grid"></div>
+</div>
+
+<!-- ══ BAND CALCULATOR PAGE ══ -->
+<div class="page" id="page-band">
+  <div style="max-width:680px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:36px">
+      <div style="font-size:48px;margin-bottom:12px">🎯</div>
+      <h2 style="font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:10px">Band Score Calculator</h2>
+      <p style="font-size:15px;color:var(--ink2)">Answer 10 questions to estimate your current band score and identify your weaknesses.</p>
+    </div>
+    <div id="quiz-start" class="card" style="padding:32px;text-align:center">
+      <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:28px">
+        <div style="text-align:center"><div style="font-size:24px;margin-bottom:4px">⏱️</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">10 questions</div></div>
+        <div style="text-align:center"><div style="font-size:24px;margin-bottom:4px">🎯</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Instant results</div></div>
+        <div style="text-align:center"><div style="font-size:24px;margin-bottom:4px">📊</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Skill breakdown</div></div>
+      </div>
+      <button class="btn-plan" style="font-size:15px;padding:14px 36px" onclick="startQuiz()">Begin Assessment →</button>
+    </div>
+    <div id="quiz-body" style="display:none">
+      <div class="card" style="padding:28px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <span style="font-size:13px;font-weight:700;color:var(--ink3)" id="q-counter">Question 1 of 10</span>
+          <div style="height:6px;flex:1;margin:0 16px;background:var(--border);border-radius:4px;overflow:hidden"><div id="q-progress-bar" style="height:100%;background:linear-gradient(90deg,#4f46e5,#a855f7);border-radius:4px;width:10%;transition:width .3s"></div></div>
+          <span style="font-size:13px;font-weight:600;color:var(--indigo)" id="q-skill-tag">Listening</span>
+        </div>
+        <div id="q-text" style="font-size:17px;font-weight:600;line-height:1.6;margin-bottom:24px;letter-spacing:-.2px"></div>
+        <div id="q-options" style="display:flex;flex-direction:column;gap:10px"></div>
+        <div style="display:flex;justify-content:flex-end;margin-top:20px;gap:10px">
+          <button class="btn-plan" id="q-next" style="display:none" onclick="nextQuestion()">Next →</button>
+        </div>
+      </div>
+    </div>
+    <div id="quiz-result" style="display:none">
+      <div class="card" style="padding:32px;text-align:center">
+        <div style="font-size:52px;margin-bottom:12px">🎉</div>
+        <h2 style="font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:8px">Your Estimated Band</h2>
+        <div id="result-score" style="font-size:72px;font-weight:900;letter-spacing:-3px;color:var(--indigo);margin:16px 0"></div>
+        <p style="font-size:15px;color:var(--ink2);margin-bottom:28px">Based on your answers. Take a full diagnostic mock for a precise score.</p>
+        <div id="result-bars" class="skill-bars" style="max-width:400px;margin:0 auto 28px"></div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <button class="btn-plan" onclick="retakeQuiz()">Retake →</button>
+          <button class="btn-plan" style="background:white;color:var(--indigo);border:1.5px solid var(--indigo);box-shadow:none" onclick="navigate('mock',null)">View Mock Tests</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SHOP PAGE ══ -->
+<div class="page" id="page-shop">
+  <div class="shop-banner">
+    <span class="shop-banner-icon">🎁</span>
+    <div>
+      <h2>Spring Sale — 30% off all bundles</h2>
+      <p>Use code RISE30 at checkout. Limited time offer.</p>
+    </div>
+  </div>
+  <div class="shop-grid" id="shop-grid"></div>
+</div>
+
+<!-- ══ UPGRADE PAGE ══ -->
+<div class="page" id="page-upgrade">
+  <div class="upgrade-hero">
+    <h2>Unlock everything.<br>Rise faster.</h2>
+    <p>Get full access to every lesson, mock test, live class, and AI feedback tool in RiseIQ.</p>
+  </div>
+  <div class="plan-cards">
+    <div class="plan-card">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0<span>/mo</span></div>
+      <div class="plan-period">Forever free</div>
+      <ul class="plan-features">
+        <li>2 free lessons per skill</li>
+        <li>Band Calculator</li>
+        <li>1 Mini Mock per month</li>
+        <li class="missing">AI writing feedback</li>
+        <li class="missing">Live classes</li>
+        <li class="missing">Full mock tests</li>
+        <li class="missing">Personalised study plan</li>
+      </ul>
+      <button class="btn-plan-card btn-plan-free">Current Plan</button>
+    </div>
+    <div class="plan-card featured">
+      <span class="plan-popular">Most Popular</span>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$29<span>/mo</span></div>
+      <div class="plan-period">Billed monthly · Cancel anytime</div>
+      <ul class="plan-features">
+        <li>All 280+ lessons unlocked</li>
+        <li>AI writing &amp; speaking feedback</li>
+        <li>3 full mock tests per month</li>
+        <li>Live class access</li>
+        <li>Personalised AI study plan</li>
+        <li>Progress tracking &amp; export</li>
+        <li class="missing">Group coaching calls</li>
+      </ul>
+      <button class="btn-plan-card btn-plan-featured" onclick="showUpgradeModal()">Upgrade to Pro →</button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">Elite</div>
+      <div class="plan-price">$59<span>/mo</span></div>
+      <div class="plan-period">Billed monthly · Cancel anytime</div>
+      <ul class="plan-features">
+        <li>Everything in Pro</li>
+        <li>Unlimited mock tests</li>
+        <li>1-on-1 tutor session/month</li>
+        <li>Weekly group coaching call</li>
+        <li>Score guarantee*</li>
+        <li>Priority support</li>
+        <li>Early access to new features</li>
+      </ul>
+      <button class="btn-plan-card btn-plan-featured" style="background:linear-gradient(135deg,#f59e0b,#f97316);box-shadow:0 3px 14px rgba(245,158,11,.3)" onclick="showUpgradeModal()">Upgrade to Elite →</button>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:13px;color:var(--ink3)">*Score guarantee applies when 80% of study plan is completed. See full terms.</p>
+</div>
+
+<!-- ══ SETTINGS PAGE ══ -->
+<div class="page" id="page-settings">
+  <div class="settings-grid">
+    <div class="settings-section">
+      <h3>Profile</h3>
+      <div class="setting-row"><div><div class="sr-label">Display Name</div><div class="sr-sub">Balgeet Singh</div></div><button class="card-action">Edit</button></div>
+      <div class="setting-row"><div><div class="sr-label">Email</div><div class="sr-sub">balgeet.singh2@gmail.com</div></div><button class="card-action">Change</button></div>
+      <div class="setting-row"><div><div class="sr-label">Target Band Score</div></div><select class="setting-select"><option>Band 8.0</option><option>Band 7.5</option><option>Band 7.0</option><option>Band 8.5</option></select></div>
+      <div class="setting-row"><div><div class="sr-label">Test Date</div><div class="sr-sub">Not set</div></div><button class="card-action">Set Date</button></div>
+    </div>
+    <div class="settings-section">
+      <h3>Notifications</h3>
+      <div class="setting-row"><div><div class="sr-label">Daily Study Reminder</div><div class="sr-sub">9:00 AM local time</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+      <div class="setting-row"><div><div class="sr-label">Live Class Alerts</div><div class="sr-sub">30 minutes before class</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+      <div class="setting-row"><div><div class="sr-label">AI Feedback Ready</div><div class="sr-sub">When feedback is available</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+      <div class="setting-row"><div><div class="sr-label">Weekly Progress Report</div><div class="sr-sub">Every Monday morning</div></div><button class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+    </div>
+    <div class="settings-section">
+      <h3>Study Preferences</h3>
+      <div class="setting-row"><div><div class="sr-label">Daily Study Goal</div></div><select class="setting-select"><option>30 minutes</option><option>1 hour</option><option selected>2 hours</option><option>3+ hours</option></select></div>
+      <div class="setting-row"><div><div class="sr-label">Difficulty Level</div></div><select class="setting-select"><option>Beginner</option><option selected>Intermediate</option><option>Advanced</option></select></div>
+      <div class="setting-row"><div><div class="sr-label">Focus Skill</div></div><select class="setting-select"><option>All skills</option><option selected>Writing (weakest)</option><option>Speaking</option></select></div>
+    </div>
+    <div class="settings-section">
+      <h3>Account</h3>
+      <div class="setting-row"><div><div class="sr-label">Current Plan</div><div class="sr-sub">Free — Limited access</div></div><button class="btn-plan" style="font-size:12px;padding:8px 14px" onclick="navigate('upgrade',null)">Upgrade</button></div>
+      <div class="setting-row"><div><div class="sr-label">Change Password</div></div><button class="card-action">Update</button></div>
+      <div class="setting-row"><div><div class="sr-label" style="color:var(--rose)">Sign Out</div></div><button class="card-action" style="color:var(--rose)" onclick="window.location='login.html'">Sign Out</button></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<!-- UPGRADE MODAL -->
+<div class="modal-overlay" id="upgrade-modal">
+  <div class="modal">
+    <div style="font-size:36px;text-align:center;margin-bottom:16px">⚡</div>
+    <h3 style="text-align:center">Upgrade to Pro</h3>
+    <p style="text-align:center">This feature is available on the Pro plan. Get full access to AI feedback, all lessons, and unlimited mock tests.</p>
+    <div class="modal-btns">
+      <button class="btn-modal-close" onclick="closeModal()">Maybe later</button>
+      <button class="btn-modal-upgrade" onclick="navigate('upgrade',null);closeModal()">Upgrade Now →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───
+const COURSES = [
+  {id:'l1',skill:'listening',thumb:'🎧',thumbCls:'cg-thumb-blue',tagCls:'cg-skill-l',tag:'Listening',title:'Section 3 Strategy',desc:'Tackle the hardest listening section with confidence. Academic discussions and strategy.',dur:'22 min',locked:false},
+  {id:'l2',skill:'listening',thumb:'🔮',thumbCls:'cg-thumb-blue',tagCls:'cg-skill-l',tag:'Listening',title:'Prediction Techniques',desc:'Predict answers before the audio plays to boost accuracy across all section types.',dur:'18 min',locked:false},
+  {id:'l3',skill:'listening',thumb:'🗺️',thumbCls:'cg-thumb-blue',tagCls:'cg-skill-l',tag:'Listening',title:'Map & Diagram Questions',desc:'Navigate spatial language and location descriptions in Section 2 map questions.',dur:'25 min',locked:true},
+  {id:'r1',skill:'reading',thumb:'📖',thumbCls:'cg-thumb-purple',tagCls:'cg-skill-r',tag:'Reading',title:'TFNG Mastery',desc:'True, False, Not Given — the most misunderstood question type. Master it definitively.',dur:'35 min',locked:false},
+  {id:'r2',skill:'reading',thumb:'⚡',thumbCls:'cg-thumb-purple',tagCls:'cg-skill-r',tag:'Reading',title:'Speed Reading Skills',desc:'Skim and scan 2,000-word passages in 20 minutes. Speed without sacrificing accuracy.',dur:'30 min',locked:false},
+  {id:'r3',skill:'reading',thumb:'🔗',thumbCls:'cg-thumb-purple',tagCls:'cg-skill-r',tag:'Reading',title:'Matching Headings',desc:'The systematic approach to matching headings that eliminates guessing entirely.',dur:'28 min',locked:true},
+  {id:'w1',skill:'writing',thumb:'✍️',thumbCls:'cg-thumb-amber',tagCls:'cg-skill-w',tag:'Writing',title:'Task 2 Essay Structure',desc:'The 4-paragraph formula that consistently produces Band 7+ Task 2 essays.',dur:'45 min',locked:false},
+  {id:'w2',skill:'writing',thumb:'📊',thumbCls:'cg-thumb-amber',tagCls:'cg-skill-w',tag:'Writing',title:'Describing Data: Task 1',desc:'Report charts, graphs, and tables with accurate academic language every time.',dur:'40 min',locked:false},
+  {id:'w3',skill:'writing',thumb:'💎',thumbCls:'cg-thumb-amber',tagCls:'cg-skill-w',tag:'Writing',title:'Lexical Resource Boost',desc:'Expand your vocabulary range with topic-specific word banks and paraphrasing.',dur:'35 min',locked:true},
+  {id:'s1',skill:'speaking',thumb:'🎤',thumbCls:'cg-thumb-rose',tagCls:'cg-skill-s',tag:'Speaking',title:'Part 2 Long Turn',desc:'Nail the 2-minute long turn with the PEEL structure and fluency-boosting techniques.',dur:'30 min',locked:false},
+  {id:'s2',skill:'speaking',thumb:'💬',thumbCls:'cg-thumb-rose',tagCls:'cg-skill-s',tag:'Speaking',title:'Discourse Markers',desc:'Use advanced connectors to signal fluency and sophistication to your examiner.',dur:'22 min',locked:false},
+  {id:'s3',skill:'speaking',thumb:'🔊',thumbCls:'cg-thumb-green',tagCls:'cg-skill-v',tag:'Vocab',title:'Topic Vocabulary Packs',desc:'Domain vocabulary for 12 high-frequency IELTS topics including environment and tech.',dur:'Ongoing',locked:true},
+];
+
+const MOCKS = {
+  mini:[
+    {num:'Mini Mock #1',title:'Reading + Listening Sprint',desc:'Timed 20-question practice covering Sections 1-2. Ideal for a daily warm-up.',time:'25 min',q:'20 Qs',diff:'Intermediate',locked:false},
+    {num:'Mini Mock #2',title:'Writing Task 1 Blitz',desc:'Three Task 1 prompts: bar chart, line graph, and process diagram. AI marked.',time:'20 min',q:'3 Tasks',diff:'Advanced',locked:false},
+    {num:'Mini Mock #3',title:'Speaking Parts 1 & 2',desc:'Simulated speaking test: introductory questions + full long turn with recording.',time:'15 min',q:'2 Parts',diff:'All levels',locked:true},
+  ],
+  full:[
+    {num:'Full Mock #1',title:'IELTS Academic Full Exam',desc:'Complete 4-skill timed mock exam. Listening, Reading, Writing, and Speaking in one session.',time:'3 hrs',q:'All skills',diff:'Band 5-8',locked:true},
+    {num:'Full Mock #2',title:'IELTS Academic Full Exam',desc:'Second full exam with fresh questions and passages. Detailed AI analysis report included.',time:'3 hrs',q:'All skills',diff:'Band 5-8',locked:true},
+  ],
+  section:[
+    {num:'Listening Section 3',title:'Academic Discussion',desc:'40-question listening section 3 focused on academic discussion format with multiple speakers.',time:'40 min',q:'40 Qs',diff:'Band 6-8',locked:false},
+    {num:'Reading Passage 3',title:'Complex Academic Text',desc:'Full IELTS reading passage 3 with all question types: TFNG, matching, sentence completion.',time:'20 min',q:'14 Qs',diff:'Band 7+',locked:true},
+    {num:'Writing Task 2',title:'Opinion Essay',desc:'Timed Task 2 opinion essay with instant AI feedback on all four assessment criteria.',time:'40 min',q:'1 Essay',diff:'All levels',locked:false},
+  ]
+};
+
+const SHOP_ITEMS = [
+  {thumb:'📝',thumbCls:'cg-thumb-amber',cat:'Bundle',title:'Complete IELTS Bundle',desc:'All 4 skill courses + 5 full mocks + AI feedback credits. Best value pack.',price:'$89',old:'$149',tag:'Best Value'},
+  {thumb:'✍️',thumbCls:'cg-thumb-amber',cat:'Writing',title:'Writing Masterclass',desc:'Task 1 and Task 2 complete course with 10 AI-marked essay submissions.',price:'$39',old:'$59',tag:'Popular'},
+  {thumb:'🏆',thumbCls:'cg-thumb-blue',cat:'Mock Tests',title:'Mock Test Pack × 5',desc:'Five full academic mock tests with detailed AI analysis reports and band estimates.',price:'$49',old:'$79',tag:''},
+  {thumb:'🎤',thumbCls:'cg-thumb-rose',cat:'Speaking',title:'Speaking Intensive',desc:'Part 1, 2 & 3 complete course with AI speaking simulations and pronunciation feedback.',price:'$29',old:'$45',tag:''},
+  {thumb:'📖',thumbCls:'cg-thumb-purple',cat:'Reading',title:'Reading Speed Pack',desc:'Skimming, scanning, TFNG, matching, and sentence completion — all question types covered.',price:'$25',old:'$39',tag:''},
+  {thumb:'🎧',thumbCls:'cg-thumb-blue',cat:'Listening',title:'Listening Mastery',desc:'All four sections covered with audio practice, prediction techniques, and note-taking.',price:'$25',old:'$39',tag:''},
+];
+
+const QUIZ = [
+  {skill:'Listening',q:'You hear someone say "the meeting has been moved from Tuesday to Thursday". A question asks "When is the meeting?" The correct answer is:',opts:['Tuesday','Thursday','Friday','Wednesday'],ans:1},
+  {skill:'Reading',q:'A question asks "Does the author agree with the research findings?" The passage says "The research findings, while compelling, have not yet been independently verified." The answer is:',opts:['True','False','Not Given','Cannot Say'],ans:2},
+  {skill:'Writing',q:'Which of the following is the most appropriate way to begin an IELTS Task 2 opinion essay?',opts:['I think that...','Nowadays, it is widely debated whether...','In my personal opinion I strongly believe...','The question asks about whether...'],ans:1},
+  {skill:'Speaking',q:'An examiner asks "Do you prefer to live in a city or the countryside?" The best response begins with:',opts:['Yes, I do.','That\'s a good question. I\'d say...','I prefer city because more jobs.','Well, it depends on a few factors. Personally, I\'d say...'],ans:3},
+  {skill:'Listening',q:'Which of these is NOT a valid note-taking strategy for IELTS Listening?',opts:['Using abbreviations like "w/" for "with"','Writing every word the speaker says','Drawing arrows to show cause and effect','Using symbols like "→" and "↑"'],ans:1},
+  {skill:'Reading',q:'The word "ubiquitous" in a reading passage most likely means:',opts:['Rare and unusual','Found everywhere','Extremely complex','Highly valued'],ans:1},
+  {skill:'Writing',q:'Your Task 1 bar chart shows data over five years. The correct approach is to:',opts:['Describe every single bar in detail','Give your personal opinion about the trends','Summarise key trends and notable features','Copy numbers from the chart into sentences'],ans:2},
+  {skill:'Speaking',q:'What score criterion rewards the variety and accuracy of vocabulary in IELTS Speaking?',opts:['Fluency and Coherence','Pronunciation','Lexical Resource','Grammatical Range'],ans:2},
+  {skill:'Listening',q:'In IELTS Listening, when is it best to read ahead to the next section of questions?',opts:['Never — focus only on current questions','While the audio is playing','During the pause between sections','After the test ends'],ans:2},
+  {skill:'Reading',q:'How should you approach "Matching Information" questions in IELTS Reading?',opts:['Read the passage from start to finish before answering','Match each statement to a paragraph by scanning for keywords','Answer in order from question 1 to last','Focus only on the first and last paragraphs'],ans:1},
+];
+
+// ─── STATE ───
+let currentPage = 'home';
+let quizStep = 0;
+let quizAnswers = [];
+let currentMockTab = 'mini';
+let currentCourseFilter = 'all';
+
+// ─── NAV ───
+function navigate(page, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el && el.classList && el.classList.contains('nav-item')) el.classList.add('active');
+  const titles = {home:'Dashboard',progress:'My Progress',course:'Course Materials',mock:'Mock Tests',band:'Band Calculator',shop:'Shop',upgrade:'Upgrade to Pro',settings:'Settings'};
+  document.getElementById('topbar-title').textContent = titles[page] || 'Dashboard';
+  currentPage = page;
+  if (page === 'progress') initCharts();
+  if (page === 'course') renderCourseGrid(currentCourseFilter);
+  if (page === 'mock') renderMockGrid(currentMockTab);
+  if (page === 'shop') renderShopGrid();
+}
+
+function toggleSub(subId, navId) {
+  const sub = document.getElementById(subId);
+  const nav = document.getElementById(navId);
+  sub.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+
+// ─── COURSE ───
+function filterCourse(cat, btn) {
+  document.querySelectorAll('#course-filters .cf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCourseFilter = cat;
+  renderCourseGrid(cat);
+}
+function setCourseSub(skill){ currentCourseFilter = skill; renderCourseGrid(skill); }
+function renderCourseGrid(filter) {
+  const items = filter === 'all' ? COURSES : COURSES.filter(c => c.skill === filter);
+  document.getElementById('course-grid').innerHTML = items.map(c => `
+    <div class="cg-card" onclick="${c.locked ? 'showUpgradeModal()' : "console.log('Start: " + c.id + "')"}">
+      <div class="cg-thumb ${c.thumbCls}">${c.thumb}${c.locked ? '<span class="cg-lock">🔒 Pro</span>' : ''}</div>
+      <div class="cg-body">
+        <div class="cg-skill ${c.tagCls}">${c.tag}</div>
+        <div class="cg-title">${c.title}</div>
+        <div class="cg-desc">${c.desc}</div>
+        <div class="cg-footer">
+          <span class="cg-dur">⏱ ${c.dur}</span>
+          <button class="btn-cg" onclick="${c.locked ? 'event.stopPropagation();showUpgradeModal()' : "event.stopPropagation();console.log('go')"}">
+            ${c.locked ? '🔒 Upgrade' : 'Start →'}
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── MOCK ───
+function setMockTab(tab) {
+  currentMockTab = tab;
+  document.querySelectorAll('.mock-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('mt-' + tab).classList.add('active');
+  renderMockGrid(tab);
+}
+function renderMockGrid(tab) {
+  document.getElementById('mock-grid').innerHTML = (MOCKS[tab] || []).map(m => `
+    <div class="mock-card">
+      <div class="mc-header">
+        <span class="mc-num">${m.num}</span>
+        ${m.locked ? '<span class="mc-lock-badge">🔒 Pro</span>' : '<span class="mc-lock-badge" style="background:var(--green-light);color:var(--green);border-color:rgba(16,185,129,.2)">✓ Free</span>'}
+      </div>
+      <div class="mc-title">${m.title}</div>
+      <div class="mc-desc">${m.desc}</div>
+      <div class="mc-meta">
+        <span class="mc-chip mc-chip-indigo">⏱ ${m.time}</span>
+        <span class="mc-chip">${m.q}</span>
+        <span class="mc-chip">${m.diff}</span>
+      </div>
+      <button class="btn-mock ${m.locked ? 'btn-mock-locked' : ''}" onclick="${m.locked ? 'showUpgradeModal()' : "console.log('start mock')"}">
+        ${m.locked ? '🔒 Unlock with Pro' : '▶ Start Now'}
+      </button>
+    </div>
+  `).join('');
+}
+
+// ─── SHOP ───
+function renderShopGrid() {
+  document.getElementById('shop-grid').innerHTML = SHOP_ITEMS.map(s => `
+    <div class="shop-card">
+      <div class="shop-thumb ${s.thumbCls}">${s.thumb}</div>
+      <div class="shop-body">
+        <div class="shop-cat">${s.cat}${s.tag ? ' · <span style="color:var(--rose)">' + s.tag + '</span>' : ''}</div>
+        <div class="shop-title">${s.title}</div>
+        <div class="shop-desc">${s.desc}</div>
+        <div class="shop-footer">
+          <div>
+            ${s.old ? '<div class="shop-old">' + s.old + '</div>' : ''}
+            <div class="shop-price">${s.price}</div>
+          </div>
+          <button class="btn-shop" onclick="showUpgradeModal()">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── QUIZ ───
+function startQuiz() {
+  quizStep = 0; quizAnswers = [];
+  document.getElementById('quiz-start').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-body').style.display = 'block';
+  renderQuestion();
+}
+function renderQuestion() {
+  const q = QUIZ[quizStep];
+  document.getElementById('q-counter').textContent = `Question ${quizStep+1} of ${QUIZ.length}`;
+  document.getElementById('q-progress-bar').style.width = ((quizStep+1)/QUIZ.length*100) + '%';
+  document.getElementById('q-skill-tag').textContent = q.skill;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-next').style.display = 'none';
+  document.getElementById('q-options').innerHTML = q.opts.map((o,i) => `
+    <button onclick="selectAnswer(${i})" id="qopt-${i}" style="text-align:left;padding:12px 16px;border-radius:10px;border:1.5px solid var(--border);background:#fff;font-size:14px;font-family:inherit;cursor:pointer;color:var(--ink);transition:all .18s">
+      <span style="font-weight:700;color:var(--indigo);margin-right:10px">${String.fromCharCode(65+i)}.</span>${o}
+    </button>`).join('');
+}
+function selectAnswer(idx) {
+  const q = QUIZ[quizStep];
+  quizAnswers.push(idx === q.ans);
+  document.querySelectorAll('[id^=qopt-]').forEach((btn,i) => {
+    btn.style.pointerEvents = 'none';
+    if(i === q.ans){ btn.style.background='var(--green-light)';btn.style.borderColor='var(--green)';btn.style.color='var(--green)'; }
+    else if(i === idx && idx !== q.ans){ btn.style.background='var(--rose-light)';btn.style.borderColor='var(--rose)';btn.style.color='var(--rose)'; }
+  });
+  document.getElementById('q-next').style.display = 'inline-block';
+  document.getElementById('q-next').textContent = quizStep < QUIZ.length-1 ? 'Next →' : 'See Results →';
+}
+function nextQuestion() {
+  if(quizStep < QUIZ.length-1){ quizStep++; renderQuestion(); }
+  else { showQuizResult(); }
+}
+function showQuizResult() {
+  document.getElementById('quiz-body').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'block';
+  const correct = quizAnswers.filter(Boolean).length;
+  const band = (4.5 + correct * 0.4).toFixed(1);
+  document.getElementById('result-score').textContent = band;
+  const skills = {Listening:0,Reading:0,Writing:0,Speaking:0};
+  const counts = {Listening:0,Reading:0,Writing:0,Speaking:0};
+  QUIZ.forEach((q,i) => { skills[q.skill] += quizAnswers[i] ? 1 : 0; counts[q.skill]++; });
+  const colors = {Listening:'var(--indigo)',Reading:'var(--purple)',Writing:'var(--amber)',Speaking:'var(--green)'};
+  document.getElementById('result-bars').innerHTML = Object.keys(skills).map(sk => {
+    const pct = Math.round((skills[sk]/counts[sk])*100);
+    const b = (4.0 + (skills[sk]/counts[sk])*4.5).toFixed(1);
+    return `<div class="skill-row"><span class="skill-name">${sk}</span><div class="skill-track"><div class="skill-fill" style="width:${pct}%;background:${colors[sk]}"></div></div><span class="skill-score" style="color:${colors[sk]}">${b}</span></div>`;
+  }).join('');
+}
+function retakeQuiz() {
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-start').style.display = 'block';
+}
+
+// ─── MODAL ───
+function showUpgradeModal() { document.getElementById('upgrade-modal').classList.add('open'); }
+function closeModal() { document.getElementById('upgrade-modal').classList.remove('open'); }
+document.getElementById('upgrade-modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+
+// ─── CHARTS ───
+let chartsInit = false;
+function initCharts() {
+  if(chartsInit) return;
+  chartsInit = true;
+  new Chart(document.getElementById('weeklyChart'), {
+    type:'bar',
+    data:{
+      labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      datasets:[{label:'Hours',data:[1.5,2,0.5,2.5,1,3,2],backgroundColor:['#818cf8','#818cf8','#e2e0f9','#4f46e5','#818cf8','#4f46e5','#818cf8'],borderRadius:6,borderSkipped:false}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:4,ticks:{stepSize:1},grid:{color:'#f0f0f8'}},x:{grid:{display:false}}}}
+  });
+  new Chart(document.getElementById('bandChart'), {
+    type:'line',
+    data:{
+      labels:['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8'],
+      datasets:[
+        {label:'Listening',data:[6.5,6.5,7.0,7.0,7.0,7.5,7.5,7.5],borderColor:'#4f46e5',backgroundColor:'rgba(79,70,229,.08)',tension:.4,fill:false,pointBackgroundColor:'#4f46e5',pointRadius:4},
+        {label:'Reading',data:[6.0,6.0,6.5,6.5,7.0,7.0,7.0,7.0],borderColor:'#a855f7',backgroundColor:'rgba(168,85,247,.08)',tension:.4,fill:false,pointBackgroundColor:'#a855f7',pointRadius:4},
+        {label:'Writing',data:[5.5,5.5,5.5,6.0,6.0,6.0,6.0,6.0],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.08)',tension:.4,fill:false,pointBackgroundColor:'#f59e0b',pointRadius:4},
+        {label:'Speaking',data:[6.0,6.0,6.5,6.5,7.0,7.0,7.0,7.0],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,.08)',tension:.4,fill:false,pointBackgroundColor:'#10b981',pointRadius:4},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:12,padding:16}}},scales:{y:{min:5,max:9,ticks:{stepSize:.5},grid:{color:'#f0f0f8'}},x:{grid:{display:false}}}}
+  });
+}
+
+// INIT
+renderCourseGrid('all');
+renderMockGrid('mini');
+renderShopGrid();
+</script>
+</body>
+</html>

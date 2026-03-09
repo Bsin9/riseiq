@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Paths — RiseIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d1a;--ink2:#3b3b5c;--ink3:#7070a0;
+  --indigo:#4f46e5;--indigo-dark:#3730a3;--indigo-light:#818cf8;
+  --amber:#f59e0b;--rose:#f43f5e;--green:#10b981;--purple:#a855f7;
+  --bg:#f6f5ff;--bg2:#ffffff;--border:#e2e0f9;--card:#ffffff;
+  --r:14px;--shadow:0 4px 24px rgba(79,70,229,.10);
+}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;line-height:1.6}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:70px;background:rgba(246,245,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#a855f7);display:grid;place-items:center;font-size:18px;font-weight:900;color:#fff}
+.nav-logo-text{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.nav-logo-text span{color:var(--indigo)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink2);font-size:15px;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--indigo)}
+.nav-ctas{display:flex;gap:12px;align-items:center}
+.btn-ghost{padding:8px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;color:var(--indigo);border:1.5px solid var(--indigo);transition:all .2s}
+.btn-ghost:hover{background:var(--indigo);color:#fff}
+.btn-primary{padding:9px 22px;border-radius:8px;font-size:14px;font-weight:600;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;text-decoration:none;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 12px rgba(79,70,229,.30);transition:all .2s;display:inline-block}
+.btn-primary:hover{transform:translateY(-1px)}
+
+/* PAGE HERO */
+.page-hero{
+  padding:130px 5% 70px;text-align:center;
+  background:linear-gradient(160deg,#1e1b4b 0%,#312e81 100%);
+  color:#fff;
+}
+.page-hero-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#818cf8;background:rgba(129,140,248,.15);border-radius:50px;padding:5px 14px;margin-bottom:16px}
+.page-hero h1{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-2px;margin-bottom:16px}
+.page-hero p{font-size:18px;color:rgba(255,255,255,.65);max-width:540px;margin:0 auto 40px}
+
+/* FILTER BAR */
+.filter-bar{background:#fff;border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:70px;z-index:50}
+.filter-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.filter-inner::-webkit-scrollbar{display:none}
+.filter-tab{
+  padding:16px 22px;font-size:14px;font-weight:600;color:var(--ink3);
+  border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;
+  font-family:inherit;
+}
+.filter-tab.active{color:var(--indigo);border-bottom-color:var(--indigo)}
+.filter-tab:hover{color:var(--indigo)}
+
+/* PATHS MAIN */
+.paths-main{padding:60px 5%}
+.path-section{margin-bottom:72px;display:none}
+.path-section.show{display:block}
+.path-section-header{display:flex;align-items:center;gap:18px;margin-bottom:36px}
+.path-section-icon{width:60px;height:60px;border-radius:16px;display:grid;place-items:center;font-size:28px;flex-shrink:0}
+.psi-indigo{background:linear-gradient(135deg,rgba(79,70,229,.15),rgba(79,70,229,.05));border:1px solid rgba(79,70,229,.2)}
+.psi-purple{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(168,85,247,.05));border:1px solid rgba(168,85,247,.2)}
+.psi-amber{background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(245,158,11,.05));border:1px solid rgba(245,158,11,.2)}
+.psi-rose{background:linear-gradient(135deg,rgba(244,63,94,.15),rgba(244,63,94,.05));border:1px solid rgba(244,63,94,.2)}
+.psi-green{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.2)}
+.psi-blue{background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(59,130,246,.05));border:1px solid rgba(59,130,246,.2)}
+.path-section-meta h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
+.path-section-meta p{font-size:15px;color:var(--ink2)}
+.path-section-badges{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:50px}
+.badge-indigo{background:rgba(79,70,229,.1);color:var(--indigo)}
+.badge-green{background:rgba(16,185,129,.1);color:var(--green)}
+.badge-amber{background:rgba(245,158,11,.1);color:#d97706}
+
+/* MODULES GRID */
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.module-card{
+  background:#fff;border-radius:16px;border:1px solid var(--border);
+  overflow:hidden;transition:all .25s;cursor:pointer;
+}
+.module-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(79,70,229,.12);border-color:rgba(79,70,229,.25)}
+.module-thumb{
+  height:120px;display:flex;align-items:center;justify-content:center;
+  font-size:40px;position:relative;overflow:hidden;
+}
+.mt-indigo{background:linear-gradient(135deg,#eef2ff,#ddd6fe)}
+.mt-purple{background:linear-gradient(135deg,#faf5ff,#ede9fe)}
+.mt-amber{background:linear-gradient(135deg,#fffbeb,#fde68a)}
+.mt-rose{background:linear-gradient(135deg,#fff1f2,#fecdd3)}
+.mt-green{background:linear-gradient(135deg,#f0fdf4,#bbf7d0)}
+.mt-blue{background:linear-gradient(135deg,#eff6ff,#bfdbfe)}
+.module-lock{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.3);color:#fff;border-radius:50px;padding:3px 8px;font-size:11px;font-weight:600}
+.module-body{padding:20px}
+.module-tag{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
+.mt-tag-indigo{color:var(--indigo)}
+.mt-tag-purple{color:var(--purple)}
+.mt-tag-amber{color:#d97706}
+.mt-tag-rose{color:var(--rose)}
+.mt-tag-green{color:var(--green)}
+.module-body h3{font-size:16px;font-weight:700;margin-bottom:6px;letter-spacing:-.2px}
+.module-body p{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:16px}
+.module-footer{display:flex;justify-content:space-between;align-items:center}
+.module-dur{font-size:12px;color:var(--ink3);font-weight:500}
+.btn-module{
+  font-size:12px;font-weight:700;color:var(--indigo);
+  background:rgba(79,70,229,.08);border:none;border-radius:6px;
+  padding:6px 12px;cursor:pointer;font-family:inherit;transition:all .2s;
+}
+.btn-module:hover{background:var(--indigo);color:#fff}
+.btn-module-locked{color:var(--ink3);background:var(--bg);cursor:default}
+
+/* PROGRESS BAR */
+.progress-track{background:var(--border);border-radius:4px;height:4px;margin-top:14px}
+.progress-fill{height:4px;border-radius:4px;background:linear-gradient(90deg,#4f46e5,#a855f7)}
+
+/* CTA BOTTOM */
+.paths-cta-bottom{
+  text-align:center;padding:72px 5%;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  border-radius:24px;margin:0 5% 72px;
+}
+.paths-cta-bottom h2{font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1.5px;margin-bottom:12px}
+.paths-cta-bottom p{font-size:17px;opacity:.8;margin-bottom:32px}
+.btn-white{padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;background:#fff;color:var(--indigo-dark);text-decoration:none;display:inline-block;transition:all .25s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:40px 5%;text-align:center;font-size:13px}
+footer a{color:rgba(255,255,255,.4);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark">R</div>
+    <span class="nav-logo-text">Rise<span>IQ</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="learning-paths.html" class="active">Learning Paths</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="login.html" class="btn-ghost">Log In</a>
+    <a href="login.html" class="btn-primary">Get Started Free →</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">Learning Paths</div>
+  <h1>Six Paths to Band 9</h1>
+  <p>Structured, AI-personalised journeys across every IELTS skill. Start anywhere, progress everywhere.</p>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-tab active" onclick="filterPath('all',this)">All Paths</button>
+    <button class="filter-tab" onclick="filterPath('listening',this)">🎧 Listening</button>
+    <button class="filter-tab" onclick="filterPath('reading',this)">📖 Reading</button>
+    <button class="filter-tab" onclick="filterPath('writing',this)">✍️ Writing</button>
+    <button class="filter-tab" onclick="filterPath('speaking',this)">🎤 Speaking</button>
+    <button class="filter-tab" onclick="filterPath('fasttrack',this)">🚀 Fast Track</button>
+    <button class="filter-tab" onclick="filterPath('academic',this)">🌟 Academic</button>
+  </div>
+</div>
+
+<div class="paths-main">
+
+  <!-- LISTENING -->
+  <div class="path-section show" id="sec-listening">
+    <div class="path-section-header">
+      <div class="path-section-icon psi-indigo">🎧</div>
+      <div class="path-section-meta">
+        <h2>IELTS Listening</h2>
+        <p>Section strategies, prediction, note-taking, and all question types.</p>
+        <div class="path-section-badges">
+          <span class="badge badge-indigo">48 Lessons</span>
+          <span class="badge badge-green">Band 5 → 9</span>
+          <span class="badge badge-amber">Free + Pro</span>
+        </div>
+      </div>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-indigo">🎧</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-indigo">Foundation</div>
+          <h3>Listening Section Overview</h3>
+          <p>Understand the IELTS Listening exam structure, timing, and how to approach all four sections.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 18 min</span>
+            <button class="btn-module">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-indigo">🔮</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-indigo">Strategy</div>
+          <h3>Prediction Techniques</h3>
+          <p>Use context clues before the audio plays to predict answers and dramatically boost accuracy.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 22 min</span>
+            <button class="btn-module">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-indigo">📝
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-indigo">Advanced</div>
+          <h3>Note-Taking Mastery</h3>
+          <p>Efficient shorthand, symbol systems, and how to capture key information without missing the audio.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 25 min</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-indigo">🔢
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-indigo">Question Types</div>
+          <h3>Multiple Choice Strategies</h3>
+          <p>Eliminate wrong answers, handle distractors, and tackle single and multiple-answer MCQ formats.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 20 min</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-indigo">🗺️
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-indigo">Question Types</div>
+          <h3>Maps &amp; Diagrams</h3>
+          <p>Navigate map-labelling questions using spatial language, directions, and landmark vocabulary.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 28 min</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-indigo">🏆
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-indigo">Mock Practice</div>
+          <h3>Full Listening Mock #1</h3>
+          <p>Complete 40-question timed mock with AI scoring, detailed answer explanations, and band estimation.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 40 min</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- READING -->
+  <div class="path-section show" id="sec-reading">
+    <div class="path-section-header">
+      <div class="path-section-icon psi-purple">📖</div>
+      <div class="path-section-meta">
+        <h2>IELTS Reading</h2>
+        <p>Speed reading, skimming, scanning, and question-type mastery.</p>
+        <div class="path-section-badges">
+          <span class="badge badge-indigo">52 Lessons</span>
+          <span class="badge badge-green">Band 5 → 9</span>
+          <span class="badge badge-amber">Free + Pro</span>
+        </div>
+      </div>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-purple">📖</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-purple">Foundation</div>
+          <h3>Reading Test Overview</h3>
+          <p>Master the structure, timing, and passage types of the IELTS Academic and General Reading tests.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 15 min</span>
+            <button class="btn-module" style="background:rgba(168,85,247,.1);color:var(--purple)">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#a855f7,#7c3aed)"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-purple">⚡</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-purple">Speed Skills</div>
+          <h3>Skimming &amp; Scanning</h3>
+          <p>Read 2,000 words in 20 minutes. Learn where to look and what to ignore to find answers fast.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 30 min</span>
+            <button class="btn-module" style="background:rgba(168,85,247,.1);color:var(--purple)">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#a855f7,#7c3aed)"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-purple">✅
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-purple">Question Types</div>
+          <h3>True / False / Not Given</h3>
+          <p>The most misunderstood question type in IELTS. Master the key differences and never lose points again.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 35 min</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="path-section show" id="sec-writing">
+    <div class="path-section-header">
+      <div class="path-section-icon psi-amber">✍️</div>
+      <div class="path-section-meta">
+        <h2>IELTS Writing</h2>
+        <p>Task 1 data reports, Task 2 essays, and lexical range for Band 7+.</p>
+        <div class="path-section-badges">
+          <span class="badge badge-indigo">60 Lessons</span>
+          <span class="badge badge-green">Band 5 → 9</span>
+          <span class="badge badge-amber">Free + Pro</span>
+        </div>
+      </div>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-amber">✍️</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-amber">Foundation</div>
+          <h3>Writing Assessment Criteria</h3>
+          <p>Understand how examiners score Task Achievement, Coherence, Lexis, and Grammar — and what Band 7 looks like.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 20 min</span>
+            <button class="btn-module" style="background:rgba(245,158,11,.1);color:#d97706">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#f59e0b,#f97316)"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-amber">📊</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-amber">Task 1</div>
+          <h3>Describing Charts &amp; Graphs</h3>
+          <p>Use academic language to describe trends, comparisons, and data accurately in exactly 150 words.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 40 min</span>
+            <button class="btn-module" style="background:rgba(245,158,11,.1);color:#d97706">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#f59e0b,#f97316)"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-amber">📝
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-amber">Task 2</div>
+          <h3>Opinion Essay Structure</h3>
+          <p>The 4-paragraph formula that produces consistently Band 7+ essays — with AI feedback on your practice.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 45 min</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="path-section show" id="sec-speaking">
+    <div class="path-section-header">
+      <div class="path-section-icon psi-rose">🎤</div>
+      <div class="path-section-meta">
+        <h2>IELTS Speaking</h2>
+        <p>Part 1, 2 &amp; 3 strategies, fluency drills, and AI-scored practice.</p>
+        <div class="path-section-badges">
+          <span class="badge badge-indigo">44 Lessons</span>
+          <span class="badge badge-green">Band 5 → 9</span>
+          <span class="badge badge-amber">Free + Pro</span>
+        </div>
+      </div>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-rose">🎤</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-rose">Foundation</div>
+          <h3>Speaking Test Breakdown</h3>
+          <p>What to expect in Parts 1, 2, and 3 — timing, format, and how the examiner evaluates every answer.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 18 min</span>
+            <button class="btn-module" style="background:rgba(244,63,94,.1);color:var(--rose)">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#f43f5e,#e11d48)"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-rose">💬</div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-rose">Fluency</div>
+          <h3>Filler Words &amp; Fluency</h3>
+          <p>Replace bad habits ("uh", "like") with natural discourse markers that signal confidence to examiners.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 22 min</span>
+            <button class="btn-module" style="background:rgba(244,63,94,.1);color:var(--rose)">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#f43f5e,#e11d48)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAST TRACK -->
+  <div class="path-section show" id="sec-fasttrack">
+    <div class="path-section-header">
+      <div class="path-section-icon psi-green">🚀</div>
+      <div class="path-section-meta">
+        <h2>IELTS Fast Track</h2>
+        <p>4-week intensive with daily targets, all four skills, and full mocks.</p>
+        <div class="path-section-badges">
+          <span class="badge badge-indigo">28 Day Plan</span>
+          <span class="badge badge-green">All Levels</span>
+          <span class="badge badge-amber">Pro Only</span>
+        </div>
+      </div>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-green">📅
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-green">Week 1</div>
+          <h3>Diagnostic + Foundation</h3>
+          <p>Full diagnostic test, identify your weaknesses, and build your 4-skill foundation in 7 focused days.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 7 days</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-green">⚡
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-green">Week 2–3</div>
+          <h3>Intensive Skill Building</h3>
+          <p>Deep-dive into your weakest skill with targeted drills, question-type practice, and daily AI feedback.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 14 days</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-green">🏆
+          <span class="module-lock">🔒 Pro</span>
+        </div>
+        <div class="module-body">
+          <div class="module-tag mt-tag-green">Week 4</div>
+          <h3>Mock Exam Week</h3>
+          <p>Two full mock exams, timed and scored. Review mistakes, finalize strategies, and walk in confident.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 7 days</span>
+            <button class="btn-module btn-module-locked">🔒 Upgrade</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACADEMIC ENGLISH -->
+  <div class="path-section show" id="sec-academic">
+    <div class="path-section-header">
+      <div class="path-section-icon psi-blue">🌟</div>
+      <div class="path-section-meta">
+        <h2>Academic English</h2>
+        <p>Beyond IELTS — vocabulary, critical thinking, and university-ready writing.</p>
+        <div class="path-section-badges">
+          <span class="badge badge-indigo">38 Lessons</span>
+          <span class="badge badge-green">Intermediate+</span>
+          <span class="badge badge-amber">Free + Pro</span>
+        </div>
+      </div>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-blue">📚</div>
+        <div class="module-body">
+          <div class="module-tag" style="color:#3b82f6">Vocabulary</div>
+          <h3>Academic Word List</h3>
+          <p>Master the 570 most common academic words with spaced repetition, example sentences, and quizzes.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ Ongoing</span>
+            <button class="btn-module" style="background:rgba(59,130,246,.1);color:#3b82f6">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#3b82f6,#6366f1)"></div></div>
+        </div>
+      </div>
+      <div class="module-card" onclick="window.location='login.html'">
+        <div class="module-thumb mt-blue">🔬</div>
+        <div class="module-body">
+          <div class="module-tag" style="color:#3b82f6">Critical Thinking</div>
+          <h3>Analyse &amp; Evaluate Arguments</h3>
+          <p>Identify logical fallacies, counter-arguments, and build well-structured academic positions with confidence.</p>
+          <div class="module-footer">
+            <span class="module-dur">⏱ 35 min</span>
+            <button class="btn-module" style="background:rgba(59,130,246,.1);color:#3b82f6">Start →</button>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,#3b82f6,#6366f1)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /paths-main -->
+
+<div class="paths-cta-bottom">
+  <h2>Unlock All 280+ Modules</h2>
+  <p>Go Pro and get unrestricted access to every lesson, mock test, and AI feedback tool.</p>
+  <a href="login.html" class="btn-white">Start Free Trial →</a>
+</div>
+
+<footer>
+  <span>© 2026 RiseIQ · riseiq.ca &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="about.html">About</a> &nbsp;·&nbsp; <a href="login.html">Login</a></span>
+</footer>
+
+<script>
+function filterPath(cat, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const secs = document.querySelectorAll('.path-section');
+  secs.forEach(s => {
+    if (cat === 'all') { s.classList.add('show'); }
+    else { s.classList.toggle('show', s.id === 'sec-' + cat); }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RiseIQ — Rise Smarter. Learn Faster.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d1a;
+  --ink2:#3b3b5c;
+  --ink3:#7070a0;
+  --indigo:#4f46e5;
+  --indigo-dark:#3730a3;
+  --indigo-light:#818cf8;
+  --amber:#f59e0b;
+  --amber-light:#fbbf24;
+  --rose:#f43f5e;
+  --green:#10b981;
+  --bg:#f6f5ff;
+  --bg2:#ffffff;
+  --border:#e2e0f9;
+  --card:#ffffff;
+  --r:14px;
+  --shadow:0 4px 24px rgba(79,70,229,.10);
+  --shadow-lg:0 12px 48px rgba(79,70,229,.16);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;line-height:1.6}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:70px;
+  background:rgba(246,245,255,.88);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,#4f46e5,#a855f7);
+  display:grid;place-items:center;
+  font-size:18px;font-weight:900;color:#fff;letter-spacing:-1px;
+}
+.nav-logo-text{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.nav-logo-text span{color:var(--indigo)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink2);font-size:15px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--indigo)}
+.nav-ctas{display:flex;gap:12px;align-items:center}
+.btn-ghost{
+  padding:8px 20px;border-radius:8px;font-size:14px;font-weight:600;
+  text-decoration:none;color:var(--indigo);border:1.5px solid var(--indigo);
+  transition:all .2s;background:transparent;cursor:pointer;font-family:inherit;
+}
+.btn-ghost:hover{background:var(--indigo);color:#fff}
+.btn-primary{
+  padding:9px 22px;border-radius:8px;font-size:14px;font-weight:600;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  text-decoration:none;border:none;cursor:pointer;font-family:inherit;
+  box-shadow:0 2px 12px rgba(79,70,229,.30);transition:all .2s;display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(79,70,229,.40)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:120px 5% 80px;text-align:center;position:relative;overflow:hidden;
+}
+.hero-blob{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:.25;pointer-events:none;
+}
+.hero-blob-1{width:600px;height:600px;background:radial-gradient(circle,#4f46e5,#a855f7);top:-100px;left:-150px}
+.hero-blob-2{width:500px;height:500px;background:radial-gradient(circle,#f59e0b,#f43f5e);bottom:-100px;right:-100px}
+.hero-blob-3{width:400px;height:400px;background:radial-gradient(circle,#10b981,#4f46e5);top:200px;right:20%}
+.hero-inner{position:relative;z-index:2;max-width:820px;margin:0 auto}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(79,70,229,.1);border:1px solid rgba(79,70,229,.25);
+  border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;
+  color:var(--indigo);margin-bottom:28px;
+}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--indigo);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{
+  font-size:clamp(44px,7vw,86px);font-weight:900;line-height:1.05;
+  letter-spacing:-3px;margin-bottom:24px;
+}
+.hero h1 .line1{color:var(--ink)}
+.hero h1 .line2{
+  background:linear-gradient(135deg,#4f46e5 0%,#a855f7 50%,#f59e0b 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(16px,2.2vw,20px);color:var(--ink2);max-width:560px;
+  margin:0 auto 40px;font-weight:400;line-height:1.7;
+}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.btn-hero{
+  padding:15px 34px;border-radius:12px;font-size:16px;font-weight:700;
+  text-decoration:none;transition:all .25s;font-family:inherit;display:inline-block;
+}
+.btn-hero-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  box-shadow:0 4px 24px rgba(79,70,229,.40);border:none;cursor:pointer;
+}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.50)}
+.btn-hero-secondary{
+  background:#fff;color:var(--ink);border:1.5px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.btn-hero-secondary:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-1px)}
+.hero-stats{
+  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+  padding-top:28px;border-top:1px solid var(--border);
+}
+.hero-stat-num{font-size:28px;font-weight:800;color:var(--indigo)}
+.hero-stat-label{font-size:13px;color:var(--ink3);font-weight:500;margin-top:2px}
+
+/* ─── SECTION COMMON ─── */
+section{padding:90px 5%}
+.section-tag{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--indigo);background:rgba(79,70,229,.08);
+  border-radius:50px;padding:5px 14px;margin-bottom:16px;
+}
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:14px}
+.section-sub{font-size:17px;color:var(--ink2);max-width:520px;line-height:1.7}
+.section-head{margin-bottom:56px}
+.section-head-center{text-align:center}
+.section-head-center .section-sub{margin:0 auto}
+
+/* ─── FEATURES GRID ─── */
+.features-bg{background:#fff}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:900px){.features-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.features-grid{grid-template-columns:1fr}}
+.feature-card{
+  border-radius:16px;padding:32px 28px;border:1px solid var(--border);
+  background:var(--bg);transition:all .25s;position:relative;overflow:hidden;
+}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(79,70,229,.3)}
+.feature-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#4f46e5,#a855f7);opacity:0;transition:opacity .25s;
+}
+.feature-card:hover::before{opacity:1}
+.feature-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:grid;place-items:center;font-size:24px;margin-bottom:20px;
+}
+.fi-indigo{background:rgba(79,70,229,.12)}
+.fi-purple{background:rgba(168,85,247,.12)}
+.fi-amber{background:rgba(245,158,11,.12)}
+.fi-green{background:rgba(16,185,129,.12)}
+.fi-rose{background:rgba(244,63,94,.12)}
+.fi-blue{background:rgba(59,130,246,.12)}
+.feature-card h3{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.feature-card p{font-size:14px;color:var(--ink2);line-height:1.65}
+
+/* ─── PATHS PREVIEW ─── */
+.paths-bg{background:linear-gradient(160deg,#1e1b4b 0%,#312e81 100%);color:#fff}
+.paths-bg .section-tag{color:#818cf8;background:rgba(129,140,248,.15)}
+.paths-bg .section-title{color:#fff}
+.paths-bg .section-sub{color:rgba(255,255,255,.65)}
+.paths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.paths-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.paths-grid{grid-template-columns:1fr}}
+.path-card{
+  border-radius:16px;padding:28px 24px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  cursor:pointer;transition:all .25s;
+}
+.path-card:hover{background:rgba(255,255,255,.13);transform:translateY(-3px)}
+.path-emoji{font-size:36px;margin-bottom:16px;display:block}
+.path-card h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.3px}
+.path-card p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:18px}
+.path-meta{display:flex;gap:14px;align-items:center}
+.path-lessons{font-size:12px;font-weight:600;color:#818cf8;background:rgba(129,140,248,.15);border-radius:50px;padding:4px 10px}
+.path-level{font-size:12px;font-weight:500;color:rgba(255,255,255,.5)}
+.paths-cta{text-align:center;margin-top:48px}
+.btn-paths{
+  padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;
+  background:#fff;color:var(--indigo-dark);text-decoration:none;display:inline-block;
+  transition:all .25s;
+}
+.btn-paths:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,255,255,.25)}
+
+/* ─── HOW IT WORKS ─── */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+@media(max-width:900px){.how-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:560px){.how-grid{grid-template-columns:1fr}}
+.how-grid::before{
+  content:'';position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;
+  background:linear-gradient(90deg,#4f46e5,#a855f7,#f59e0b,#10b981);
+  border-radius:2px;z-index:0;
+}
+@media(max-width:900px){.how-grid::before{display:none}}
+.how-step{text-align:center;padding:0 16px;position:relative;z-index:1}
+.how-num{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff;font-size:24px;font-weight:800;
+  display:grid;place-items:center;margin:0 auto 20px;
+  box-shadow:0 4px 20px rgba(79,70,229,.35);border:4px solid #fff;
+}
+.how-step:nth-child(2) .how-num{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+.how-step:nth-child(3) .how-num{background:linear-gradient(135deg,#a855f7,#f59e0b)}
+.how-step:nth-child(4) .how-num{background:linear-gradient(135deg,#f59e0b,#10b981)}
+.how-step h3{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.2px}
+.how-step p{font-size:14px;color:var(--ink2);line-height:1.65}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-bg{background:#fff}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.testimonials-grid{grid-template-columns:1fr}}
+.testi-card{
+  border-radius:16px;padding:28px;background:var(--bg);
+  border:1px solid var(--border);transition:all .2s;
+}
+.testi-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.testi-stars{color:#f59e0b;font-size:15px;margin-bottom:14px;letter-spacing:2px}
+.testi-text{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,#4f46e5,#a855f7);
+  display:grid;place-items:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.testi-name{font-size:14px;font-weight:700;color:var(--ink)}
+.testi-score{font-size:12px;color:var(--ink3);margin-top:2px}
+
+/* ─── CTA BANNER ─── */
+.cta-banner{
+  background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#a855f7 100%);
+  color:#fff;text-align:center;padding:90px 5%;
+}
+.cta-banner h2{font-size:clamp(30px,5vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:16px}
+.cta-banner p{font-size:18px;opacity:.8;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-banner .btn-cta-white{
+  padding:15px 40px;border-radius:12px;font-size:16px;font-weight:700;
+  background:#fff;color:var(--indigo-dark);text-decoration:none;display:inline-block;
+  transition:all .25s;border:none;cursor:pointer;font-family:inherit;
+  box-shadow:0 4px 20px rgba(0,0,0,.2);
+}
+.cta-banner .btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--ink);color:rgba(255,255,255,.55);
+  padding:60px 5% 32px;
+}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;
+  margin-bottom:48px;
+}
+@media(max-width:860px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.footer-top{grid-template-columns:1fr}}
+.footer-brand p{font-size:14px;line-height:1.7;margin-top:12px;max-width:280px}
+.footer-col h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:16px;letter-spacing:.2px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{text-decoration:none;color:rgba(255,255,255,.55);font-size:14px;transition:color .2s}
+.footer-col a:hover{color:#818cf8}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  font-size:13px;
+}
+.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
+.footer-bottom a:hover{color:#818cf8}
+.footer-logo-mark{
+  width:30px;height:30px;border-radius:8px;
+  background:linear-gradient(135deg,#4f46e5,#a855f7);
+  display:inline-grid;place-items:center;
+  font-size:14px;font-weight:900;color:#fff;vertical-align:middle;margin-right:8px;
+}
+
+/* ─── RESPONSIVE NAV ─── */
+@media(max-width:760px){
+  .nav-links{display:none}
+  .nav-ctas .btn-ghost{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark">R</div>
+    <span class="nav-logo-text">Rise<span>IQ</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="learning-paths.html">Learning Paths</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="login.html" class="btn-ghost">Log In</a>
+    <a href="login.html" class="btn-primary">Get Started Free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      AI-Powered Learning Platform — Now Live
+    </div>
+    <h1>
+      <span class="line1">Rise Smarter.<br></span>
+      <span class="line2">Learn Faster.</span>
+    </h1>
+    <p class="hero-sub">RiseIQ adapts to your pace, your goals, and your gaps. Master IELTS, sharpen your English, and track real progress — powered by AI.</p>
+    <div class="hero-ctas">
+      <a href="login.html" class="btn-hero btn-hero-primary">Start Learning Free →</a>
+      <a href="learning-paths.html" class="btn-hero btn-hero-secondary">Explore Paths</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">12,400+</div>
+        <div class="hero-stat-label">Active Learners</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">94%</div>
+        <div class="hero-stat-label">Band Score Improvement</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">450+</div>
+        <div class="hero-stat-label">Practice Modules</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.9★</div>
+        <div class="hero-stat-label">Learner Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-bg">
+  <div class="section-head section-head-center">
+    <div class="section-tag">Why RiseIQ</div>
+    <h2 class="section-title">Learning built around you</h2>
+    <p class="section-sub">No generic content. RiseIQ analyses how you learn and builds a path that moves at your speed.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon fi-indigo">🧠</div>
+      <h3>AI Study Planner</h3>
+      <p>Your personal AI maps your strengths and gaps each day, serving exactly the practice you need — no guesswork required.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-purple">🎯</div>
+      <h3>Precision Band Targeting</h3>
+      <p>Set your target score. Track every point. Our adaptive system closes the gap between where you are and where you need to be.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-amber">⚡</div>
+      <h3>Instant AI Feedback</h3>
+      <p>Submit a writing task or speaking response and receive detailed, examiner-quality feedback within seconds — not days.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-green">📊</div>
+      <h3>Real-Time Progress</h3>
+      <p>Visual dashboards show your band trajectory across all four skills. Watch yourself improve, week over week.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-rose">🏆</div>
+      <h3>Official Mock Tests</h3>
+      <p>Full and mini mock exams modelled on the real test format. Timed, scored, and reviewed — just like exam day.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-blue">🌐</div>
+      <h3>Live Expert Classes</h3>
+      <p>Join live sessions with certified IELTS instructors. Ask questions, get strategies, and practise with peers in real time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING PATHS -->
+<section class="paths-bg">
+  <div class="section-head section-head-center">
+    <div class="section-tag">Learning Paths</div>
+    <h2 class="section-title">Six paths. One goal.</h2>
+    <p class="section-sub">Structured journeys from beginner to band 9. Pick your path — RiseIQ does the rest.</p>
+  </div>
+  <div class="paths-grid">
+    <div class="path-card" onclick="window.location='learning-paths.html'">
+      <span class="path-emoji">🎧</span>
+      <h3>IELTS Listening</h3>
+      <p>Master section strategies, note-taking, and prediction techniques across all four listening formats.</p>
+      <div class="path-meta">
+        <span class="path-lessons">48 Lessons</span>
+        <span class="path-level">Band 5 → 9</span>
+      </div>
+    </div>
+    <div class="path-card" onclick="window.location='learning-paths.html'">
+      <span class="path-emoji">📖</span>
+      <h3>IELTS Reading</h3>
+      <p>Speed reading, skimming, scanning, and question-type mastery for True/False, Matching, and more.</p>
+      <div class="path-meta">
+        <span class="path-lessons">52 Lessons</span>
+        <span class="path-level">Band 5 → 9</span>
+      </div>
+    </div>
+    <div class="path-card" onclick="window.location='learning-paths.html'">
+      <span class="path-emoji">✍️</span>
+      <h3>IELTS Writing</h3>
+      <p>Task 1 data reports, Task 2 essays, lexical range, coherence, and how to score Band 7+ consistently.</p>
+      <div class="path-meta">
+        <span class="path-lessons">60 Lessons</span>
+        <span class="path-level">Band 5 → 9</span>
+      </div>
+    </div>
+    <div class="path-card" onclick="window.location='learning-paths.html'">
+      <span class="path-emoji">🎤</span>
+      <h3>IELTS Speaking</h3>
+      <p>Part 1, 2 &amp; 3 strategies, fluency drills, pronunciation coaching, and AI-scored practice sessions.</p>
+      <div class="path-meta">
+        <span class="path-lessons">44 Lessons</span>
+        <span class="path-level">Band 5 → 9</span>
+      </div>
+    </div>
+    <div class="path-card" onclick="window.location='learning-paths.html'">
+      <span class="path-emoji">🚀</span>
+      <h3>IELTS Fast Track</h3>
+      <p>Need results fast? This 4-week intensive covers all four skills with daily targets and mock exams.</p>
+      <div class="path-meta">
+        <span class="path-lessons">28 Days</span>
+        <span class="path-level">All Levels</span>
+      </div>
+    </div>
+    <div class="path-card" onclick="window.location='learning-paths.html'">
+      <span class="path-emoji">🌟</span>
+      <h3>Academic English</h3>
+      <p>Beyond IELTS — academic vocabulary, essay writing, and critical thinking for university success.</p>
+      <div class="path-meta">
+        <span class="path-lessons">38 Lessons</span>
+        <span class="path-level">Intermediate+</span>
+      </div>
+    </div>
+  </div>
+  <div class="paths-cta">
+    <a href="learning-paths.html" class="btn-paths">View All Paths →</a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="section-head section-head-center">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">Up and learning in minutes</h2>
+    <p class="section-sub">Simple steps, serious results.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <h3>Create Your Account</h3>
+      <p>Sign up free in 30 seconds. No credit card. No commitment. Just learning.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <h3>Take the Diagnostic</h3>
+      <p>A quick 10-minute test identifies your current band and pinpoints your exact weaknesses.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <h3>Get Your AI Plan</h3>
+      <p>RiseIQ builds a personalised study plan around your target score and available time.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">4</div>
+      <h3>Track &amp; Rise</h3>
+      <p>Practice daily, collect streaks, review AI feedback, and watch your band score climb.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg">
+  <div class="section-head section-head-center">
+    <div class="section-tag">Success Stories</div>
+    <h2 class="section-title">Learners who rose</h2>
+    <p class="section-sub">Real results from real people who chose RiseIQ.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I went from Band 6.5 to Band 8 in seven weeks. The AI feedback on my writing was the difference-maker — it felt like having a private tutor at 2am."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-score">Writing: 6.0 → 7.5 · Overall: 6.5 → 8.0</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The diagnostic test showed me exactly what I was doing wrong in Reading. Three weeks of targeted practice and I jumped a full band point."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">C</div>
+        <div>
+          <div class="testi-name">Carlos Méndez</div>
+          <div class="testi-score">Reading: 6.5 → 7.5 · Overall: 6.5 → 7.5</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Finally a platform that doesn't waste your time. Every lesson is relevant and the progress dashboard kept me motivated through the whole journey."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Aisha Okafor</div>
+          <div class="testi-score">Speaking: 6.0 → 7.0 · Overall: 6.5 → 7.5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" style="padding-top:80px;padding-bottom:80px">
+  <h2>Your Band 8 starts today.</h2>
+  <p>Join thousands of learners who chose RiseIQ and never looked back.</p>
+  <a href="login.html" class="btn-cta-white">Start Free — No Credit Card →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <span class="footer-logo-mark">R</span>
+        <span style="font-size:18px;font-weight:800;color:#fff;letter-spacing:-.5px">Rise<span style="color:#818cf8">IQ</span></span>
+      </div>
+      <p>Rise Smarter. Learn Faster.<br>The AI-powered IELTS prep platform built for ambitious learners.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="learning-paths.html">Learning Paths</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="login.html">Mock Tests</a></li>
+        <li><a href="login.html">Live Classes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#team">Our Team</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 RiseIQ · riseiq.ca · All rights reserved.</span>
+    <span>Made with ❤️ for ambitious learners</span>
+  </div>
+</footer>
+
+</body>
+</html>
