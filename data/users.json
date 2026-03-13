@@ -1,0 +1,24 @@
+[
+  {
+    "id": "u_001",
+    "name": "RiseIQ Student",
+    "email": "",
+    "role": "student",
+    "plan": "pro",
+    "targetBand": null,
+    "examDate": null,
+    "currentBand": null,
+    "streakDays": 0,
+    "totalSessions": 0,
+    "joinedAt": "2026-03-08",
+    "enrolledCourses": [
+      {
+        "courseKey": "ielts",
+        "status": "active",
+        "enrolledAt": "2026-03-08",
+        "targetBand": 7.5,
+        "examDate": "2026-05-15"
+      }
+    ]
+  }
+]
