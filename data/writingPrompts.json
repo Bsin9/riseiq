@@ -1,0 +1,78 @@
+{
+  "task1": [
+    {
+      "id": "w_t1_001",
+      "title": "Request Holiday Leave",
+      "type": "task1",
+      "format": "Semi-formal Letter",
+      "minWords": 150,
+      "prompt": "You need to take some time off work for a family event.\n\nWrite a letter to your manager. In your letter:\n- explain why you need the time off\n- say when you need to take the holiday\n- suggest how your work could be covered while you are away\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_002",
+      "title": "Complaint About a Damaged Product",
+      "type": "task1",
+      "format": "Formal Letter",
+      "minWords": 150,
+      "prompt": "You recently bought a product from an online store and it arrived damaged.\n\nWrite a letter to the company. In your letter:\n- describe what you bought and what was wrong with it\n- explain what problems this has caused you\n- say what you would like the company to do\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_003",
+      "title": "Invite a Friend to Visit",
+      "type": "task1",
+      "format": "Informal Letter",
+      "minWords": 150,
+      "prompt": "You would like a friend from another country to come and stay with you for a few weeks.\n\nWrite a letter to your friend. In your letter:\n- explain why you would like them to visit\n- describe what you plan to do together\n- give them some practical information about the visit\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_004",
+      "title": "Request a Reference Letter",
+      "type": "task1",
+      "format": "Semi-formal Letter",
+      "minWords": 150,
+      "prompt": "You are applying for a job and need a reference letter from a former employer.\n\nWrite a letter to your former manager. In your letter:\n- explain what job you are applying for\n- say why you need a reference from them\n- describe what information you would like them to include\n\nWrite at least 150 words."
+    }
+  ],
+  "task2": [
+    {
+      "id": "w_t2_001",
+      "title": "Technology and Social Skills",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Some people think that modern technology is making people less sociable. Others believe that technology helps people communicate better and maintain relationships.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_002",
+      "title": "Environmental Responsibility",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Some people argue that individuals should be responsible for reducing pollution and protecting the environment. Others believe that governments and large companies should take the main responsibility.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_003",
+      "title": "University Education",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Some people believe that a university education should be free for all students. Others argue that students should pay for their own education.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_004",
+      "title": "Working from Home",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Many companies now allow employees to work from home. Some people believe this has many benefits, while others think it has serious disadvantages.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_005",
+      "title": "Children and Outdoor Activities",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Many children today spend a lot of time using computers and watching TV instead of playing outside. Some people think this is harmful to their development.\n\nTo what extent do you agree or disagree?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    }
+  ]
+}

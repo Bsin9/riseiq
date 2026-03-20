@@ -1,0 +1,84 @@
+{
+  "cueCards": [
+    {
+      "id": "sp_001",
+      "topic": "Describe a skill you would like to learn",
+      "part": 2,
+      "bullets": [
+        "What the skill is",
+        "Why you want to learn it",
+        "How you would go about learning it",
+        "How this skill would help you in the future"
+      ],
+      "followUpQuestions": [
+        "What skills are most valuable in today's job market?",
+        "Do you think it is harder to learn new skills as you get older?",
+        "How has technology changed the way people learn new skills?"
+      ]
+    },
+    {
+      "id": "sp_002",
+      "topic": "Describe a place in your city you like to visit",
+      "part": 2,
+      "bullets": [
+        "Where this place is",
+        "What you can do there",
+        "Who you usually go there with",
+        "Why you enjoy visiting this place"
+      ],
+      "followUpQuestions": [
+        "How important is it for cities to have public spaces?",
+        "Do you think young people and older people enjoy the same kinds of places?",
+        "How have public spaces in cities changed over the years?"
+      ]
+    },
+    {
+      "id": "sp_003",
+      "topic": "Describe a time you helped someone",
+      "part": 2,
+      "bullets": [
+        "Who you helped and what the situation was",
+        "What you did to help them",
+        "How the person reacted",
+        "How you felt about helping"
+      ],
+      "followUpQuestions": [
+        "Do you think people today are less willing to help others than in the past?",
+        "What can governments do to encourage people to volunteer?",
+        "Is it better to help people you know personally, or to help strangers?"
+      ]
+    },
+    {
+      "id": "sp_004",
+      "topic": "Describe a book or film that had a strong effect on you",
+      "part": 2,
+      "bullets": [
+        "What the book or film was about",
+        "When and where you first read or saw it",
+        "What made it memorable",
+        "How it changed your thinking or feelings"
+      ],
+      "followUpQuestions": [
+        "Do you think reading books is more beneficial than watching films?",
+        "How has the internet changed the way people access stories and entertainment?",
+        "Why do you think some stories remain popular for many generations?"
+      ]
+    },
+    {
+      "id": "sp_005",
+      "topic": "Describe a goal you would like to achieve in the next five years",
+      "part": 2,
+      "bullets": [
+        "What the goal is",
+        "Why you want to achieve it",
+        "What steps you plan to take",
+        "How achieving this goal would change your life"
+      ],
+      "followUpQuestions": [
+        "Do you think it is important to set goals in life?",
+        "Is it better to have short-term or long-term goals?",
+        "How do people in your country typically plan for their future?"
+      ]
+    }
+  ]
+}

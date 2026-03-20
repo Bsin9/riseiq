@@ -17,6 +17,7 @@ import { NextResponse } from "next/server";
 // Routes that require authentication
 const PROTECTED_PREFIXES = [
   "/dashboard",
+  "/session",       // IELTS session player pages
   "/synapse",
   "/mock-test",
   "/progress",

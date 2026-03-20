@@ -1,0 +1,97 @@
+{
+  "sessions": [
+    {
+      "id": "ls_001",
+      "title": "Section 1 — Booking a Hotel Room",
+      "section": 1,
+      "duration": "10 min",
+      "transcript": "[SPEAKER 1 — Receptionist]: Good afternoon, Lakeside Hotel. How can I help you?\n\n[SPEAKER 2 — Customer]: Hi, yes, I'd like to make a booking for a room, please.\n\n[SPEAKER 1]: Of course. Can I ask how many nights you'll be staying?\n\n[SPEAKER 2]: Just two nights — the 14th and 15th of March.\n\n[SPEAKER 1]: Lovely. And how many guests will there be?\n\n[SPEAKER 2]: Three guests — two adults and one child.\n\n[SPEAKER 1]: Perfect. We have a family room available on those dates. That would be £120 per night, so £240 in total. Would that work for you?\n\n[SPEAKER 2]: Yes, that sounds fine. Does that include breakfast?\n\n[SPEAKER 1]: It does include breakfast for all guests. We serve from 7am to 10am in the main dining room.\n\n[SPEAKER 2]: Excellent. I'd also like to ask about parking — do you have spaces available?\n\n[SPEAKER 1]: We do. Parking is free for all hotel guests. You just need to register your car registration number when you check in.\n\n[SPEAKER 2]: That's great. Can I also book a table in the restaurant for Saturday evening?\n\n[SPEAKER 1]: Certainly. What time would you prefer?\n\n[SPEAKER 2]: Around 7 o'clock if possible.\n\n[SPEAKER 1]: Let me check... yes, we have a table for three at 7pm on Saturday the 15th. I'll add that to your reservation.\n\n[SPEAKER 2]: Thank you. Can I give you my name? It's Sarah Morgan — M-O-R-G-A-N.\n\n[SPEAKER 1]: Thank you, Ms Morgan. Could I also take a contact number?\n\n[SPEAKER 2]: Yes, it's 07854 231 967.\n\n[SPEAKER 1]: And would you like to guarantee your booking with a credit card?\n\n[SPEAKER 2]: Yes, the card number is 4872 3301 5588 9214.\n\n[SPEAKER 1]: Thank you. Your booking is confirmed. We look forward to welcoming you on the 14th.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "gap_fill",
+          "question": "The customer is booking for ___ nights.",
+          "answer": "two"
+        },
+        {
+          "id": 2,
+          "type": "gap_fill",
+          "question": "The total cost of the stay is £___.",
+          "answer": "240"
+        },
+        {
+          "id": 3,
+          "type": "mcq",
+          "question": "What is included in the room rate?",
+          "options": ["A. Dinner only", "B. Breakfast for all guests", "C. Breakfast for adults only", "D. No meals"],
+          "answer": "B"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "question": "Parking at the hotel is ___.",
+          "answer": "free"
+        },
+        {
+          "id": 5,
+          "type": "gap_fill",
+          "question": "The restaurant table is booked for ___ pm on Saturday.",
+          "answer": "7"
+        },
+        {
+          "id": 6,
+          "type": "gap_fill",
+          "question": "The customer's surname is ___.",
+          "answer": "Morgan"
+        }
+      ]
+    },
+    {
+      "id": "listening-timed",
+      "title": "Timed Practice — Mixed Questions",
+      "section": 1,
+      "duration": "10 min",
+      "transcript": "[SPEAKER 1 — Advisor]: Good morning. City Sports Centre, how can I help?\n\n[SPEAKER 2 — Caller]: Morning. I'd like to find out about joining the gym, please.\n\n[SPEAKER 1]: Of course. Are you interested in a monthly membership or an annual one?\n\n[SPEAKER 2]: I'm not sure yet. Can you tell me the prices?\n\n[SPEAKER 1]: Monthly membership is £45 per month. An annual membership works out cheaper — it's £420 for the year, so you'd save £120 compared to paying monthly.\n\n[SPEAKER 2]: That's a good saving. What does the membership include?\n\n[SPEAKER 1]: Full access to the gym floor, all group fitness classes, and free use of the swimming pool. We also have a sauna which is available to members at no extra cost.\n\n[SPEAKER 2]: What are the opening hours?\n\n[SPEAKER 1]: We're open Monday to Friday from 6am to 10pm, and on weekends from 8am to 8pm.\n\n[SPEAKER 2]: Is there a joining fee?\n\n[SPEAKER 1]: There's a one-off joining fee of £30, which covers your access card and an initial fitness assessment with one of our trainers.\n\n[SPEAKER 2]: That sounds reasonable. Do you have parking?\n\n[SPEAKER 1]: Yes, there's a car park directly behind the building. It's free for the first two hours, then £2 per hour after that.\n\n[SPEAKER 2]: OK. And can I try the facilities before I commit?\n\n[SPEAKER 1]: Absolutely. You can book a free trial day — just bring proof of address and a form of ID. Would you like me to book one for you?\n\n[SPEAKER 2]: Yes please. How about this Thursday?\n\n[SPEAKER 1]: Thursday the 20th — let me check... yes, that's available. Can I take your name?\n\n[SPEAKER 2]: It's James Fletcher.\n\n[SPEAKER 1]: Great, Mr Fletcher. Your trial day is booked for Thursday the 20th. We'll see you then.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "gap_fill",
+          "question": "Monthly membership costs £___ per month.",
+          "answer": "45"
+        },
+        {
+          "id": 2,
+          "type": "gap_fill",
+          "question": "The annual membership saves members £___ compared to monthly payments.",
+          "answer": "120"
+        },
+        {
+          "id": 3,
+          "type": "mcq",
+          "question": "Which of the following is NOT included in the membership?",
+          "options": ["A. Group fitness classes", "B. Swimming pool access", "C. Personal training sessions", "D. Sauna access"],
+          "answer": "C"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "question": "On weekends, the centre opens at ___ am.",
+          "answer": "8"
+        },
+        {
+          "id": 5,
+          "type": "gap_fill",
+          "question": "The one-off joining fee is £___.",
+          "answer": "30"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "What does a visitor need to bring for a free trial day?",
+          "options": ["A. A doctor's note and ID", "B. Proof of address and ID", "C. A credit card and address", "D. A referral and ID"],
+          "answer": "B"
+        }
+      ]
+    }
+  ]
+}

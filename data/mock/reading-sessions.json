@@ -1,0 +1,100 @@
+{
+  "sessions": [
+    {
+      "id": "r_001",
+      "title": "Urban Vertical Farming",
+      "section": 1,
+      "duration": "20 min",
+      "passage": "As cities around the world continue to grow, the challenge of feeding urban populations has prompted engineers and entrepreneurs to think creatively about where and how food is produced. One of the most promising solutions to emerge in recent decades is vertical farming — the practice of growing crops in stacked layers inside controlled indoor environments.\n\nUnlike traditional agriculture, which depends on fertile land, consistent weather and large amounts of water, vertical farms use hydroponic or aeroponic systems that deliver nutrients directly to plant roots. These methods can reduce water consumption by up to 95 per cent compared with conventional farming, because the water is recirculated continuously rather than being absorbed by soil or lost to evaporation.\n\nVertical farms can be established in converted warehouses, unused office buildings, or purpose-built structures in the heart of cities. Because they operate under artificial lighting and climate control, they are not affected by seasons, meaning crops can be harvested throughout the year regardless of external weather conditions. Proponents argue this makes the food supply far more resilient to climate disruption than outdoor farming.\n\nHowever, critics point to one significant drawback: energy costs. The artificial lighting required to replace natural sunlight is extremely expensive, and the carbon footprint of a vertical farm powered by fossil fuels can actually exceed that of conventional farming. This is why many operators are investing heavily in renewable energy sources such as solar panels and wind turbines to power their facilities.\n\nDespite the challenges, the market for vertical farming is growing rapidly. Industry analysts project that the global vertical farming market will be worth over 20 billion dollars by 2030. Several large supermarket chains in the United Kingdom, Japan and the United States have already partnered with vertical farm operators to supply fresh produce directly to stores, eliminating the long supply chains associated with imported food.\n\nWhile vertical farming is unlikely to replace traditional agriculture entirely, most experts agree that it represents a vital part of the solution to feeding a world population expected to reach nearly ten billion by 2050.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "tfng",
+          "statement": "Vertical farms use more water than traditional farms.",
+          "answer": "False"
+        },
+        {
+          "id": 2,
+          "type": "tfng",
+          "statement": "All vertical farms are located in city centres.",
+          "answer": "Not Given"
+        },
+        {
+          "id": 3,
+          "type": "tfng",
+          "statement": "Vertical farms can produce crops throughout the year.",
+          "answer": "True"
+        },
+        {
+          "id": 4,
+          "type": "tfng",
+          "statement": "The energy costs of vertical farming are always lower than conventional farming.",
+          "answer": "False"
+        },
+        {
+          "id": 5,
+          "type": "gap_fill",
+          "before": "Vertical farming uses hydroponic systems to deliver nutrients directly to plant",
+          "blank": "___",
+          "after": ".",
+          "answer": "roots"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "According to the passage, what is the main disadvantage of vertical farming?",
+          "options": ["A. It requires large areas of land", "B. It is not possible to grow all food types", "C. The energy costs can be very high", "D. It produces lower quality food"],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "id": "reading-timed",
+      "title": "The Psychology of Habit Formation",
+      "section": 1,
+      "duration": "20 min",
+      "passage": "Scientists who study human behaviour have long been fascinated by habits — the automatic routines that govern much of what we do each day. Research suggests that nearly half of our daily actions are performed out of habit rather than conscious decision-making. Understanding how habits form, and how they can be changed, has become an important area of study in both psychology and public health.\n\nAccording to the most widely accepted model, habits are formed through a three-part process known as the habit loop. This consists of a cue, which triggers the behaviour; a routine, which is the behaviour itself; and a reward, which reinforces the behaviour and makes the brain want to repeat it in the future. Over time, this loop becomes so deeply embedded in neural pathways that it operates largely outside conscious awareness.\n\nOne of the most significant findings in habit research is that habits, once formed, are very difficult to eliminate. The neural pathways created by repeated behaviour do not disappear; instead, they lie dormant. This is why people who have quit smoking or overcome a food addiction often find that cravings resurface years later when they encounter a familiar cue. Rather than destroying old habits, researchers suggest it is more effective to replace them with new behaviours that satisfy the same reward.\n\nEnvironment plays a crucial role in both the formation and maintenance of habits. Studies have shown that people are far more likely to successfully change their behaviour when they also change their surroundings. Moving to a new home, starting a new job, or travelling to an unfamiliar place temporarily disrupts established cues, creating a window of opportunity during which new habits are easier to form.\n\nThis insight has practical applications in public health. Campaigns designed to reduce harmful behaviours such as smoking or excessive sugar consumption have had greater success when they target both the individual and the environment, rather than relying solely on willpower. Public spaces that make healthy choices the default option — by placing fruit at eye level in cafeterias, for instance — consistently outperform campaigns based on information and persuasion alone.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "tfng",
+          "statement": "More than half of our daily actions are driven by conscious decision-making.",
+          "answer": "False"
+        },
+        {
+          "id": 2,
+          "type": "tfng",
+          "statement": "The habit loop consists of three stages.",
+          "answer": "True"
+        },
+        {
+          "id": 3,
+          "type": "tfng",
+          "statement": "Neural pathways formed by habits are permanently destroyed when a habit is broken.",
+          "answer": "False"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "before": "Researchers suggest it is more effective to",
+          "blank": "___",
+          "after": "old habits rather than trying to eliminate them.",
+          "answer": "replace"
+        },
+        {
+          "id": 5,
+          "type": "tfng",
+          "statement": "Changing your environment can make new habits easier to form.",
+          "answer": "True"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "What does the passage say about public health campaigns?",
+          "options": ["A. They work best when they rely on individual willpower", "B. They are most effective when they change both the person and the environment", "C. They have had little success in reducing harmful behaviours", "D. They are most effective when based on information"],
+          "answer": "B"
+        }
+      ]
+    }
+  ]
+}
