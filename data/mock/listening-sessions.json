@@ -48,7 +48,7 @@
     },
     {
       "id": "listening-timed",
-      "title": "Timed Practice — Mixed Questions",
+      "title": "Timed Practice — Sports Centre Membership",
       "section": 1,
       "duration": "10 min",
       "transcript": "[SPEAKER 1 — Advisor]: Good morning. City Sports Centre, how can I help?\n\n[SPEAKER 2 — Caller]: Morning. I'd like to find out about joining the gym, please.\n\n[SPEAKER 1]: Of course. Are you interested in a monthly membership or an annual one?\n\n[SPEAKER 2]: I'm not sure yet. Can you tell me the prices?\n\n[SPEAKER 1]: Monthly membership is £45 per month. An annual membership works out cheaper — it's £420 for the year, so you'd save £120 compared to paying monthly.\n\n[SPEAKER 2]: That's a good saving. What does the membership include?\n\n[SPEAKER 1]: Full access to the gym floor, all group fitness classes, and free use of the swimming pool. We also have a sauna which is available to members at no extra cost.\n\n[SPEAKER 2]: What are the opening hours?\n\n[SPEAKER 1]: We're open Monday to Friday from 6am to 10pm, and on weekends from 8am to 8pm.\n\n[SPEAKER 2]: Is there a joining fee?\n\n[SPEAKER 1]: There's a one-off joining fee of £30, which covers your access card and an initial fitness assessment with one of our trainers.\n\n[SPEAKER 2]: That sounds reasonable. Do you have parking?\n\n[SPEAKER 1]: Yes, there's a car park directly behind the building. It's free for the first two hours, then £2 per hour after that.\n\n[SPEAKER 2]: OK. And can I try the facilities before I commit?\n\n[SPEAKER 1]: Absolutely. You can book a free trial day — just bring proof of address and a form of ID. Would you like me to book one for you?\n\n[SPEAKER 2]: Yes please. How about this Thursday?\n\n[SPEAKER 1]: Thursday the 20th — let me check... yes, that's available. Can I take your name?\n\n[SPEAKER 2]: It's James Fletcher.\n\n[SPEAKER 1]: Great, Mr Fletcher. Your trial day is booked for Thursday the 20th. We'll see you then.",
@@ -90,6 +90,148 @@
           "question": "What does a visitor need to bring for a free trial day?",
           "options": ["A. A doctor's note and ID", "B. Proof of address and ID", "C. A credit card and address", "D. A referral and ID"],
           "answer": "B"
+        }
+      ]
+    },
+    {
+      "id": "ls_002",
+      "title": "Section 1 — Enquiring About a College Course",
+      "section": 1,
+      "duration": "10 min",
+      "transcript": "[SPEAKER 1 — Receptionist]: Good morning, Westfield College, Student Services. How can I help?\n\n[SPEAKER 2 — Student]: Hi, I'm calling to get some information about your English language courses. I'm interested in IELTS preparation.\n\n[SPEAKER 1]: Of course. We have two IELTS preparation courses — an intensive four-week course and a longer twelve-week course. Which were you thinking about?\n\n[SPEAKER 2]: Probably the twelve-week one. When does the next one start?\n\n[SPEAKER 1]: The next twelve-week course starts on the 8th of September. Classes run Monday to Thursday, from 9am to 12 noon.\n\n[SPEAKER 2]: That works well for me. How much does it cost?\n\n[SPEAKER 1]: It's £680 for the full twelve weeks. That includes all course materials and three practice tests.\n\n[SPEAKER 2]: Are the practice tests the same format as the real IELTS test?\n\n[SPEAKER 1]: Yes, they're full mock exams — Reading, Writing, Listening and Speaking — marked by our qualified IELTS examiners.\n\n[SPEAKER 2]: Great. What's the class size like?\n\n[SPEAKER 1]: We keep classes small — a maximum of fifteen students per group. That way each student gets plenty of individual attention.\n\n[SPEAKER 2]: That's good to know. Is there anything I need to do to enrol?\n\n[SPEAKER 1]: Yes, you'll need to take a short placement test first — it takes about 45 minutes and it's free. After that, we'll recommend the right level for you.\n\n[SPEAKER 2]: OK. And do you have any evening courses? My partner works during the day and we share childcare.\n\n[SPEAKER 1]: We do have an evening IELTS class — that runs Tuesday and Thursday evenings from 6pm to 9pm. It's a sixteen-week course and costs £590.\n\n[SPEAKER 2]: Hmm, that might actually be better for us. Can I put my name down for the placement test?\n\n[SPEAKER 1]: Of course. Can I take your name?\n\n[SPEAKER 2]: It's Priya Sharma — P-R-I-Y-A, Sharma, S-H-A-R-M-A.\n\n[SPEAKER 1]: And a contact email?\n\n[SPEAKER 2]: It's priya.sharma92 at gmail dot com.\n\n[SPEAKER 1]: Perfect. I'll send you a confirmation with available dates for the placement test. Is there anything else I can help you with?\n\n[SPEAKER 2]: No, that's everything. Thank you so much.\n\n[SPEAKER 1]: You're welcome. We look forward to hearing from you.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "gap_fill",
+          "question": "The twelve-week daytime course starts on the ___ of September.",
+          "answer": "8th"
+        },
+        {
+          "id": 2,
+          "type": "gap_fill",
+          "question": "The twelve-week course costs £___.",
+          "answer": "680"
+        },
+        {
+          "id": 3,
+          "type": "mcq",
+          "question": "What is included in the course fee?",
+          "options": ["A. Accommodation and meals", "B. Course materials and three practice tests", "C. A guaranteed band score improvement", "D. One-to-one tutoring sessions"],
+          "answer": "B"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "question": "Each class has a maximum of ___ students.",
+          "answer": "fifteen"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "question": "What must students do before enrolling?",
+          "options": ["A. Submit a writing sample", "B. Provide proof of previous IELTS score", "C. Take a free placement test", "D. Pay a deposit"],
+          "answer": "C"
+        },
+        {
+          "id": 6,
+          "type": "gap_fill",
+          "question": "The evening course runs for ___ weeks.",
+          "answer": "sixteen"
+        }
+      ]
+    },
+    {
+      "id": "ls_003",
+      "title": "Section 2 — Campus Tour Information",
+      "section": 2,
+      "duration": "10 min",
+      "transcript": "[SPEAKER 1 — Guide]: Welcome, everyone, and thanks for coming along today. My name's Daniel and I'll be taking you on a tour of the Northgate University campus this morning. Before we start walking, let me give you a quick overview of what we'll be covering.\n\nThe campus covers approximately 40 acres and is home to around 12,000 students. We have 6 main academic buildings, a central library, three student residences on campus, and a sports complex that was opened just two years ago.\n\nFirst, we'll head to the Main Building — that's where the administrative offices are, including student finance and the international student support team. If any of you are coming from overseas, that office is particularly important for sorting out your visa documentation and settling-in support.\n\nFrom there, we'll walk across to the Science and Technology Hub. This building was completely refurbished last year and houses state-of-the-art laboratories for chemistry, biology and computer science. It's open from 8am until midnight, seven days a week.\n\nAfter that, we'll visit the Central Library — probably the most-used building on campus. It has seating for 800 students, over 200 individual study pods, and a 24-hour reading room on the ground floor. The library also runs free workshops on academic writing and referencing, which I'd strongly recommend to all new students.\n\nWe'll then swing by the Student Union building, which is the social heart of the campus. There you'll find the campus shop, a café, a bar, and the offices of all 60 of our student societies. If you want to meet people and get involved in campus life, that's the place to go.\n\nFinally, we'll end at the Sports Complex. The facilities include a 25-metre swimming pool, a fully equipped gym, squash courts, and outdoor tennis courts. Membership for students is just £80 per year — fantastic value given everything that's included.\n\nAny questions before we get moving? No? Brilliant. Follow me then and we'll make a start.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "gap_fill",
+          "question": "The campus covers approximately ___ acres.",
+          "answer": "40"
+        },
+        {
+          "id": 2,
+          "type": "gap_fill",
+          "question": "The Science and Technology Hub is open from 8am until ___ every day.",
+          "answer": "midnight"
+        },
+        {
+          "id": 3,
+          "type": "mcq",
+          "question": "What service does the Central Library offer to new students?",
+          "options": ["A. Free accommodation advice", "B. Free workshops on academic writing and referencing", "C. Free individual tutoring sessions", "D. Free access to online journals"],
+          "answer": "B"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "question": "The Student Union has ___ student societies.",
+          "answer": "60"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "question": "Which facility is NOT mentioned as part of the Sports Complex?",
+          "options": ["A. A swimming pool", "B. A running track", "C. Squash courts", "D. Tennis courts"],
+          "answer": "B"
+        },
+        {
+          "id": 6,
+          "type": "gap_fill",
+          "question": "Annual student sports membership costs £___.",
+          "answer": "80"
+        }
+      ]
+    },
+    {
+      "id": "ls_004",
+      "title": "Section 3 — Seminar Discussion: Urban Planning",
+      "section": 3,
+      "duration": "10 min",
+      "transcript": "[SPEAKER 1 — Tutor]: Right, let's get started. Today I want to look at your research into urban planning case studies. Tom, you were looking at the redevelopment of the waterfront area in Copenhagen — how did you get on?\n\n[SPEAKER 2 — Tom]: It was really interesting, actually. The Copenhagen project started in the early 1990s when the old industrial harbour was basically abandoned. The city decided to convert it into a mixed-use residential and commercial area — they called it the Harbour City project.\n\n[SPEAKER 1]: And what made it successful?\n\n[SPEAKER 2]: A few things. First, they involved local residents in the planning process from the very beginning, which is something a lot of regeneration projects fail to do. Secondly, they kept a balance between affordable housing and more expensive apartments — about 30% of all housing had to be social housing by law.\n\n[SPEAKER 3 — Sara]: That's interesting because when I was looking at the Manchester case, they didn't have that kind of requirement and the area ended up being quite exclusive — only wealthy people could afford to live there.\n\n[SPEAKER 1]: That's a classic gentrification problem. What other differences did you notice?\n\n[SPEAKER 3]: Well, Manchester focused much more on attracting businesses than on creating community spaces. There are lots of offices and restaurants, but not many parks or community centres. Copenhagen kept 40% of the space as public open space.\n\n[SPEAKER 2]: Yeah, and that's partly why Copenhagen's project has won several international design awards. The public spaces include cycling paths, waterfront promenades and children's play areas.\n\n[SPEAKER 1]: So what would you say are the key lessons from comparing these two cases?\n\n[SPEAKER 3]: I think the main lesson is that regeneration works best when you have clear social goals, not just economic ones. If you're only trying to attract investment, you risk creating an area that doesn't serve the existing community.\n\n[SPEAKER 2]: I'd add that having binding requirements — like the 30% social housing rule — is more effective than just hoping developers will do the right thing voluntarily.\n\n[SPEAKER 1]: Good points. For your written assignment, I'd like you to incorporate these comparative findings and add a section on what recommendations you'd make for a hypothetical UK city undertaking a similar project. That's due in two weeks.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "gap_fill",
+          "question": "The Copenhagen Harbour City project began in the early ___.",
+          "answer": "1990s"
+        },
+        {
+          "id": 2,
+          "type": "mcq",
+          "question": "What percentage of housing in the Copenhagen project was required to be social housing?",
+          "options": ["A. 20%", "B. 25%", "C. 30%", "D. 40%"],
+          "answer": "C"
+        },
+        {
+          "id": 3,
+          "type": "mcq",
+          "question": "What problem does Sara identify with the Manchester redevelopment?",
+          "options": ["A. Too much social housing was built", "B. It became too exclusive for ordinary residents", "C. Businesses refused to move into the area", "D. The planning process was too slow"],
+          "answer": "B"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "question": "Copenhagen kept ___ % of the redeveloped space as public open space.",
+          "answer": "40"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "question": "What does Tom say is more effective than relying on developers to act responsibly?",
+          "options": ["A. Higher taxes on developers", "B. Community protests", "C. Binding legal requirements", "D. International design awards"],
+          "answer": "C"
+        },
+        {
+          "id": 6,
+          "type": "gap_fill",
+          "question": "The written assignment is due in ___ weeks.",
+          "answer": "two"
         }
       ]
     }

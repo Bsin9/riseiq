@@ -79,6 +79,166 @@
         "Is it better to have short-term or long-term goals?",
         "How do people in your country typically plan for their future?"
       ]
+    },
+    {
+      "id": "sp_006",
+      "topic": "Describe your hometown",
+      "part": 2,
+      "bullets": [
+        "Where your hometown is located",
+        "What it looks like and what it is known for",
+        "What you like most about it",
+        "How your hometown has changed over the years"
+      ],
+      "followUpQuestions": [
+        "What are the advantages of growing up in a small town compared to a big city?",
+        "Do you think people feel a strong connection to their hometowns?",
+        "How does where someone grows up shape their personality and outlook?"
+      ]
+    },
+    {
+      "id": "sp_007",
+      "topic": "Describe a traditional dish from your country",
+      "part": 2,
+      "bullets": [
+        "What the dish is called and what it looks like",
+        "What the main ingredients are",
+        "When people usually eat it",
+        "Why this dish is important in your culture"
+      ],
+      "followUpQuestions": [
+        "How important is food in bringing people together in your culture?",
+        "Do you think traditional foods are becoming less popular among young people?",
+        "How has globalisation affected the food culture in your country?"
+      ]
+    },
+    {
+      "id": "sp_008",
+      "topic": "Describe a person from your youth who had a great influence on you",
+      "part": 2,
+      "bullets": [
+        "Where you met this person",
+        "What relationship this person was to you",
+        "What was special about them",
+        "How they influenced you so much"
+      ],
+      "followUpQuestions": [
+        "Who do you think has more influence on children — parents or teachers?",
+        "Do you think role models are important for young people?",
+        "How have the kinds of people young people look up to changed over time?"
+      ]
+    },
+    {
+      "id": "sp_009",
+      "topic": "Describe a historical place you have visited or would like to visit",
+      "part": 2,
+      "bullets": [
+        "Where this place is",
+        "What happened there historically",
+        "What the place looks like today",
+        "Why you find it interesting or why you would like to visit it"
+      ],
+      "followUpQuestions": [
+        "How important is it for countries to preserve their historical sites?",
+        "Do young people today have enough interest in history?",
+        "How can governments encourage more people to visit historical places?"
+      ]
+    },
+    {
+      "id": "sp_010",
+      "topic": "Describe a competition you have entered",
+      "part": 2,
+      "bullets": [
+        "What the competition was",
+        "How you prepared for it",
+        "What happened during the competition",
+        "What you learned from the experience"
+      ],
+      "followUpQuestions": [
+        "Do you think competition is good for people's development?",
+        "Are competitive people more successful in life?",
+        "How do attitudes towards winning and losing vary between different cultures?"
+      ]
+    },
+    {
+      "id": "sp_011",
+      "topic": "Describe a time when you had to make an important decision",
+      "part": 2,
+      "bullets": [
+        "What decision you had to make",
+        "What factors you considered",
+        "What decision you finally made",
+        "How you felt about the outcome"
+      ],
+      "followUpQuestions": [
+        "Do you think people make better decisions as they get older?",
+        "Should young people be given more freedom to make their own decisions?",
+        "How do you think technology has changed the way people make decisions?"
+      ]
+    },
+    {
+      "id": "sp_012",
+      "topic": "Describe a subject you enjoyed studying at school",
+      "part": 2,
+      "bullets": [
+        "What the subject was",
+        "Who taught it to you",
+        "What you found interesting about it",
+        "How studying this subject has helped you since"
+      ],
+      "followUpQuestions": [
+        "Do you think the school curriculum in your country prepares students well for the future?",
+        "Should students have more choice about what subjects they study?",
+        "How has the role of teachers changed with the rise of the internet?"
+      ]
+    },
+    {
+      "id": "sp_013",
+      "topic": "Describe a time when you visited a city that impressed you",
+      "part": 2,
+      "bullets": [
+        "Which city you visited and when",
+        "Why you went there",
+        "What you saw and did there",
+        "Why this city made such an impression on you"
+      ],
+      "followUpQuestions": [
+        "What makes a city attractive to tourists?",
+        "Do you think mass tourism is damaging to cities?",
+        "How might cities change in the future to deal with growing populations?"
+      ]
+    },
+    {
+      "id": "sp_014",
+      "topic": "Describe a time when you used a foreign language",
+      "part": 2,
+      "bullets": [
+        "What language it was and where you used it",
+        "Why you needed to use it",
+        "How well you were able to communicate",
+        "How you felt about using a foreign language"
+      ],
+      "followUpQuestions": [
+        "How important is it to learn a second language today?",
+        "Do you think children learn languages more easily than adults?",
+        "What impact does speaking multiple languages have on a person's career opportunities?"
+      ]
+    },
+    {
+      "id": "sp_015",
+      "topic": "Describe a type of sport or physical activity you enjoy",
+      "part": 2,
+      "bullets": [
+        "What the sport or activity is",
+        "How often you do it and where",
+        "Who you do it with",
+        "Why you enjoy it and what benefits it brings you"
+      ],
+      "followUpQuestions": [
+        "Why do you think some people find it hard to exercise regularly?",
+        "Should governments do more to encourage people to be physically active?",
+        "How has the way people exercise changed over the past 20 years?"
+      ]
     }
   ]
 }

@@ -31,6 +31,38 @@
       "format": "Semi-formal Letter",
       "minWords": 150,
       "prompt": "You are applying for a job and need a reference letter from a former employer.\n\nWrite a letter to your former manager. In your letter:\n- explain what job you are applying for\n- say why you need a reference from them\n- describe what information you would like them to include\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_005",
+      "title": "Report a Problem with a Neighbour",
+      "type": "task1",
+      "format": "Semi-formal Letter",
+      "minWords": 150,
+      "prompt": "You have been experiencing problems with a neighbour that are affecting your daily life.\n\nWrite a letter to your local council. In your letter:\n- describe what the problem is\n- explain how it is affecting you and others\n- say what you would like the council to do about it\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_006",
+      "title": "Apply for a Volunteer Position",
+      "type": "task1",
+      "format": "Formal Letter",
+      "minWords": 150,
+      "prompt": "You have seen an advertisement for volunteers at a local community organisation.\n\nWrite a letter to the organisation. In your letter:\n- explain why you are interested in volunteering\n- describe any relevant experience or skills you have\n- ask for details about what the role involves\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_007",
+      "title": "Recommend a Restaurant to a Friend",
+      "type": "task1",
+      "format": "Informal Letter",
+      "minWords": 150,
+      "prompt": "A friend is visiting your city next month and has asked you to recommend somewhere to eat.\n\nWrite a letter to your friend. In your letter:\n- recommend a specific restaurant you enjoy\n- describe the food and atmosphere\n- suggest the best time to visit and give any practical advice\n\nWrite at least 150 words."
+    },
+    {
+      "id": "w_t1_008",
+      "title": "Complain About Poor Service at a Hotel",
+      "type": "task1",
+      "format": "Formal Letter",
+      "minWords": 150,
+      "prompt": "You recently stayed at a hotel and were unhappy with several aspects of the service.\n\nWrite a letter to the hotel manager. In your letter:\n- describe what the problems were\n- explain how they affected your stay\n- say what you would like the hotel to do\n\nWrite at least 150 words."
     }
   ],
   "task2": [
@@ -73,6 +105,62 @@
       "format": "Essay",
       "minWords": 250,
       "prompt": "Many children today spend a lot of time using computers and watching TV instead of playing outside. Some people think this is harmful to their development.\n\nTo what extent do you agree or disagree?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_006",
+      "title": "Television and Society",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Television has changed both the way we spend our time and what we know about the world. Some people believe television has improved our lives, while others think it has made them worse.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_007",
+      "title": "Living Alone vs Living with Others",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "The number of people who live alone has increased significantly in recent decades. Some people see this as a positive trend; others believe it has negative consequences for individuals and society.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_008",
+      "title": "The Role of Sport in Society",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Some people believe that competitive sport teaches children important life skills such as teamwork and resilience. Others argue that the emphasis on winning has a negative effect on young people.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_009",
+      "title": "Advertising and Consumers",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Advertising encourages people to buy things they do not need and creates unhealthy attitudes towards money and possessions. To what extent do you agree or disagree with this view?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_010",
+      "title": "Three Generations Living Together",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "In some cultures, it is common for grandparents, parents and children to all live together in the same home. Some people think this arrangement has many advantages; others believe it can cause serious problems.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_011",
+      "title": "Wealth and Success",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "Some people measure success in life by the amount of money and material possessions they have. Others believe that success should be measured in different ways.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
+    },
+    {
+      "id": "w_t2_012",
+      "title": "The Impact of the Automobile",
+      "type": "task2",
+      "format": "Essay",
+      "minWords": 250,
+      "prompt": "The widespread use of cars has changed society in many ways. Some people argue that these changes have been largely positive, while others believe cars have caused serious problems for individuals and communities.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words."
     }
   ]
 }

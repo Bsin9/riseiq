@@ -95,6 +95,255 @@
           "answer": "B"
         }
       ]
+    },
+    {
+      "id": "r_002",
+      "title": "The Spectacular Eruption of Mount St. Helens",
+      "section": 2,
+      "duration": "20 min",
+      "passage": "The eruption in May 1980 of Mount St. Helens, Washington State, astounded the world with its violence. A gigantic explosion tore much of the volcano's summit to fragments; the energy released was equal to that of 500 of the nuclear bombs that destroyed Hiroshima in 1945.\n\nThe event occurred along the boundary of two of the moving plates that make up the Earth's crust. They meet at the junction of the North American continent and the Pacific Ocean. One edge of the continental North American plate over-rides the oceanic Juan de Fuca micro-plate, producing the volcanic Cascade range that includes Mounts Baker, Rainier and Hood, and Lassen Peak as well as Mount St. Helens.\n\nUntil Mount St. Helens began to stir, only Mount Baker and Lassen Peak had shown signs of life during the 20th century. According to geological evidence found by the United States Geological Survey, there had been two major eruptions of Mount St. Helens in the recent geological past: around 1900 B.C., and about A.D. 1500. Since the arrival of Europeans in the region, it had experienced a single period of spasmodic activity, between 1831 and 1857. Then, for more than a century, Mount St. Helens lay dormant.\n\nBy 1979, the Geological Survey, alerted by signs of renewed activity, had been monitoring the volcano for 18 months. It warned the local population against being deceived by the mountain's outward calm, and forecast that an eruption would take place before the end of the century. On March 27, 1980, a few clouds of smoke formed above the summit, and slight tremors were felt. In April a slight lull ensued, but the volcanologists remained pessimistic. Then, in early May, the northern flank of the mountain bulged, and the summit rose by 500 feet.\n\nSteps were taken to evacuate the population. Most campers, hikers, and timbercutters left the slopes of the mountain. Eighty-four-year-old Harry Truman, a holiday lodge owner who had lived there for more than 50 years, refused to be evacuated, in spite of official and public appeals, including an entire class of school children who wrote to him begging him to leave. He never did.\n\nOn May 18, at 8.32 in the morning, Mount St. Helens blew its top — literally. Suddenly, it was 1300 feet shorter than it had been before. Over half a cubic mile of rock had disintegrated. At the same moment, an earthquake with an intensity of 5 on the Richter scale was recorded. It triggered an avalanche of snow and ice mixed with hot rock — the entire north face of the mountain had fallen away. A wave of scorching volcanic gas and rock fragments shot horizontally from the volcano's riven flank, at an inescapable 200 miles per hour. Pulverised rock climbed as a dust cloud into the atmosphere. Finally, viscous lava, accompanied by burning clouds of ash and gas, welled out of the volcano's new crater.\n\nThe effects were catastrophic. Almost all the trees of the surrounding forest, mainly Douglas firs, were flattened and their branches and bark ripped off by the shock wave. Ash and mud spread over nearly 200 square miles of country. Volcanic ash silted up the Columbia River 35 miles away. The debris that accumulated at the foot of the volcano reached a depth of 200 feet in places.\n\nThe eruption of Mount St. Helens was one of the most closely observed and analysed in history. Study of atmospheric particles showed that droplets of sulphuric acid, acting as a screen between the Sun and the Earth's surface, caused a distinct drop in temperature. There is no doubt that the activity of Mount St. Helens and other volcanoes since 1980 has influenced our climate. The volcano is still active. Lava domes have formed inside the new crater, and have periodically burst. The threat of Mount St. Helens lives on.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "mcq",
+          "question": "Which paragraph describes the evacuation of the mountain?",
+          "options": ["A. Paragraph B", "B. Paragraph D", "C. Paragraph E", "D. Paragraph G"],
+          "answer": "C"
+        },
+        {
+          "id": 2,
+          "type": "mcq",
+          "question": "What were the TWO dates of major eruptions of Mount St. Helens before 1980?",
+          "options": ["A. 1831 and 1857", "B. Around 1900 B.C. and A.D. 1500", "C. 1979 and March 1980", "D. A.D. 1500 and 1831"],
+          "answer": "B"
+        },
+        {
+          "id": 3,
+          "type": "gap_fill",
+          "before": "By 1979, the Geological Survey warned the local population to expect a violent eruption before the end of the",
+          "blank": "___",
+          "after": ".",
+          "answer": "century"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "before": "In early May, the summit rose by",
+          "blank": "___",
+          "after": "feet.",
+          "answer": "500"
+        },
+        {
+          "id": 5,
+          "type": "tfng",
+          "statement": "Harry Truman eventually agreed to be evacuated before the eruption.",
+          "answer": "False"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "According to the passage, how did the eruption affect the climate?",
+          "options": ["A. It increased the amount of rainfall", "B. It heated the atmosphere", "C. It caused a drop in temperature", "D. It caused atmospheric storms"],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "id": "r_003",
+      "title": "People and Organisations: The Selection Issue",
+      "section": 2,
+      "duration": "20 min",
+      "passage": "In 1991, according to the Department of Trade and Industry, a record 48,000 British companies went out of business. When businesses fail, the post-mortem analysis is traditionally undertaken by accountants and market strategists. Unarguably, organisations do fail because of undercapitalisation, poor financial management, and adverse market conditions. Yet, conversely, organisations with sound financial backing, good product ideas and market acumen often underperform and fail to meet shareholders' expectations. A more complete explanation of what went wrong must consider the essence of what an organisation actually is — and the most important and often the most expensive financial input is people.\n\nAn organisation is only as good as the people it employs. Selecting the right person for the job involves more than identifying the essential range of skills, educational and professional qualifications necessary to perform the job. This is a purely person/skills match approach to selection.\n\nWork invariably takes place in the presence and under the direction of others, in a particular organisational setting. The individual has to fit in with the work environment, with other employees, with the organisational climate, style or work, and culture of the organisation. Different organisations have different cultures. Working as an engineer at British Aerospace will not necessarily be a similar experience to working in the same capacity at GEC or Plessey.\n\nPoor selection decisions are expensive. For example, the costs of training a policeman are about £20,000. The costs of employing an unsuitable technician on an oil rig or in a nuclear plant could, in an emergency, result in millions of pounds of damage or loss of life. The disharmony of a poor person-environment fit (PE-fit) is likely to result in low job satisfaction, lack of organisational commitment and employee stress, which affect organisational outcomes — productivity, high labour turnover and absenteeism — and individual outcomes such as physical, psychological and mental well-being.\n\nHowever, despite the importance of the recruitment decision and the range of sophisticated and more objective selection techniques available, including the use of psychometric tests and assessment centres, many organisations are still prepared to make this decision on the basis of a single 30 to 45 minute unstructured interview. Research has demonstrated that a selection decision is often made within the first four minutes of the interview. Research into the validity of selection methods has consistently demonstrated that the unstructured interview, where the interviewer asks any questions he or she likes, is a poor predictor of future job performance.\n\nThe future is likely to be different. Detailed surveys of social and economic trends in the European community show that Europe's population is falling and getting older. The birth rate in the Community is now only three-quarters of the level needed to ensure replacement of the existing population. By the year 2020, it is predicted that more than one in four Europeans will be aged 60 or more and barely one in five will be under 20. The changing demographics will not only affect selection ratios — they will also make it increasingly important for organisations to be more responsive and accommodating to the changing needs of their workforce if they are to retain and develop their human resources.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "tfng",
+          "statement": "Organisations should recognise that their employees are a significant part of their financial assets.",
+          "answer": "True"
+        },
+        {
+          "id": 2,
+          "type": "tfng",
+          "statement": "Open-structured 45-minute interviews are the best method to identify suitable employees.",
+          "answer": "False"
+        },
+        {
+          "id": 3,
+          "type": "tfng",
+          "statement": "Graphology is a good predictor of future job performance.",
+          "answer": "False"
+        },
+        {
+          "id": 4,
+          "type": "tfng",
+          "statement": "In 2020, the percentage of the population under 20 will be smaller than now.",
+          "answer": "True"
+        },
+        {
+          "id": 5,
+          "type": "gap_fill",
+          "before": "Poor person-environment fit is likely to result in low job satisfaction, lack of organisational commitment and",
+          "blank": "___",
+          "after": ", which affect productivity.",
+          "answer": "employee stress"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "According to the passage, why do many companies still use unstructured interviews?",
+          "options": ["A. They are the most accurate method of selection", "B. They are legally required in most countries", "C. Many organisations still choose them despite better alternatives being available", "D. Psychometric tests are too expensive"],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "id": "r_004",
+      "title": "The Rollfilm Revolution",
+      "section": 3,
+      "duration": "20 min",
+      "passage": "The introduction of the dry plate process brought with it many advantages. Not only was it much more convenient, so that the photographer no longer needed to prepare his material in advance, but its much greater sensitivity made possible a new generation of cameras. As well as fitting shutters and viewfinders to their conventional stand cameras, manufacturers began to construct smaller cameras intended specifically for hand use.\n\nOne of the first designs to be published was Thomas Bolas's 'Detective' camera of 1881. Externally a plain box, quite unlike the folding bellows camera typical of the period, it could be used unobtrusively. The name caught on, and for the next decade almost all hand cameras were called 'Detectives'. Many of the new designs in the 1880s were for magazine cameras, in which a number of dry plates could be pre-loaded and changed one after another following exposure. Although much more convenient than stand cameras, magazine plate cameras were heavy and required access to a darkroom for loading and processing.\n\nThis was all changed by George Eastman, a young American bank clerk turned photographic manufacturer, from Rochester, New York. Eastman had begun to manufacture gelatine dry plates in 1880. His first step was to develop, with the camera manufacturer William H. Walker, a holder for a long roll of paper negative film. This could be fitted to a standard plate camera and up to forty-eight exposures made before reloading. Although roll-holders had been made as early as the 1850s, none had been very successful. Eastman's rollable paper film was sensitive and gave negatives of good quality.\n\nThe next step was to combine the roll-holder with a small hand camera. Eastman's design was patented in 1886 with an employee, F. M. Cossitt. It was not a success — only fifty were made. Eastman set about developing a new model, launched in June 1888. It was a small box containing a roll of paper-based stripping film sufficient for 100 circular exposures. Its operation was simple: set the shutter by pulling a wire string; aim the camera using the V line impression; press the release button to activate the exposure; and turn a special key to wind the film. Eastman gave his camera the invented name 'Kodak' — which was easily pronounceable in most languages.\n\nThe real significance of the first Kodak camera was that it was backed up by a developing and printing service. Hitherto, virtually all photographers developed and printed their own pictures. This required facilities of a darkroom and the time and inclination to handle the necessary chemicals. Eastman recognised that not everyone had the resources or the desire to do this. When a customer had made a hundred exposures in the Kodak camera, he sent it to Eastman's factory where the film was unloaded, processed and printed, and the camera reloaded and returned to the owner. 'You Press the Button, We Do the Rest' ran Eastman's classic marketing slogan.\n\nBy September 1889, over 5,000 Kodak cameras had been sold in the USA, and the company was daily printing 6–7,000 negatives. In 1889 Eastman launched a new roll film on a celluloid base. Clear, tough, transparent and flexible, the new film not only made the rollfilm camera fully practical, but provided the raw material for the introduction of cinematography a few years later.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "tfng",
+          "statement": "Before the dry plate process, short exposures could only be achieved with cameras held in the hand.",
+          "answer": "False"
+        },
+        {
+          "id": 2,
+          "type": "tfng",
+          "statement": "Stirn's 'America' camera lacked Kodak's developing service.",
+          "answer": "True"
+        },
+        {
+          "id": 3,
+          "type": "gap_fill",
+          "before": "Eastman gave his new camera the invented name",
+          "blank": "___",
+          "after": ", which was easily pronounceable in most languages.",
+          "answer": "Kodak"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "before": "By September 1889, over",
+          "blank": "___",
+          "after": "Kodak cameras had been sold in the USA.",
+          "answer": "5,000"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "question": "What was the key innovation that made the first Kodak camera significant?",
+          "options": ["A. It was the first camera small enough to hold in one hand", "B. It used the new celluloid film", "C. It was backed by a developing and printing service", "D. It could take 200 exposures before reloading"],
+          "answer": "C"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "What additional industry did Eastman's celluloid roll film help create?",
+          "options": ["A. Television broadcasting", "B. Cinematography", "C. Colour photography", "D. Digital imaging"],
+          "answer": "B"
+        }
+      ]
+    },
+    {
+      "id": "r_005",
+      "title": "The Science of Sleep",
+      "section": 1,
+      "duration": "20 min",
+      "passage": "Sleep is one of the most universal yet least understood human behaviours. Despite the fact that we spend approximately one third of our lives asleep, scientists are still working to fully understand why we sleep and what exactly happens to the brain and body during those hours of unconsciousness.\n\nWhat we do know is that sleep is essential. Studies involving sleep deprivation have consistently shown that humans who are denied adequate sleep suffer serious consequences: impaired cognitive function, reduced reaction times, weakened immune response, and in extreme cases, hallucinations and psychosis. In animals, prolonged total sleep deprivation invariably leads to death, though the precise mechanisms behind this are still not fully understood.\n\nSleep occurs in cycles, each lasting approximately 90 minutes. Within each cycle, the brain passes through distinct stages: light sleep, deep sleep, and the rapid eye movement (REM) stage. During REM sleep, the brain is almost as active as when awake, and this is the stage most associated with vivid dreaming. Scientists believe REM sleep plays a critical role in memory consolidation — the process by which the brain transfers information from short-term to long-term storage.\n\nDeep sleep, by contrast, is believed to be the most physically restorative phase. During deep sleep, the body releases growth hormones, repairs tissue, and strengthens the immune system. Heart rate and breathing slow, and blood pressure drops. People who are regularly deprived of deep sleep often report feeling physically exhausted even after spending many hours in bed.\n\nThe amount of sleep a person needs changes across a lifetime. Newborn babies may sleep up to 17 hours a day, while most healthy adults require between 7 and 9 hours. Older adults often find that their sleep becomes lighter and more fragmented, spending less time in the deep and REM stages. This shift is thought to be linked to changes in the brain's circadian clock — the internal timer that regulates the sleep-wake cycle.\n\nModern lifestyles present significant challenges to healthy sleep. Artificial light, particularly the blue-spectrum light emitted by smartphones and computer screens, suppresses the production of melatonin — the hormone that signals to the body it is time to sleep. Irregular work schedules, high stress levels, and the consumption of caffeine and alcohol all interfere with the body's natural sleep architecture. Public health researchers increasingly view poor sleep as a significant and under-recognised threat to physical and mental wellbeing.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "tfng",
+          "statement": "Scientists fully understand why humans need to sleep.",
+          "answer": "False"
+        },
+        {
+          "id": 2,
+          "type": "tfng",
+          "statement": "During REM sleep, the brain is more active than when the person is awake.",
+          "answer": "False"
+        },
+        {
+          "id": 3,
+          "type": "tfng",
+          "statement": "Deep sleep is important for physical recovery.",
+          "answer": "True"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "before": "Each sleep cycle lasts approximately",
+          "blank": "___",
+          "after": "minutes.",
+          "answer": "90"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "question": "What effect does blue-spectrum light from screens have on the body?",
+          "options": ["A. It increases melatonin production", "B. It suppresses melatonin production", "C. It improves deep sleep quality", "D. It has no proven effect on sleep"],
+          "answer": "B"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "According to the passage, which stage of sleep is most associated with dreaming?",
+          "options": ["A. Light sleep", "B. Deep sleep", "C. REM sleep", "D. The circadian stage"],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "id": "r_006",
+      "title": "Globalisation and the World Economy",
+      "section": 3,
+      "duration": "20 min",
+      "passage": "Globalisation — the increasing interconnection of the world's economies, cultures and populations — has been one of the defining forces of the modern era. Driven by advances in transport, communication and trade policy, it has enabled the movement of goods, capital, services and people across borders on an unprecedented scale. Supporters argue that it has lifted hundreds of millions of people out of poverty; critics contend that it has also increased inequality and eroded local cultures.\n\nThe roots of modern globalisation can be traced to the period following the Second World War, when international institutions such as the International Monetary Fund, the World Bank and the General Agreement on Tariffs and Trade were established to promote economic cooperation and reduce barriers to trade. The liberalisation of trade that followed — particularly from the 1980s onwards — led to a dramatic expansion in the volume of international trade.\n\nOne of the most visible manifestations of globalisation is the global supply chain. A single product — a mobile phone, for example — may contain components manufactured in dozens of countries before being assembled in one location and sold in another. This system has allowed companies to reduce costs significantly by sourcing labour and materials wherever they are cheapest. However, it has also made economies highly interdependent: disruptions in one country can rapidly cascade across the world, as demonstrated by the global impact of the COVID-19 pandemic on manufacturing and logistics.\n\nGlobalisation has had a profound impact on employment patterns in wealthy countries. As manufacturing has moved to lower-wage economies, many traditional industrial regions in Europe and North America have experienced significant job losses. While new employment has emerged in sectors such as technology and services, the transition has been painful for many workers whose skills are no longer in demand. This economic displacement is widely seen as a contributing factor to the rise of populist political movements in several Western democracies.\n\nDespite these challenges, there are strong arguments that globalisation has delivered significant benefits. Life expectancy has risen globally, and extreme poverty has fallen from affecting more than a third of the world's population in 1990 to less than ten per cent today. Access to medicines, technology and education has improved across much of the developing world. The challenge for policymakers is to manage the benefits and costs of globalisation more equitably — ensuring that the gains are widely shared and that those who bear the costs receive adequate support.",
+      "questions": [
+        {
+          "id": 1,
+          "type": "tfng",
+          "statement": "Globalisation began in the period immediately after the Second World War.",
+          "answer": "True"
+        },
+        {
+          "id": 2,
+          "type": "tfng",
+          "statement": "Global supply chains make economies less dependent on each other.",
+          "answer": "False"
+        },
+        {
+          "id": 3,
+          "type": "tfng",
+          "statement": "The passage states that populist movements are entirely caused by globalisation.",
+          "answer": "Not Given"
+        },
+        {
+          "id": 4,
+          "type": "gap_fill",
+          "before": "Extreme poverty has fallen from more than a third of the world's population in 1990 to less than",
+          "blank": "___",
+          "after": "per cent today.",
+          "answer": "ten"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "question": "What does the passage say about the COVID-19 pandemic in relation to globalisation?",
+          "options": ["A. It showed that global supply chains are highly efficient", "B. It demonstrated how disruptions in one country can spread globally", "C. It proved that globalisation should be reversed", "D. It had little impact on global manufacturing"],
+          "answer": "B"
+        },
+        {
+          "id": 6,
+          "type": "mcq",
+          "question": "What is described as the main challenge facing policymakers regarding globalisation?",
+          "options": ["A. Stopping the movement of goods across borders", "B. Reducing the power of international institutions", "C. Managing benefits and costs more equitably", "D. Reversing the decline of manufacturing industries"],
+          "answer": "C"
+        }
+      ]
     }
   ]
 }
