@@ -1,4 +1,5 @@
 import { requireRole } from "@/lib/auth/withAuth.js";
+import { StatusBadge } from "@/components/admin/StatusBadge.jsx";
 
 export const metadata = { title: "Students — RiseIQ Admin" };
 
@@ -13,11 +14,8 @@ const ALL_STUDENTS = [
   { id:"u_s08", name:"Fatima Hassan", email:"fat@example.com",   course:"IELTS",  plan:"Pro",  band:7.5,  status:"Active",  joined:"2026-01-10", sessions:45 },
 ];
 
-const STATUS_COLOR = {
-  Active:  { bg:"#dcfce7", color:"#166534" },
-  Paused:  { bg:"#fef9c3", color:"#854d0e" },
-  Expired: { bg:"#fee2e2", color:"#991b1b" },
-};
+const TH = { padding:"0.75rem 1.25rem", textAlign:"left", fontWeight:600, color:"#64748b", fontSize:"0.75rem", textTransform:"uppercase", letterSpacing:"0.05em", borderBottom:"1px solid #e2e8f0" };
+const TD = { padding:"0.875rem 1.25rem" };
 
 export default async function StudentsPage() {
   await requireRole("admin");
@@ -37,30 +35,27 @@ export default async function StudentsPage() {
             <thead>
               <tr style={{ background:"#f8fafc" }}>
                 {["Name","Email","Course","Plan","Band","Sessions","Status","Joined"].map((h) => (
-                  <th key={h} style={{ padding:"0.75rem 1.25rem", textAlign:"left", fontWeight:600, color:"#64748b", fontSize:"0.75rem", textTransform:"uppercase", letterSpacing:"0.05em", borderBottom:"1px solid #e2e8f0" }}>{h}</th>
+                  <th key={h} style={TH}>{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {ALL_STUDENTS.map((s, i) => {
-                const badge = STATUS_COLOR[s.status] ?? STATUS_COLOR.Active;
-                return (
-                  <tr key={s.id} style={{ background: i%2===0?"#fff":"#f8fafc" }}>
-                    <td style={{ padding:"0.875rem 1.25rem", fontWeight:600, color:"#0f172a" }}>{s.name}</td>
-                    <td style={{ padding:"0.875rem 1.25rem", color:"#64748b" }}>{s.email}</td>
-                    <td style={{ padding:"0.875rem 1.25rem" }}>
-                      <span style={{ padding:"0.2rem 0.6rem", borderRadius:"9999px", fontSize:"0.75rem", fontWeight:600, background:"#f1f5f9", color:"#334155" }}>{s.course}</span>
-                    </td>
-                    <td style={{ padding:"0.875rem 1.25rem", color:"#64748b" }}>{s.plan}</td>
-                    <td style={{ padding:"0.875rem 1.25rem", fontWeight:700, color:"#0f172a" }}>{s.band ?? "—"}</td>
-                    <td style={{ padding:"0.875rem 1.25rem", color:"#64748b" }}>{s.sessions}</td>
-                    <td style={{ padding:"0.875rem 1.25rem" }}>
-                      <span style={{ padding:"0.2rem 0.6rem", borderRadius:"9999px", fontSize:"0.75rem", fontWeight:600, background:badge.bg, color:badge.color }}>{s.status}</span>
-                    </td>
-                    <td style={{ padding:"0.875rem 1.25rem", color:"#94a3b8", fontSize:"0.8125rem" }}>{s.joined}</td>
-                  </tr>
-                );
-              })}
+              {ALL_STUDENTS.map((s, i) => (
+                <tr key={s.id} style={{ background: i%2===0?"#fff":"#f8fafc" }}>
+                  <td style={{ ...TD, fontWeight:600, color:"#0f172a" }}>{s.name}</td>
+                  <td style={{ ...TD, color:"#64748b" }}>{s.email}</td>
+                  <td style={TD}>
+                    <span style={{ padding:"0.2rem 0.6rem", borderRadius:"9999px", fontSize:"0.75rem", fontWeight:600, background:"#f1f5f9", color:"#334155" }}>
+                      {s.course}
+                    </span>
+                  </td>
+                  <td style={TD}><StatusBadge status={s.plan} /></td>
+                  <td style={{ ...TD, fontWeight:700, color:"#0f172a" }}>{s.band ?? "—"}</td>
+                  <td style={{ ...TD, color:"#64748b" }}>{s.sessions}</td>
+                  <td style={TD}><StatusBadge status={s.status} /></td>
+                  <td style={{ ...TD, color:"#94a3b8", fontSize:"0.8125rem" }}>{s.joined}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

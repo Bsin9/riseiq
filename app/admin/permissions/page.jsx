@@ -41,9 +41,9 @@ export default async function PermissionsPage() {
       </div>
 
       <div className="card" style={{ padding:"1.5rem", marginTop:"1.5rem", background:"#fffbeb", border:"1px solid #fde68a" }}>
-        <h3 style={{ fontSize:"0.9375rem", fontWeight:700, color:"#92400e", margin:"0 0 0.5rem" }}>⚠ Coming in Phase 2</h3>
+        <h3 style={{ fontSize:"0.9375rem", fontWeight:700, color:"#92400e", margin:"0 0 0.5rem" }}>⚠ Coming soon</h3>
         <p style={{ color:"#78350f", fontSize:"0.875rem", margin:0 }}>
-          Granular permission management (invite admins, create custom roles, per-course access gates) is planned for Phase 2.
+          Granular permission management (invite admins, create custom roles, per-course access gates) is planned for a future release.
           Today roles are assigned at account creation and updated via backend config.
         </p>
       </div>
