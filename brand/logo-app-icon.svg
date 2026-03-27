@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="RiseIQ app icon">
+  <defs>
+    <linearGradient id="app-bg" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F1F3D"/>
+      <stop offset="100%" stop-color="#1A3260"/>
+    </linearGradient>
+    <linearGradient id="app-line-grad" x1="44" y1="158" x2="158" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.3)"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <filter id="app-gold-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0.6 0 0 0  0.7 0.4 0 0 0  0 0 0 0 0  0 0 0 0.5 0" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" rx="44" fill="url(#app-bg)"/>
+
+  <!-- Subtle grid texture overlay -->
+  <rect width="200" height="200" rx="44" fill="url(#app-bg)" opacity="0.5"/>
+
+  <!-- Ascending connector line -->
+  <line x1="44" y1="158" x2="158" y2="42" stroke="url(#app-line-grad)" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Node 1: Foundation (white, low opacity) -->
+  <circle cx="44" cy="158" r="11" fill="rgba(255,255,255,0.25)"/>
+
+  <!-- Node 2: Momentum (teal) with ring -->
+  <circle cx="101" cy="100" r="20" fill="rgba(45,212,191,0.2)"/>
+  <circle cx="101" cy="100" r="15" fill="#2DD4BF"/>
+
+  <!-- Node 3: Achievement (gold) with large glow halo -->
+  <circle cx="158" cy="42" r="38" fill="rgba(245,166,35,0.12)" filter="url(#app-gold-glow)"/>
+  <circle cx="158" cy="42" r="26" fill="rgba(245,166,35,0.2)"/>
+  <circle cx="158" cy="42" r="20" fill="#F5A623"/>
+</svg>

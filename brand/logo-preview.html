@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RiseIQ — Brand Identity System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #0F1F3D;
+      --navy-light: #1A3260;
+      --teal:       #1DB8A4;
+      --teal-light: #2DD4BF;
+      --teal-pale:  #E6FAF8;
+      --gold:       #F5A623;
+      --gold-light: #FDD07A;
+      --cream:      #FDFAF5;
+      --white:      #FFFFFF;
+      --gray:       #64748B;
+      --gray-light: #F1F5F9;
+      --gray-mid:   #CBD5E1;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F8FAFC;
+      color: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    /* ── Cover ─────────────────────────────────────────────── */
+    .cover {
+      background: linear-gradient(135deg, #0A1628 0%, #0F1F3D 45%, #0A2E2A 100%);
+      padding: 80px 64px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 75% 45%, rgba(29,184,164,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(26,50,96,0.6) 0%, transparent 60%);
+    }
+    .cover-inner { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; }
+    .cover-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cover-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 1.5px; background: var(--teal);
+    }
+    .cover-logo { margin-bottom: 36px; }
+    .cover-divider {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      border-radius: 2px; margin: 32px 0;
+    }
+    .cover-title {
+      font-size: 48px; font-weight: 900; color: white; line-height: 1.08;
+      letter-spacing: -2px; margin-bottom: 14px;
+    }
+    .cover-title span { color: var(--teal); }
+    .cover-sub { font-size: 17px; color: rgba(255,255,255,0.55); font-weight: 400; letter-spacing: 0.01em; }
+    .cover-meta {
+      margin-top: 52px; display: flex; gap: 40px; align-items: center;
+      font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.03em;
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
+    }
+    .cover-meta-item { display: flex; gap: 8px; }
+    .cover-meta-item span { color: rgba(255,255,255,0.65); font-weight: 600; }
+
+    /* ── Layout ────────────────────────────────────────────── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+    .section { padding: 80px 0; border-bottom: 1px solid var(--gray-mid); }
+    .section:last-child { border-bottom: none; padding-bottom: 120px; }
+
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block; width: 16px; height: 1.5px; background: var(--teal);
+    }
+    .section-title { font-size: 30px; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; }
+    .section-desc {
+      font-size: 15px; color: var(--gray); line-height: 1.65; max-width: 580px;
+      margin-bottom: 52px;
+    }
+
+    /* ── Brand Summary ─────────────────────────────────────── */
+    .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .summary-card {
+      background: white; border-radius: 14px; padding: 22px 24px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(15,31,61,0.06);
+    }
+    .summary-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 10px;
+    }
+    .summary-value { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.6; }
+    .summary-value.large { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+    .summary-tag {
+      display: inline-block; margin: 3px 3px 0 0;
+      background: var(--teal-pale); color: var(--teal);
+      font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px;
+    }
+    .summary-tag.gold {
+      background: rgba(245,166,35,0.1); color: #C47F0B;
+    }
+
+    /* ── Concept Cards ─────────────────────────────────────── */
+    .concepts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .concept-card {
+      background: white; border-radius: 18px; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+      box-shadow: 0 1px 4px rgba(15,31,61,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .concept-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(15,31,61,0.1); }
+    .concept-card.winner {
+      border: 2px solid var(--teal);
+      box-shadow: 0 0 0 4px rgba(29,184,164,0.08), 0 4px 20px rgba(29,184,164,0.12);
+    }
+    .concept-preview {
+      height: 172px; background: var(--gray-light);
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .concept-preview.dark { background: var(--navy); }
+    .concept-preview.cream { background: var(--cream); }
+    .winner-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--teal); color: white;
+      font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 5px 11px; border-radius: 999px;
+    }
+    .concept-body { padding: 22px 22px 24px; }
+    .concept-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 5px;
+    }
+    .concept-name { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .concept-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    .concept-verdict {
+      margin-top: 14px; font-size: 12px; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .concept-verdict.selected { color: var(--teal); }
+    .concept-verdict.rejected { color: var(--gray); }
+    .verdict-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+    /* ── Rationale block ────────────────────────────────────── */
+    .rationale {
+      background: linear-gradient(135deg, #0F1F3D 0%, #1A3260 100%);
+      border-radius: 20px; padding: 44px 48px; color: white; margin-bottom: 0;
+    }
+    .rationale-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 16px;
+    }
+    .rationale-title { font-size: 26px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 14px; }
+    .rationale-desc { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 640px; margin-bottom: 32px; }
+    .rationale-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .rationale-point {
+      background: rgba(255,255,255,0.06); border-radius: 12px; padding: 16px 18px;
+      display: flex; gap: 12px; align-items: flex-start;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .rationale-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(29,184,164,0.2); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+    .rationale-point-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 3px; }
+    .rationale-point-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ── Logo Versions ──────────────────────────────────────── */
+    .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .logo-swatch {
+      border-radius: 18px; padding: 44px 40px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 180px; position: relative; gap: 20px;
+    }
+    .logo-swatch.on-white { background: white; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .logo-swatch.on-navy  { background: #0F1F3D; }
+    .logo-swatch.on-teal  { background: var(--teal-pale); border: 1px solid rgba(29,184,164,0.2); }
+    .logo-swatch.on-gray  { background: var(--gray-light); border: 1px solid rgba(0,0,0,0.06); }
+    .logo-swatch-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .logo-swatch.on-white .logo-swatch-label,
+    .logo-swatch.on-teal  .logo-swatch-label,
+    .logo-swatch.on-gray  .logo-swatch-label { color: var(--gray); }
+    .logo-swatch.on-navy  .logo-swatch-label { color: rgba(255,255,255,0.35); }
+
+    /* ── Icon Sizes ─────────────────────────────────────────── */
+    .icon-row { display: flex; gap: 36px; align-items: flex-end; flex-wrap: wrap; margin-top: 8px; }
+    .icon-item { text-align: center; }
+    .icon-bg {
+      background: white; border: 1px solid rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+    }
+    .icon-label { font-size: 11px; color: var(--gray); font-weight: 500; }
+
+    /* ── Color Palette ──────────────────────────────────────── */
+    .palette { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+    .swatch-card { border-radius: 14px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .swatch-fill { height: 80px; }
+    .swatch-info { background: white; padding: 14px; border: 1px solid rgba(0,0,0,0.06); border-top: none; }
+    .swatch-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .swatch-hex { font-size: 12px; color: var(--gray); font-family: 'JetBrains Mono', 'Fira Code', monospace; margin-bottom: 6px; }
+    .swatch-role { font-size: 11px; color: var(--gray); line-height: 1.4; }
+    .palette-extended { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .swatch-mini { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .swatch-mini-fill { height: 44px; }
+    .swatch-mini-info { background: white; padding: 10px 12px; border: 1px solid rgba(0,0,0,0.06); border-top: none; }
+    .swatch-mini-hex { font-size: 11px; color: var(--gray); font-family: monospace; }
+    .swatch-mini-name { font-size: 12px; font-weight: 600; color: var(--navy); }
+
+    /* ── Typography ─────────────────────────────────────────── */
+    .type-card {
+      background: white; border-radius: 16px; padding: 36px;
+      border: 1px solid rgba(0,0,0,0.06); margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .type-meta {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 20px;
+    }
+    .type-sample-display { font-size: 52px; font-weight: 900; letter-spacing: -2px; color: var(--navy); line-height: 1; margin-bottom: 20px; }
+    .type-sample-display span { color: var(--teal); }
+    .type-weights { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--gray-light); }
+    .type-weight-item { }
+    .type-weight-sample { color: var(--navy); margin-bottom: 4px; }
+    .type-weight-label { font-size: 11px; color: var(--gray); }
+
+    .type-scale { display: flex; flex-direction: column; gap: 20px; }
+    .type-scale-row { display: flex; align-items: baseline; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-light); }
+    .type-scale-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .type-scale-label { font-size: 11px; color: var(--gray); min-width: 120px; flex-shrink: 0; }
+    .type-scale-sample { color: var(--navy); }
+
+    /* ── Usage Guidelines ───────────────────────────────────── */
+    .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .usage-card { border-radius: 14px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .usage-head {
+      padding: 13px 18px; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .usage-head.do   { background: #F0FDF4; color: #15803d; border-bottom: 1px solid #DCF9E5; }
+    .usage-head.dont { background: #FEF2F2; color: #DC2626; border-bottom: 1px solid #FEE2E2; }
+    .usage-head-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .usage-body { background: white; padding: 18px; border: 1px solid rgba(0,0,0,0.06); border-top: none; border-radius: 0 0 14px 14px; }
+    .usage-item {
+      display: flex; gap: 10px; margin-bottom: 11px;
+      font-size: 13px; color: var(--navy); line-height: 1.5;
+    }
+    .usage-item:last-child { margin-bottom: 0; }
+    .usage-item-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .usage-item-dot.do   { background: #22C55E; }
+    .usage-item-dot.dont { background: #EF4444; }
+
+    /* ── Two col ────────────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    /* ── Tagline block ──────────────────────────────────────── */
+    .tagline-block {
+      background: white; border-radius: 16px; padding: 32px 36px;
+      border: 1px solid rgba(0,0,0,0.06); text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .tagline-text { font-size: 32px; font-weight: 900; letter-spacing: -1px; }
+    .tagline-text span { color: var(--teal); }
+    .tagline-note { font-size: 13px; color: var(--gray); margin-top: 8px; }
+
+    /* ── Stacked logo ───────────────────────────────────────── */
+    .stacked-container {
+      background: white; border-radius: 18px; padding: 40px;
+      border: 1px solid rgba(0,0,0,0.07); text-align: center;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stacked-container.dark { background: var(--navy); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     COVER
+════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Brand Identity System</div>
+
+    <!-- Dark-background logo at large size -->
+    <div class="cover-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="272" height="74">
+        <defs>
+          <linearGradient id="cvr-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+            <stop offset="100%" stop-color="#2DD4BF"/>
+          </linearGradient>
+        </defs>
+        <line x1="7" y1="38" x2="37" y2="8" stroke="url(#cvr-lg)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="7" cy="38" r="3.5" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="22" cy="23" r="6.5" fill="rgba(45,212,191,0.2)"/>
+        <circle cx="22" cy="23" r="5" fill="#2DD4BF"/>
+        <circle cx="37" cy="8" r="10" fill="rgba(245,166,35,0.15)"/>
+        <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+        <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+          <tspan fill="#FFFFFF">Rise</tspan><tspan fill="#2DD4BF">IQ</tspan>
+        </text>
+      </svg>
+    </div>
+
+    <div class="cover-divider"></div>
+    <div class="cover-title">One mark.<br>Every <span>level.</span></div>
+    <div class="cover-sub">RiseIQ Brand Identity — Visual language system and usage guidelines</div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">Platform <span>riseiq.ca</span></div>
+      <div class="cover-meta-item">Version <span>1.0</span></div>
+      <div class="cover-meta-item">Date <span>March 2026</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     BRAND SUMMARY
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">01 — Brand Extract</div>
+    <div class="section-title">What RiseIQ is</div>
+    <div class="section-desc">Brand attributes extracted directly from the product architecture, design system, and positioning documents in the codebase.</div>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-label">Platform Name</div>
+        <div class="summary-value large">RiseIQ</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Tagline</div>
+        <div class="summary-value large" style="font-size:18px;letter-spacing:-0.3px;">Learn. Grow. Rise.</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Product Type</div>
+        <div class="summary-value">AI-powered multi-course learning platform for professional certifications</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Audience</div>
+        <div class="summary-value">Ambitious adult learners targeting IELTS, SQL, and Microsoft Azure certifications</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Active Courses</div>
+        <div class="summary-value" style="margin-top:4px;">
+          <span class="summary-tag">IELTS</span>
+          <span class="summary-tag">SQL</span>
+          <span class="summary-tag">Azure</span>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">AI Feature</div>
+        <div class="summary-value">
+          <strong>Synapse Brain</strong> — course-aware AI study assistant with 180-day memory
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Brand Tone</div>
+        <div class="summary-value">Intelligent. Precise. Aspirational. Premium but not intimidating.</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Differentiator</div>
+        <div class="summary-value">AI-native, progress-predictive, multi-discipline — not a passive content library</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Plans</div>
+        <div class="summary-value" style="margin-top:4px;">
+          <span class="summary-tag">Free</span>
+          <span class="summary-tag gold">Pro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     THREE CONCEPTS
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">02 — Exploration</div>
+    <div class="section-title">Logo directions explored</div>
+    <div class="section-desc">Three sharply differentiated concepts, each rooted in a different visual logic and brand interpretation.</div>
+
+    <div class="concepts-grid">
+
+      <!-- CONCEPT A — Rising Nodes (WINNER) -->
+      <div class="concept-card winner">
+        <div class="concept-preview dark">
+          <div class="winner-badge">Selected</div>
+          <!-- Rising Nodes on dark bg -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="204" height="55">
+            <defs>
+              <linearGradient id="cA-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.3)"/>
+                <stop offset="100%" stop-color="#2DD4BF"/>
+              </linearGradient>
+            </defs>
+            <line x1="7" y1="38" x2="37" y2="8" stroke="url(#cA-lg)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="7" cy="38" r="3.5" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="22" cy="23" r="6.5" fill="rgba(45,212,191,0.2)"/>
+            <circle cx="22" cy="23" r="5" fill="#2DD4BF"/>
+            <circle cx="37" cy="8" r="10" fill="rgba(245,166,35,0.15)"/>
+            <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+            <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+              <tspan fill="white">Rise</tspan><tspan fill="#2DD4BF">IQ</tspan>
+            </text>
+          </svg>
+        </div>
+        <div class="concept-body">
+          <div class="concept-num">Concept A</div>
+          <div class="concept-name">The Rising Nodes</div>
+          <div class="concept-desc">Three ascending data points connected by a gradient trajectory line. Each node grows in size — navy (foundation), teal (momentum), gold (achievement). A geometric metaphor for measured, intelligent progress.</div>
+          <div class="concept-verdict selected"><span class="verdict-dot"></span> Selected — most distinctive and strategically precise</div>
+        </div>
+      </div>
+
+      <!-- CONCEPT B — Signal R -->
+      <div class="concept-card">
+        <div class="concept-preview cream">
+          <!-- Geometric R with rising leg -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 72" fill="none" width="132" height="86">
+            <!-- Large geometric R -->
+            <rect x="2" y="4" width="7" height="44" rx="1.5" fill="#0F1F3D"/>
+            <!-- R bowl -->
+            <path d="M 9 4 H 26 Q 38 4 38 15.5 Q 38 27 26 27 H 9" fill="#0F1F3D"/>
+            <path d="M 10.5 8 H 25 Q 33 8 33 15.5 Q 33 23 25 23 H 10.5 Z" fill="#FDFAF5"/>
+            <!-- Rising leg (the key change — goes UP-right instead of down-right) -->
+            <line x1="10" y1="27" x2="38" y2="5" stroke="#F5A623" stroke-width="7" stroke-linecap="round"/>
+            <!-- IQ to the right -->
+            <text x="48" y="30" font-family="Inter,-apple-system,sans-serif" font-size="20" font-weight="800" fill="#1DB8A4">IQ</text>
+            <!-- Tagline below -->
+            <text x="2" y="64" font-family="Inter,-apple-system,sans-serif" font-size="9" font-weight="500" fill="#64748B" letter-spacing="1.5">LEARN · GROW · RISE</text>
+          </svg>
+        </div>
+        <div class="concept-body">
+          <div class="concept-num">Concept B</div>
+          <div class="concept-name">The Signal R</div>
+          <div class="concept-desc">A bold geometric "R" where the descending leg is inverted to rise — a gold diagonal slash where a standard typeface would fall. The lettermark encodes "Rise" literally in the R's anatomy. "IQ" completes it in teal.</div>
+          <div class="concept-verdict rejected"><span class="verdict-dot"></span> Not selected — strong concept but R lettermarks lack distinction at scale</div>
+        </div>
+      </div>
+
+      <!-- CONCEPT C — Band Dial -->
+      <div class="concept-card">
+        <div class="concept-preview">
+          <!-- Arc gauge / dial -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 72" fill="none" width="168" height="86">
+            <!-- The gauge arc -->
+            <path d="M 8 54 A 32 32 0 1 1 72 54" stroke="#0F1F3D" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Faded ticks around arc -->
+            <circle cx="8" cy="54" r="3" fill="#CBD5E1"/>
+            <circle cx="18" cy="26" r="3" fill="#CBD5E1"/>
+            <circle cx="40" cy="10" r="3" fill="#CBD5E1"/>
+            <!-- Peak indicator (gold dot at top) -->
+            <circle cx="40" cy="10" r="7" fill="rgba(245,166,35,0.15)"/>
+            <circle cx="40" cy="10" r="5" fill="#F5A623"/>
+            <!-- Needle from center to indicator -->
+            <line x1="40" y1="54" x2="40" y2="17" stroke="#1A3260" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="40" cy="54" r="5" fill="#0F1F3D"/>
+            <!-- Wordmark -->
+            <text x="84" y="40" font-family="Inter,-apple-system,sans-serif" font-size="20" font-weight="800" letter-spacing="-0.5">
+              <tspan fill="#0F1F3D">Rise</tspan><tspan fill="#1DB8A4">IQ</tspan>
+            </text>
+          </svg>
+        </div>
+        <div class="concept-body">
+          <div class="concept-num">Concept C</div>
+          <div class="concept-name">The Band Dial</div>
+          <div class="concept-desc">A precision measurement dial with its needle at maximum — directly referencing IQ scoring, IELTS band targets, and the product's core function of tracking progress toward a goal. Clean, literal, and purposeful.</div>
+          <div class="concept-verdict rejected"><span class="verdict-dot"></span> Not selected — gauge metaphor is overused in edtech/HR categories</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     FINAL DIRECTION RATIONALE
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">03 — Direction</div>
+    <div class="section-title">Why "The Rising Nodes"</div>
+    <div class="section-desc">The selected concept wins on every strategic dimension that matters for a premium, AI-native learning platform.</div>
+
+    <div class="rationale">
+      <div class="rationale-eyebrow">Creative Director's Rationale</div>
+      <div class="rationale-title">A mark that earns its meaning</div>
+      <div class="rationale-desc">Most logos try to illustrate what a product does. The Rising Nodes works differently — it encodes what RiseIQ believes: that intelligence is measurable, progress is a trajectory, and achievement is a peak you can see clearly from where you start. The three nodes also hold a structural secret: each one maps to a course in the platform (IELTS, SQL, Azure), and the gold peak maps to the Pro tier and certification achievement. No one sees this consciously — they just feel the logo has weight.</div>
+
+      <div class="rationale-points">
+        <div class="rationale-point">
+          <div class="rationale-icon">↑</div>
+          <div>
+            <div class="rationale-point-title">Rise is literal, not decorative</div>
+            <div class="rationale-point-desc">The 45° trajectory line directly embodies the brand name. Every mark tells the same story: you start at navy, you move through teal, you reach gold.</div>
+          </div>
+        </div>
+        <div class="rationale-point">
+          <div class="rationale-icon">●</div>
+          <div>
+            <div class="rationale-point-title">IQ is encoded in the nodes</div>
+            <div class="rationale-point-desc">Data points, measurement, neural connections. The three nodes reference intelligence metrics and the Synapse Brain AI — without ever showing a brain silhouette.</div>
+          </div>
+        </div>
+        <div class="rationale-point">
+          <div class="rationale-icon">⬡</div>
+          <div>
+            <div class="rationale-point-title">Scales from 16px to billboard</div>
+            <div class="rationale-point-desc">At favicon size, the three nodes form an unmistakable silhouette. At large scale, the gradient line and layered rings add richness. No detail is lost at any size.</div>
+          </div>
+        </div>
+        <div class="rationale-point">
+          <div class="rationale-icon">✦</div>
+          <div>
+            <div class="rationale-point-title">Color tells the brand story</div>
+            <div class="rationale-point-desc">Navy = authority and trust. Teal = AI, momentum, the product's primary action color. Gold = achievement, Pro tier, exam success. Every token already exists in the design system.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     LOGO VERSIONS
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">04 — Logo System</div>
+    <div class="section-title">All approved versions</div>
+    <div class="section-desc">Four background contexts, each with a precisely tuned version of the mark. Never approximate — always use the correct file.</div>
+
+    <div class="logo-grid" style="margin-bottom:16px;">
+
+      <!-- On White -->
+      <div class="logo-swatch on-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="238" height="64">
+          <defs>
+            <linearGradient id="v1-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0F1F3D"/>
+              <stop offset="100%" stop-color="#1DB8A4"/>
+            </linearGradient>
+          </defs>
+          <line x1="7" y1="38" x2="37" y2="8" stroke="url(#v1-lg)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="7" cy="38" r="3.5" fill="#0F1F3D"/>
+          <circle cx="22" cy="23" r="6.5" fill="white"/>
+          <circle cx="22" cy="23" r="5" fill="#1DB8A4"/>
+          <circle cx="37" cy="8" r="10" fill="rgba(245,166,35,0.12)"/>
+          <circle cx="37" cy="8" r="7.5" fill="white"/>
+          <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+          <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+            <tspan fill="#0F1F3D">Rise</tspan><tspan fill="#1DB8A4">IQ</tspan>
+          </text>
+        </svg>
+        <div class="logo-swatch-label">On White / Light</div>
+      </div>
+
+      <!-- On Navy -->
+      <div class="logo-swatch on-navy">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="238" height="64">
+          <defs>
+            <linearGradient id="v2-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+              <stop offset="100%" stop-color="#2DD4BF"/>
+            </linearGradient>
+          </defs>
+          <line x1="7" y1="38" x2="37" y2="8" stroke="url(#v2-lg)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="7" cy="38" r="3.5" fill="rgba(255,255,255,0.35)"/>
+          <circle cx="22" cy="23" r="6.5" fill="rgba(45,212,191,0.2)"/>
+          <circle cx="22" cy="23" r="5" fill="#2DD4BF"/>
+          <circle cx="37" cy="8" r="10" fill="rgba(245,166,35,0.15)"/>
+          <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+          <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+            <tspan fill="white">Rise</tspan><tspan fill="#2DD4BF">IQ</tspan>
+          </text>
+        </svg>
+        <div class="logo-swatch-label">On Navy / Dark</div>
+      </div>
+
+      <!-- On Teal Pale -->
+      <div class="logo-swatch on-teal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="238" height="64">
+          <defs>
+            <linearGradient id="v3-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0F1F3D"/>
+              <stop offset="100%" stop-color="#0A8F7E"/>
+            </linearGradient>
+          </defs>
+          <line x1="7" y1="38" x2="37" y2="8" stroke="url(#v3-lg)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="7" cy="38" r="3.5" fill="#0F1F3D"/>
+          <circle cx="22" cy="23" r="6.5" fill="rgba(255,255,255,0.6)"/>
+          <circle cx="22" cy="23" r="5" fill="#0D9E8E"/>
+          <circle cx="37" cy="8" r="8" fill="rgba(255,255,255,0.6)"/>
+          <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+          <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+            <tspan fill="#0F1F3D">Rise</tspan><tspan fill="#0D9E8E">IQ</tspan>
+          </text>
+        </svg>
+        <div class="logo-swatch-label">On Teal Tint</div>
+      </div>
+
+      <!-- Monochrome -->
+      <div class="logo-swatch on-gray">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="238" height="64">
+          <line x1="7" y1="38" x2="37" y2="8" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="7" cy="38" r="3.5" fill="#000"/>
+          <circle cx="22" cy="23" r="6.5" fill="white"/>
+          <circle cx="22" cy="23" r="5" fill="#1A1A1A"/>
+          <circle cx="37" cy="8" r="8" fill="white"/>
+          <circle cx="37" cy="8" r="6.5" fill="#000"/>
+          <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8" fill="#000">RiseIQ</text>
+        </svg>
+        <div class="logo-swatch-label">Monochrome / Print</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     ICON / FAVICON SYSTEM
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">05 — Icon System</div>
+    <div class="section-title">Favicon & app icon</div>
+    <div class="section-desc">The icon mark used without wordmark for app icons, favicons, and small-format contexts. The three-node silhouette is instantly recognisable at any size.</div>
+
+    <div class="two-col">
+      <!-- Square app icon -->
+      <div class="stacked-container dark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" width="140" height="140">
+          <defs>
+            <linearGradient id="app-bg-p" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0F1F3D"/>
+              <stop offset="100%" stop-color="#1A3260"/>
+            </linearGradient>
+            <linearGradient id="app-line-p" x1="44" y1="158" x2="158" y2="42" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+              <stop offset="100%" stop-color="#2DD4BF"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="44" fill="url(#app-bg-p)"/>
+          <line x1="44" y1="158" x2="158" y2="42" stroke="url(#app-line-p)" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="44" cy="158" r="11" fill="rgba(255,255,255,0.25)"/>
+          <circle cx="101" cy="100" r="20" fill="rgba(45,212,191,0.2)"/>
+          <circle cx="101" cy="100" r="15" fill="#2DD4BF"/>
+          <circle cx="158" cy="42" r="30" fill="rgba(245,166,35,0.15)"/>
+          <circle cx="158" cy="42" r="22" fill="#F5A623"/>
+        </svg>
+      </div>
+
+      <!-- Sizes -->
+      <div style="background:white; border-radius:18px; padding:32px; border:1px solid rgba(0,0,0,0.07);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:28px;">Icon at all sizes</div>
+        <div class="icon-row">
+
+          <div class="icon-item">
+            <div class="icon-bg" style="width:80px;height:80px;border-radius:18px;">
+              <svg viewBox="0 0 40 40" fill="none" width="50" height="50">
+                <defs><linearGradient id="ico80" x1="4" y1="36" x2="36" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#0F1F3D"/><stop offset="100%" stop-color="#1DB8A4"/></linearGradient></defs>
+                <line x1="4" y1="36" x2="36" y2="4" stroke="url(#ico80)" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="4" cy="36" r="3" fill="#0F1F3D"/>
+                <circle cx="20" cy="20" r="5.5" fill="white"/><circle cx="20" cy="20" r="4" fill="#1DB8A4"/>
+                <circle cx="36" cy="4" r="8" fill="white"/><circle cx="36" cy="4" r="6" fill="#F5A623"/>
+              </svg>
+            </div>
+            <div class="icon-label">80px</div>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-bg" style="width:48px;height:48px;border-radius:11px;">
+              <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
+                <defs><linearGradient id="ico48" x1="4" y1="36" x2="36" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#0F1F3D"/><stop offset="100%" stop-color="#1DB8A4"/></linearGradient></defs>
+                <line x1="4" y1="36" x2="36" y2="4" stroke="url(#ico48)" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="4" cy="36" r="3" fill="#0F1F3D"/>
+                <circle cx="20" cy="20" r="5.5" fill="white"/><circle cx="20" cy="20" r="4" fill="#1DB8A4"/>
+                <circle cx="36" cy="4" r="8" fill="white"/><circle cx="36" cy="4" r="6" fill="#F5A623"/>
+              </svg>
+            </div>
+            <div class="icon-label">48px</div>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-bg" style="width:32px;height:32px;border-radius:7px;">
+              <svg viewBox="0 0 40 40" fill="none" width="22" height="22">
+                <defs><linearGradient id="ico32" x1="4" y1="36" x2="36" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#0F1F3D"/><stop offset="100%" stop-color="#1DB8A4"/></linearGradient></defs>
+                <line x1="4" y1="36" x2="36" y2="4" stroke="url(#ico32)" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="4" cy="36" r="3.5" fill="#0F1F3D"/>
+                <circle cx="20" cy="20" r="5" fill="#1DB8A4"/>
+                <circle cx="36" cy="4" r="7" fill="#F5A623"/>
+              </svg>
+            </div>
+            <div class="icon-label">32px</div>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-bg" style="width:20px;height:20px;border-radius:4px;">
+              <svg viewBox="0 0 40 40" fill="none" width="14" height="14">
+                <line x1="4" y1="36" x2="36" y2="4" stroke="#1DB8A4" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="4" cy="36" r="4.5" fill="#0F1F3D"/>
+                <circle cx="36" cy="4" r="8" fill="#F5A623"/>
+              </svg>
+            </div>
+            <div class="icon-label">20px</div>
+          </div>
+
+        </div>
+        <p style="font-size:12px;color:var(--gray);margin-top:24px;line-height:1.6;">At 20px and below, simplify to just two nodes (navy + gold) on the line. The teal ring is omitted for pixel clarity. The three-node version is the canonical form for all sizes 32px and above.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     COLOR PALETTE
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">06 — Color</div>
+    <div class="section-title">Brand palette</div>
+    <div class="section-desc">Three primary brand colors. Navy anchors authority. Teal drives action and AI identity. Gold marks achievement and the Pro tier.</div>
+
+    <div class="palette">
+      <div class="swatch-card">
+        <div class="swatch-fill" style="background:#0F1F3D;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Navy</div>
+          <div class="swatch-hex">#0F1F3D</div>
+          <div class="swatch-role">Primary text, dark UI, authority surfaces</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-fill" style="background:#1DB8A4;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Teal</div>
+          <div class="swatch-hex">#1DB8A4</div>
+          <div class="swatch-role">Primary CTA, active states, AI brand color</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-fill" style="background:#F5A623;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Gold</div>
+          <div class="swatch-hex">#F5A623</div>
+          <div class="swatch-role">Achievement, Pro tier, certifications, peak node</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-fill" style="background:#FFFFFF; border-bottom:1px solid #e5e7eb;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-role">Card backgrounds, reverse-out text</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-fill" style="background:#F1F5F9;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gray Light</div>
+          <div class="swatch-hex">#F1F5F9</div>
+          <div class="swatch-role">App background, inactive states</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:14px;">Extended palette (tints &amp; supporting)</div>
+      <div class="palette-extended">
+        <div class="swatch-mini">
+          <div class="swatch-mini-fill" style="background:#1A3260;"></div>
+          <div class="swatch-mini-info"><div class="swatch-mini-name">Navy Light</div><div class="swatch-mini-hex">#1A3260</div></div>
+        </div>
+        <div class="swatch-mini">
+          <div class="swatch-mini-fill" style="background:#2DD4BF;"></div>
+          <div class="swatch-mini-info"><div class="swatch-mini-name">Teal Light</div><div class="swatch-mini-hex">#2DD4BF</div></div>
+        </div>
+        <div class="swatch-mini">
+          <div class="swatch-mini-fill" style="background:#E6FAF8;"></div>
+          <div class="swatch-mini-info"><div class="swatch-mini-name">Teal Pale</div><div class="swatch-mini-hex">#E6FAF8</div></div>
+        </div>
+        <div class="swatch-mini">
+          <div class="swatch-mini-fill" style="background:#FDD07A;"></div>
+          <div class="swatch-mini-info"><div class="swatch-mini-name">Gold Light</div><div class="swatch-mini-hex">#FDD07A</div></div>
+        </div>
+        <div class="swatch-mini">
+          <div class="swatch-mini-fill" style="background:#FDFAF5;"></div>
+          <div class="swatch-mini-info"><div class="swatch-mini-name">Cream</div><div class="swatch-mini-hex">#FDFAF5</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     TYPOGRAPHY
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">07 — Typography</div>
+    <div class="section-title">Type system</div>
+    <div class="section-desc">Inter is the sole typeface — weight contrast does all the work. No second font needed. JetBrains Mono for code and data contexts only.</div>
+
+    <div class="type-card">
+      <div class="type-meta">Primary Typeface — Inter</div>
+      <div class="type-sample-display">Learn. Grow.<br><span>Rise.</span></div>
+      <div class="type-weights">
+        <div class="type-weight-item">
+          <div class="type-weight-sample" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;">Band 8.0</div>
+          <div class="type-weight-label">900 Black — Headlines, scores</div>
+        </div>
+        <div class="type-weight-item">
+          <div class="type-weight-sample" style="font-size:22px;font-weight:800;letter-spacing:-0.3px;">Rise with us</div>
+          <div class="type-weight-label">800 ExtraBold — Logo, section titles</div>
+        </div>
+        <div class="type-weight-item">
+          <div class="type-weight-sample" style="font-size:22px;font-weight:700;">Synapse Brain</div>
+          <div class="type-weight-label">700 Bold — UI labels, buttons</div>
+        </div>
+        <div class="type-weight-item">
+          <div class="type-weight-sample" style="font-size:22px;font-weight:500;color:#64748B;">Complete today's goal</div>
+          <div class="type-weight-label">500 Medium — Body, descriptions</div>
+        </div>
+        <div class="type-weight-item">
+          <div class="type-weight-sample" style="font-size:22px;font-weight:400;color:#64748B;">45 minutes remaining</div>
+          <div class="type-weight-label">400 Regular — Secondary text</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-meta">Type Scale</div>
+      <div class="type-scale">
+        <div class="type-scale-row">
+          <div class="type-scale-label">Display / 52px / 900</div>
+          <div class="type-scale-sample" style="font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1;">RiseIQ</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">H1 / 36px / 800</div>
+          <div class="type-scale-sample" style="font-size:36px;font-weight:800;letter-spacing:-1px;line-height:1.1;">Your IELTS Journey</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">H2 / 24px / 700</div>
+          <div class="type-scale-sample" style="font-size:24px;font-weight:700;line-height:1.2;">Weekly Progress</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">Body / 15px / 500</div>
+          <div class="type-scale-sample" style="font-size:15px;font-weight:500;color:#64748B;line-height:1.65;">Your writing score has improved 0.5 bands this week. Focus on Task 2 coherence for your next session.</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">Label / 11px / 700 / UC</div>
+          <div class="type-scale-sample" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1DB8A4;">Synapse Brain · AI Evaluation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-meta">Wordmark Treatment — Logo only</div>
+      <div style="display:flex;gap:48px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="238" height="64">
+          <defs>
+            <linearGradient id="wm-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0F1F3D"/>
+              <stop offset="100%" stop-color="#1DB8A4"/>
+            </linearGradient>
+          </defs>
+          <line x1="7" y1="38" x2="37" y2="8" stroke="url(#wm-lg)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="7" cy="38" r="3.5" fill="#0F1F3D"/>
+          <circle cx="22" cy="23" r="6.5" fill="white"/>
+          <circle cx="22" cy="23" r="5" fill="#1DB8A4"/>
+          <circle cx="37" cy="8" r="10" fill="rgba(245,166,35,0.12)"/>
+          <circle cx="37" cy="8" r="7.5" fill="white"/>
+          <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+          <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+            <tspan fill="#0F1F3D">Rise</tspan><tspan fill="#1DB8A4">IQ</tspan>
+          </text>
+        </svg>
+        <div style="max-width:280px;">
+          <p style="font-size:13px;color:var(--gray);line-height:1.65;margin-bottom:10px;">"Rise" in Brand Navy, "IQ" in Brand Teal — both at 800 ExtraBold. The color shift at the word boundary creates typographic contrast without requiring different weights or sizes.</p>
+          <p style="font-size:12px;color:var(--teal);font-weight:600;">Letter-spacing: −0.03em · Font: Inter 800</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     TAGLINE
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">08 — Tagline</div>
+    <div class="section-title">Brand voice in four words</div>
+    <div class="section-desc">The tagline is a call to action and a promise. Used in marketing contexts — never inside the product UI except onboarding and the landing page hero.</div>
+
+    <div class="tagline-block">
+      <div class="tagline-text">Learn. <span>Grow.</span> Rise.</div>
+      <div class="tagline-note">Inter 900 · Sentence case · Period after each word · Color: Teal on the action word "Grow"</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     USAGE GUIDELINES
+════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">09 — Guidelines</div>
+    <div class="section-title">Usage rules</div>
+    <div class="section-desc">These rules protect the mark's legibility, brand equity, and scalability. They are not arbitrary — each rule has a reason.</div>
+
+    <div class="usage-grid">
+      <div class="usage-card">
+        <div class="usage-head do"><div class="usage-head-dot"></div> Do</div>
+        <div class="usage-body">
+          <div class="usage-item"><div class="usage-item-dot do"></div><div>Use the full color version on white, cream, and gray light backgrounds for the primary brand moment.</div></div>
+          <div class="usage-item"><div class="usage-item-dot do"></div><div>Use the reversed (white/teal) version on any dark or navy background including the sidebar, admin panel, and dark hero sections.</div></div>
+          <div class="usage-item"><div class="usage-item-dot do"></div><div>Maintain clear space equal to the height of the peak node (≈7.5px at 1× scale) on all sides of the logo.</div></div>
+          <div class="usage-item"><div class="usage-item-dot do"></div><div>Use the icon-only version for favicons, app icons, browser tabs, and any context narrower than 120px.</div></div>
+          <div class="usage-item"><div class="usage-item-dot do"></div><div>Scale proportionally from the provided SVG viewBox. SVG is vector and scales perfectly to any size.</div></div>
+          <div class="usage-item"><div class="usage-item-dot do"></div><div>Use the monochrome version for single-color print, embroidery, engraving, or any context where color reproduction is unreliable.</div></div>
+        </div>
+      </div>
+
+      <div class="usage-card">
+        <div class="usage-head dont"><div class="usage-head-dot"></div> Don't</div>
+        <div class="usage-body">
+          <div class="usage-item"><div class="usage-item-dot dont"></div><div>Do not recolor the logo — do not replace Brand Navy, Teal, or Gold with other colors not in the brand palette.</div></div>
+          <div class="usage-item"><div class="usage-item-dot dont"></div><div>Do not rearrange the three nodes, change their sizes, or alter the trajectory angle. The 45° line is intentional.</div></div>
+          <div class="usage-item"><div class="usage-item-dot dont"></div><div>Do not use "Rise" and "IQ" in the same color. The two-tone split is a defining feature of the wordmark.</div></div>
+          <div class="usage-item"><div class="usage-item-dot dont"></div><div>Do not add drop shadows, outlines, or decorative effects to the logo. Let the gold glow filter in the SVG do its work at most.</div></div>
+          <div class="usage-item"><div class="usage-item-dot dont"></div><div>Do not place the full-color version on a mid-tone or saturated colored background — contrast will break. Use reversed or mono version instead.</div></div>
+          <div class="usage-item"><div class="usage-item-dot dont"></div><div>Do not animate the nodes or wordmark independently. If animating, animate the entire lockup as a single unit (fade in, scale up).</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Files reference -->
+    <div style="background:white;border-radius:16px;padding:28px 32px;border:1px solid rgba(0,0,0,0.06);margin-top:20px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:18px;">Files in this brand package</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--gray-light);border-radius:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">logo-color.svg</div>
+            <div style="font-size:11px;color:var(--gray);">Full color horizontal lockup — primary</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--gray-light);border-radius:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">logo-dark.svg</div>
+            <div style="font-size:11px;color:var(--gray);">Reversed — for dark/navy backgrounds</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--gray-light);border-radius:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">logo-mono.svg</div>
+            <div style="font-size:11px;color:var(--gray);">Single-color black — print and emboss</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--gray-light);border-radius:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">logo-icon.svg</div>
+            <div style="font-size:11px;color:var(--gray);">Icon mark only — 40×40 viewBox</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--gray-light);border-radius:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">logo-app-icon.svg</div>
+            <div style="font-size:11px;color:var(--gray);">Square with navy background — PWA / store</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--gray-light);border-radius:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">logo-preview.html</div>
+            <div style="font-size:11px;color:var(--gray);">This document — full brand guidelines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background:var(--navy);padding:40px 0;text-align:center;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 46" fill="none" width="102" height="28" style="display:block;margin:0 auto 12px;">
+    <defs>
+      <linearGradient id="ft-lg" x1="7" y1="38" x2="37" y2="8" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+        <stop offset="100%" stop-color="#2DD4BF"/>
+      </linearGradient>
+    </defs>
+    <line x1="7" y1="38" x2="37" y2="8" stroke="url(#ft-lg)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="7" cy="38" r="3.5" fill="rgba(255,255,255,0.25)"/>
+    <circle cx="22" cy="23" r="5" fill="#2DD4BF"/>
+    <circle cx="37" cy="8" r="6.5" fill="#F5A623"/>
+    <text x="56" y="33" font-family="Inter,-apple-system,sans-serif" font-size="27" font-weight="800" letter-spacing="-0.8">
+      <tspan fill="white">Rise</tspan><tspan fill="#2DD4BF">IQ</tspan>
+    </text>
+  </svg>
+  <div style="font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.04em;">Brand Identity System · Version 1.0 · 2026</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" role="img" aria-label="RiseIQ icon">
+  <defs>
+    <linearGradient id="icon-line-grad" x1="4" y1="36" x2="36" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F1F3D"/>
+      <stop offset="100%" stop-color="#1DB8A4"/>
+    </linearGradient>
+    <filter id="icon-gold-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0.6 0 0 0  0.7 0.4 0 0 0  0 0 0 0 0  0 0 0 0.4 0" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Ascending line -->
+  <line x1="4" y1="36" x2="36" y2="4" stroke="url(#icon-line-grad)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Node 1: navy -->
+  <circle cx="4" cy="36" r="3" fill="#0F1F3D"/>
+
+  <!-- Node 2: teal with white ring -->
+  <circle cx="20" cy="20" r="5.5" fill="white"/>
+  <circle cx="20" cy="20" r="4" fill="#1DB8A4"/>
+
+  <!-- Node 3: gold with glow -->
+  <circle cx="36" cy="4" r="9" fill="rgba(245,166,35,0.15)" filter="url(#icon-gold-glow)"/>
+  <circle cx="36" cy="4" r="6.5" fill="white"/>
+  <circle cx="36" cy="4" r="5.5" fill="#F5A623"/>
+</svg>
