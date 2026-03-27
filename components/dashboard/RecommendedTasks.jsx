@@ -57,7 +57,7 @@ export function RecommendedTasks({ tasks = DEFAULT_TASKS }) {
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         {tasks.map((t, i) => (
           <Link
-            key={i}
+            key={t.title}
             href={t.href}
             style={{ textDecoration: "none" }}
           >

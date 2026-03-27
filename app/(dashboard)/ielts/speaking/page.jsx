@@ -31,7 +31,7 @@ export default function SpeakingPracticePage() {
                 <Badge variant="gray">{card.followUpQuestions?.length ?? 0} follow-ups</Badge>
               </div>
               <p style={{ fontSize: "0.8rem", color: "var(--color-brand-gray)" }}>
-                You should say: {card.bullets?.slice(0, 2).join(" · ")}…
+                Speak for 2 minutes about this topic after 1 minute of preparation.
               </p>
             </div>
             <Link href={ROUTES.SESSION(card.id)} className="btn-primary" style={{ flexShrink: 0 }}>

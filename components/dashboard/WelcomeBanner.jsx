@@ -1,3 +1,5 @@
+import { daysUntil } from "@/lib/utils/date.js";
+
 export function WelcomeBanner({ user }) {
   const hour      = new Date().getHours();
   const greeting  = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
@@ -8,9 +10,7 @@ export function WelcomeBanner({ user }) {
   const targetBand      = user?.targetBand ?? ieltsEnrollment?.targetBand;
   const examDate        = user?.examDate   ?? ieltsEnrollment?.examDate;
 
-  const daysLeft = examDate
-    ? Math.ceil((new Date(examDate) - new Date()) / (1000 * 60 * 60 * 24))
-    : null;
+  const daysLeft = daysUntil(examDate);
 
   return (
     <div
@@ -43,6 +43,9 @@ export function WelcomeBanner({ user }) {
               Target: Band {targetBand}
               {daysLeft !== null && daysLeft > 0 && (
                 <> · <strong style={{ color: daysLeft < 30 ? "#fbbf24" : "#e2e8f0" }}>{daysLeft} days</strong> to exam</>
+              )}
+              {daysLeft === 0 && (
+                <> · <strong style={{ color: "#fbbf24" }}>Exam day!</strong></>
               )}
             </p>
           )}

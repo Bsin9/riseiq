@@ -1,3 +1,4 @@
+import { daysUntil } from "@/lib/utils/date.js";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/authOptions.js";
 import { redirect } from "next/navigation";
@@ -65,13 +66,6 @@ const MOCK_PROGRESS = {
   ],
 };
 
-function daysUntil(dateStr) {
-  const target = new Date(dateStr);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-  return diff;
-}
 
 function BandBar({ current, target }) {
   const pct = Math.min((current / 9) * 100, 100);

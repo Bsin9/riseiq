@@ -134,7 +134,7 @@ export default async function MockTestPage() {
                   <button
                     disabled
                     className="flex-shrink-0 btn-primary text-sm opacity-80 cursor-not-allowed"
-                    title="Full mock test coming in Phase 2"
+                    title="Full mock test coming soon"
                   >
                     Start Test
                   </button>
@@ -149,7 +149,7 @@ export default async function MockTestPage() {
       <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 text-center space-y-2">
         <div className="text-3xl">🚧</div>
         <h3 className="font-semibold text-gray-700">
-          Full Mock Tests Coming in Phase 2
+          Full Mock Tests Coming Soon
         </h3>
         <p className="text-sm text-gray-500 max-w-md mx-auto">
           We&apos;re building a fully-timed exam engine with automatic scoring

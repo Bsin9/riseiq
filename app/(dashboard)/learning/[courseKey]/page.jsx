@@ -9,8 +9,10 @@ export function generateStaticParams() {
   return LEARNING_COURSES_LIST.map((c) => ({ courseKey: c.key }));
 }
 
-export function generateMetadata({ params }) {
-  const course = LEARNING_COURSES[params.courseKey];
+// Next.js 15 — params must be awaited in both generateMetadata and the page
+export async function generateMetadata({ params }) {
+  const { courseKey } = await params;
+  const course = LEARNING_COURSES[courseKey];
   if (!course) return {};
   return {
     title: `${course.title} — RiseIQ Learning Hub`,
@@ -18,8 +20,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function CourseDetailPage({ params }) {
-  const course = LEARNING_COURSES[params.courseKey];
+export default async function CourseDetailPage({ params }) {
+  const { courseKey } = await params;
+  const course = LEARNING_COURSES[courseKey];
   if (!course) notFound();
 
   const otherCourses = LEARNING_COURSES_LIST.filter((c) => c.key !== course.key);

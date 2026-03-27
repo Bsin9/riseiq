@@ -1,15 +1,17 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Brain, BarChart2, User, Library } from "lucide-react";
+import { LayoutDashboard, Brain, FileText, BarChart2, User } from "lucide-react";
 import { ROUTES } from "@/config/routes.js";
 
+// 5 most important destinations on mobile.
+// Mock Test replaces Courses (Learning Hub is still reachable from Dashboard).
 const ITEMS = [
-  { href: ROUTES.DASHBOARD, label: "Home",     Icon: LayoutDashboard },
-  { href: ROUTES.SYNAPSE,   label: "Synapse",  Icon: Brain           },
-  { href: ROUTES.LEARNING,  label: "Courses",  Icon: Library         },
-  { href: ROUTES.PROGRESS,  label: "Progress", Icon: BarChart2       },
-  { href: ROUTES.PROFILE,   label: "Profile",  Icon: User            },
+  { href: ROUTES.DASHBOARD,  label: "Home",      Icon: LayoutDashboard },
+  { href: ROUTES.SYNAPSE,    label: "Synapse",   Icon: Brain           },
+  { href: ROUTES.MOCK_TEST,  label: "Mock Test", Icon: FileText        },
+  { href: ROUTES.PROGRESS,   label: "Progress",  Icon: BarChart2       },
+  { href: ROUTES.PROFILE,    label: "Profile",   Icon: User            },
 ];
 
 export function MobileNav() {

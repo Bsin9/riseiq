@@ -56,7 +56,7 @@ export default function SynapsePage() {
           }}>
             <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🧠</div>
             <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--color-brand-navy)", marginBottom: "0.5rem" }}>
-              Synapse is coming in Phase 2
+              Synapse is on its way
             </h2>
             <p style={{ color: "var(--color-brand-gray)", maxWidth: "480px", margin: "0 auto 1.5rem", lineHeight: 1.6, fontSize: "0.9375rem" }}>
               Synapse will answer questions about your IELTS prep, SQL progress, billing, and certificates —

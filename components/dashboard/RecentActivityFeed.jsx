@@ -5,8 +5,16 @@ const MOCK_ACTIVITY = [
   { icon: "🎧", label: "Listening Practice", sub: "Hotel Booking — Section 1",   time: "2 days ago",band: null },
 ];
 
-export function RecentActivityFeed({ sessions = MOCK_ACTIVITY }) {
-  const feed = sessions.length > 0 ? sessions : MOCK_ACTIVITY;
+/**
+ * RecentActivityFeed
+ * Shows the last few practice sessions.
+ * Pass `sessions` to override mock data. Pass an empty array to show the empty state.
+ * When `sessions` is undefined (not yet loaded), falls back to mock data.
+ */
+export function RecentActivityFeed({ sessions }) {
+  // undefined = not provided → use mock data (Phase 1 fallback)
+  // [] = explicitly empty → show empty state
+  const feed = sessions === undefined ? MOCK_ACTIVITY : sessions;
 
   return (
     <div className="card" style={{ padding: "1.25rem" }}>
@@ -26,7 +34,7 @@ export function RecentActivityFeed({ sessions = MOCK_ACTIVITY }) {
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           {feed.map((item, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+            <div key={item.label + i} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
               <span style={{ fontSize: "1.125rem", flexShrink: 0 }}>{item.icon}</span>
 
               <div style={{ flex: 1, minWidth: 0 }}>

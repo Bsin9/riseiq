@@ -1,3 +1,5 @@
+import { daysUntil } from "@/lib/utils/date.js";
+
 /**
  * ExamReadinessIndicator
  * Shows current band vs target band with a visual progress bar,
@@ -9,9 +11,7 @@ export function ExamReadinessIndicator({ currentBand, targetBand, examDate }) {
     ? Math.min(100, Math.round((currentBand / targetBand) * 100))
     : null;
 
-  const daysLeft = examDate
-    ? Math.max(0, Math.ceil((new Date(examDate) - new Date()) / (1000 * 60 * 60 * 24)))
-    : null;
+  const daysLeft = daysUntil(examDate);
 
   const urgency = daysLeft != null
     ? daysLeft <= 14 ? "#ef4444"
@@ -71,7 +71,7 @@ export function ExamReadinessIndicator({ currentBand, targetBand, examDate }) {
               {daysLeft}
             </p>
             <p style={{ fontSize: "0.7rem", color: "var(--color-brand-gray)" }}>
-              {daysLeft === 1 ? "day" : "days"} left
+              {daysLeft === 0 ? "Exam day!" : daysLeft === 1 ? "day left" : "days left"}
             </p>
           </div>
         )}

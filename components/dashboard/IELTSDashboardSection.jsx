@@ -11,17 +11,10 @@ import { ROUTES }                 from "@/config/routes.js";
  *
  * Rendered by DashboardPage only when the user is enrolled in IELTS.
  * All IELTS widgets live here — not in the generic DashboardPage.
- *
- * @param {{
- *   enrollment: { courseKey: string, targetBand?: number, examDate?: string },
- *   user: { currentBand?: number, targetBand?: number },
- *   moduleScores: Record<string, number>,
- *   weakAreas: string[],
- * }} props
  */
 export function IELTSDashboardSection({ enrollment, user, moduleScores, weakAreas }) {
-  const targetBand = enrollment?.targetBand ?? user?.targetBand;
-  const examDate   = enrollment?.examDate   ?? user?.examDate;
+  const targetBand  = enrollment?.targetBand ?? user?.targetBand;
+  const examDate    = enrollment?.examDate   ?? user?.examDate;
   const currentBand = user?.currentBand;
 
   return (
@@ -67,11 +60,12 @@ export function IELTSDashboardSection({ enrollment, user, moduleScores, weakArea
         </Link>
       </div>
 
-      {/* Exam readiness */}
+      {/* Exam readiness — passes examDate so countdown works */}
       {(currentBand != null || targetBand != null) && (
         <ExamReadinessIndicator
           currentBand={currentBand}
           targetBand={targetBand}
+          examDate={examDate}
         />
       )}
 

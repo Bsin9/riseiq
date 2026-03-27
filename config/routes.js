@@ -6,6 +6,7 @@ export const ROUTES = {
   // Public
   HOME: "/",
   LOGIN: "/login",
+  LOGOUT: "/api/auth/signout",
   SIGNUP: "/signup",
   FORGOT_PASSWORD: "/forgot-password",
 
@@ -21,34 +22,25 @@ export const ROUTES = {
   DASHBOARD: "/dashboard",
   MY_COURSES: "/my-courses",
 
-  // Practice modules (IELTS) — legacy aliases kept for backwards compat
-  PRACTICE: {
-    ROOT: "/practice",
-    READING: "/ielts/reading",
-    WRITING: "/ielts/writing",
-    LISTENING: "/ielts/listening",
-    SPEAKING: "/ielts/speaking",
-  },
-
   // IELTS course-scoped pages
   IELTS: {
-    ROOT: "/ielts",
-    READING: "/ielts/reading",
-    WRITING: "/ielts/writing",
+    ROOT:      "/ielts",
+    READING:   "/ielts/reading",
+    WRITING:   "/ielts/writing",
     LISTENING: "/ielts/listening",
-    SPEAKING: "/ielts/speaking",
+    SPEAKING:  "/ielts/speaking",
   },
 
   // SQL course-scoped pages
   SQL: {
-    ROOT: "/sql",
+    ROOT:     "/sql",
     PRACTICE: "/sql/practice",
   },
 
   // Azure course-scoped pages
   AZURE: {
-    ROOT: "/azure",
-    LABS: "/azure/labs",
+    ROOT:  "/azure",
+    LABS:  "/azure/labs",
   },
 
   // Session engine
@@ -62,10 +54,10 @@ export const ROUTES = {
   SYNAPSE: "/synapse",
 
   // Other protected pages
-  MOCK_TEST:        "/mock-test",
-  PROGRESS:         "/progress",
-  PROFILE:          "/profile",
-  CERTIFICATIONS:   "/certifications",
+  MOCK_TEST:      "/mock-test",
+  PROGRESS:       "/progress",
+  PROFILE:        "/profile",
+  CERTIFICATIONS: "/certifications",
 
   // Admin portal
   ADMIN: {
@@ -79,12 +71,12 @@ export const ROUTES = {
 
   // API
   API: {
-    USER_PROGRESS: "/api/user/progress",
-    WEAK_AREAS: "/api/user/weak-areas",
+    USER_PROGRESS:  "/api/user/progress",
+    WEAK_AREAS:     "/api/user/weak-areas",
     SESSION_SUBMIT: (id) => `/api/sessions/${id}/submit`,
-    WRITING_DRAFT: "/api/writing/save-draft",
-    MOCK_TESTS: "/api/mock-tests",
+    WRITING_DRAFT:  "/api/writing/save-draft",
+    MOCK_TESTS:     "/api/mock-tests",
     MODULE_LESSONS: (id) => `/api/modules/${id}/lessons`,
-    SLACK_NOTIFY: "/api/slack/notify",
+    SLACK_NOTIFY:   "/api/slack/notify",
   },
 };
